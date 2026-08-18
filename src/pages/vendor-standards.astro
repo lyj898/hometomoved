@@ -1,7 +1,12 @@
 ---
 /**
  * The differentiator page. We do not move anything, so the only thing we
- * control is who receives an enquiry. Phase 3/4 writes the full copy.
+ * actually control is which vendors are allowed to receive an enquiry. That
+ * makes this the most important trust asset on the site.
+ *
+ * Nothing here may claim a rating, a review count or a vendor number we cannot
+ * evidence. company.vettedVendorCount is null until a real figure exists, and
+ * the copy reads correctly without it.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { company } from '../lib/data';
@@ -12,35 +17,139 @@ const crumbs: Crumb[] = [
   { name: 'Home', path: paths.home },
   { name: 'Vendor standards', path: paths.vendorStandards },
 ];
+
+const yearsReferring = 2026 - company.yearEstablished;
+
+const checks = [
+  {
+    title: 'ACRA registration and a current UEN',
+    body: 'The vendor is a registered Singapore business, and the entity quoting you is the entity that turns up. Sole proprietors are fine; unregistered operators are not.',
+  },
+  {
+    title: 'Goods-in-transit and public liability insurance',
+    body: 'We sight the certificate and check it is in date, not just that one exists. Cover limits, the excess and the exclusion list differ by vendor, so we also check the vendor can explain them to a customer without hedging.',
+  },
+  {
+    title: 'Valid work passes for the crew',
+    body: 'Every worker entering your home holds a valid pass for the work they are doing. This is the check most often skipped in this trade, and it is the one that exposes a household most if something goes wrong on site.',
+  },
+  {
+    title: 'Roadworthy, correctly insured vehicles',
+    body: 'Commercial insurance on the lorry, not private cover, and a vehicle that would pass inspection. A lorry that cannot legally carry your belongings is not a saving.',
+  },
+  {
+    title: 'Licensed disposal, where disposal is involved',
+    body: 'For any job with a disposal element, evidence that what leaves your home reaches a licensed facility. Illegal dumping is the customer’s exposure as much as the contractor’s, and it is the check we are strictest on.',
+  },
+  {
+    title: 'A written quotation practice',
+    body: 'Stair carry, long carry, peak-date surcharges and anything else named in writing before the day. The single most common complaint in this trade is a price that changes once the crew is inside, and a vendor who will not put surcharges in writing is telling you how that will go.',
+  },
+];
 ---
 
 <BaseLayout
   title="How We Vet Movers | HomeToMoved"
-  description="The checks every moving vendor must pass before they can receive an enquiry from us: registration, insurance, workforce compliance and disposal licensing."
+  description="The checks every moving vendor passes before it can receive your enquiry: registration, insurance, work passes, vehicles and licensed disposal."
   path={paths.vendorStandards}
   crumbs={crumbs}
 >
   <h1>How we vet movers</h1>
   <p>{company.businessModelStatement}</p>
+
   <p>
-    Because we do not carry out the move, the only thing we control is which vendors are allowed to receive
-    your enquiry. These are the checks a vendor has to pass. Phase 4 writes this page in full.
+    That is worth being blunt about, because it decides what this page can honestly promise. We do not
+    supervise your move. We do not employ the crew. The only thing we genuinely control is
+    <strong> which vendors are allowed to receive your enquiry in the first place</strong> — so that is
+    where all of our effort goes.
   </p>
 
-  <h2>What we check</h2>
-  <ul>
-    <li>ACRA registration and a current UEN</li>
-    <li>Goods-in-transit and public liability insurance, with the certificate sighted and in date</li>
-    <li>Workforce compliance: valid work passes for every worker entering a customer's home</li>
-    <li>Vehicle roadworthiness and correct commercial insurance</li>
-    <li>For disposal work, evidence that waste goes to a licensed facility</li>
-    <li>A written quotation practice, so the customer is not re-priced on moving day</li>
-  </ul>
+  <h2>Where the standard came from</h2>
+  <p>
+    We did not assemble this list from a template. It came out of {yearsReferring} years of referring real
+    jobs to real vendors and hearing what happened afterwards. Every check below exists because its absence
+    caused a problem for someone we sent. <a href={paths.about}>More about how this started</a>.
+  </p>
+
+  <h2>What every vendor has to pass</h2>
+  <dl>
+    {
+      checks.map((check) => (
+        <>
+          <dt>{check.title}</dt>
+          <dd>{check.body}</dd>
+        </>
+      ))
+    }
+  </dl>
+
+  <h2>What happens when a vendor falls short</h2>
+  <p>
+    Vetting at the point of joining is the easy part. What actually keeps a network honest is what happens
+    after a bad job. If a customer we matched reports a problem, we look into it, and if the account of it
+    holds up the vendor stops receiving enquiries from us. Some vendors have come off the list after a
+    single job.
+  </p>
+  <p>
+    We are the wrong people to compensate you — the contract for your move is with the vendor, and its
+    insurer handles claims. Removing a vendor is the remedy available to us. It does not help the customer
+    it happened to, which is exactly why the checks above sit at the front rather than the back.
+  </p>
 
   <h2>What we do not claim</h2>
   <ul>
-    <li>We do not publish a rating or review score until we have genuinely collected reviews.</li>
-    <li>We do not claim to be the largest, cheapest or number one at anything.</li>
-    <li>We do not perform moves ourselves, and no vendor on the network is us.</li>
+    <li>
+      <strong>No star ratings or review counts.</strong> We have not collected reviews in a way we could
+      stand behind, so we do not publish a score. When we do, it will be from customers we actually matched.
+    </li>
+    <li>
+      <strong>No guarantee of performance.</strong> Vetting reduces risk. It is not a warranty of a vendor's
+      work, and anyone telling you otherwise about any network is overselling.
+    </li>
+    <li>
+      <strong>No superlatives.</strong> We are not the biggest, the cheapest, or number one at anything, and
+      we would rather say so than claim a position we cannot evidence.
+    </li>
+    <li>
+      <strong>We are not a paid directory.</strong> Vendors do not buy their way onto this list, and no
+      vendor can pay to be ranked above another in what you are sent.
+    </li>
   </ul>
+
+  <h2>What you should still check yourself</h2>
+  <p>
+    Our checks are about whether a vendor should be quoting at all. These are the ones only you can make,
+    once you have the quote in front of you:
+  </p>
+  <ul>
+    <li>
+      That the quote names the lorry size, the crew count and the arrival window, not just a total.
+    </li>
+    <li>
+      That every surcharge that could apply to your job is written down — stair carry above all, if your
+      lift will not take a sofa upright.
+    </li>
+    <li>
+      That the insurance cover is adequate for anything genuinely valuable, and that high-value items are
+      declared in advance, because most policies exclude them otherwise.
+    </li>
+    <li>
+      That the vendor has asked about access. A vendor who quotes without asking which floor you are on, or
+      how far the lorry can park from the lift, has not priced your job — they have priced an average one.
+    </li>
+  </ul>
+
+  <h2>How this reaches you</h2>
+  <p>
+    When you send an enquiry, it goes to vendors who have passed these checks and who do that kind of work —
+    a maisonette staircase and a thirty-desk office relocation are not the same trade. They quote you
+    directly and you choose. We are not in the middle of the transaction, and there is no cost to you for
+    the match. <a href={paths.pricing}>What moving actually costs in Singapore</a>.
+  </p>
+
+  <p class="mt-10 border-l-4 border-brand bg-brand-wash px-5 py-4">
+    <strong>Get quotes from vetted movers</strong><br />
+    Tell us about your move and we will put it in front of vendors who have passed every check on this page. <a href={paths.contact}>Get matched with movers</a>.
+  </p>
 </BaseLayout>
+

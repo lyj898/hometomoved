@@ -92,6 +92,17 @@ for (const file of htmlFiles) {
   if (/^\/moving\/[^/]+\/[^/]+\/$/.test(path) && wordCount < 500) {
     errors.push(`${path}: location page has ${wordCount} words, minimum 500`);
   }
+  // Static pages were previously ungated, which is how /vendor-standards/
+  // shipped as a 177-word stub still saying "Phase 4 writes this page in full".
+  if (!path.startsWith('/moving/') && path !== '/404.html' && path !== '/thank-you/' && wordCount < 250) {
+    errors.push(`${path}: static page has ${wordCount} words, minimum 250`);
+  }
+
+  // Build scaffolding must never reach a live page.
+  for (const marker of [/\bPhase \d\b/, /\bTODO\b/, /\bLorem ipsum\b/i, /\bplaceholder text\b/i]) {
+    const hit = text.match(marker);
+    if (hit) errors.push(`${path}: build scaffolding left in copy: "${hit[0]}"`);
+  }
 
   // Singapore English. "walk-up apartment" is the correct local term for the
   // pre-war and mid-century private blocks in Geylang, Tiong Bahru and Katong,

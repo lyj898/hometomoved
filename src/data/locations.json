@@ -2,6 +2,7 @@
   {
     "slug": "ang-mo-kio",
     "name": "Ang Mo Kio",
+    "region": "north-east",
     "adjacentSlugs": [
       "bishan",
       "serangoon",
@@ -22,6 +23,7 @@
   {
     "slug": "bedok",
     "name": "Bedok",
+    "region": "east",
     "adjacentSlugs": [
       "tampines",
       "marine-parade",
@@ -40,6 +42,7 @@
   {
     "slug": "bishan",
     "name": "Bishan",
+    "region": "central",
     "adjacentSlugs": [
       "ang-mo-kio",
       "toa-payoh",
@@ -57,6 +60,7 @@
   {
     "slug": "bukit-batok",
     "name": "Bukit Batok",
+    "region": "west",
     "adjacentSlugs": [
       "bukit-panjang",
       "jurong-east",
@@ -77,6 +81,7 @@
   {
     "slug": "bukit-merah",
     "name": "Bukit Merah",
+    "region": "central",
     "adjacentSlugs": [
       "queenstown",
       "bukit-timah",
@@ -95,6 +100,7 @@
   {
     "slug": "bukit-panjang",
     "name": "Bukit Panjang",
+    "region": "west",
     "adjacentSlugs": [
       "bukit-batok",
       "choa-chu-kang",
@@ -112,6 +118,7 @@
   {
     "slug": "bukit-timah",
     "name": "Bukit Timah",
+    "region": "central",
     "adjacentSlugs": [
       "bukit-panjang",
       "bukit-batok",
@@ -132,6 +139,7 @@
   {
     "slug": "central-area",
     "name": "Central Area",
+    "region": "central",
     "adjacentSlugs": [
       "bukit-merah",
       "kallang",
@@ -151,6 +159,7 @@
   {
     "slug": "choa-chu-kang",
     "name": "Choa Chu Kang",
+    "region": "west",
     "adjacentSlugs": [
       "bukit-panjang",
       "bukit-batok",
@@ -170,6 +179,7 @@
   {
     "slug": "clementi",
     "name": "Clementi",
+    "region": "west",
     "adjacentSlugs": [
       "bukit-batok",
       "jurong-east",
@@ -189,6 +199,7 @@
   {
     "slug": "geylang",
     "name": "Geylang",
+    "region": "central",
     "adjacentSlugs": [
       "kallang",
       "bedok",
@@ -207,6 +218,7 @@
   {
     "slug": "hougang",
     "name": "Hougang",
+    "region": "north-east",
     "adjacentSlugs": [
       "sengkang",
       "serangoon",
@@ -225,6 +237,7 @@
   {
     "slug": "jurong-east",
     "name": "Jurong East",
+    "region": "west",
     "adjacentSlugs": [
       "jurong-west",
       "clementi",
@@ -243,6 +256,7 @@
   {
     "slug": "jurong-west",
     "name": "Jurong West",
+    "region": "west",
     "adjacentSlugs": [
       "jurong-east",
       "choa-chu-kang",
@@ -261,6 +275,7 @@
   {
     "slug": "kallang",
     "name": "Kallang",
+    "region": "central",
     "adjacentSlugs": [
       "central-area",
       "geylang",
@@ -279,6 +294,7 @@
   {
     "slug": "marine-parade",
     "name": "Marine Parade",
+    "region": "central",
     "adjacentSlugs": [
       "bedok",
       "geylang",
@@ -296,6 +312,7 @@
   {
     "slug": "pasir-ris",
     "name": "Pasir Ris",
+    "region": "east",
     "adjacentSlugs": [
       "tampines",
       "bedok",
@@ -313,6 +330,7 @@
   {
     "slug": "punggol",
     "name": "Punggol",
+    "region": "north-east",
     "adjacentSlugs": [
       "sengkang",
       "pasir-ris",
@@ -331,6 +349,7 @@
   {
     "slug": "queenstown",
     "name": "Queenstown",
+    "region": "central",
     "adjacentSlugs": [
       "bukit-merah",
       "clementi",
@@ -349,6 +368,7 @@
   {
     "slug": "sembawang",
     "name": "Sembawang",
+    "region": "north",
     "adjacentSlugs": [
       "yishun",
       "woodlands"
@@ -365,6 +385,7 @@
   {
     "slug": "sengkang",
     "name": "Sengkang",
+    "region": "north-east",
     "adjacentSlugs": [
       "punggol",
       "hougang",
@@ -383,6 +404,7 @@
   {
     "slug": "serangoon",
     "name": "Serangoon",
+    "region": "north-east",
     "adjacentSlugs": [
       "hougang",
       "ang-mo-kio",
@@ -401,6 +423,7 @@
   {
     "slug": "tampines",
     "name": "Tampines",
+    "region": "east",
     "adjacentSlugs": [
       "bedok",
       "pasir-ris",
@@ -418,6 +441,7 @@
   {
     "slug": "tengah",
     "name": "Tengah",
+    "region": "west",
     "adjacentSlugs": [
       "jurong-east",
       "jurong-west",
@@ -436,6 +460,7 @@
   {
     "slug": "toa-payoh",
     "name": "Toa Payoh",
+    "region": "central",
     "adjacentSlugs": [
       "bishan",
       "kallang",
@@ -457,6 +482,7 @@
   {
     "slug": "woodlands",
     "name": "Woodlands",
+    "region": "north",
     "adjacentSlugs": [
       "sembawang",
       "yishun",
@@ -474,6 +500,7 @@
   {
     "slug": "yishun",
     "name": "Yishun",
+    "region": "north",
     "adjacentSlugs": [
       "sembawang",
       "ang-mo-kio",

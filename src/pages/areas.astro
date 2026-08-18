@@ -1,60 +1,136 @@
 ---
 /**
- * Town index. Lists all 27 towns and links only to released location pages.
- * A town with no released page is named but not linked -- we never link to a
- * page that is not in the sitemap.
+ * Town index, grouped by URA planning region.
+ *
+ * Only towns with a released page for a service are linked; the rest are named
+ * but not linked, because an indexable page must never link to a noindex one.
+ * As batches release, this page turns into the internal-linking hub for the
+ * location pages without any template change.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { locations, publishedCombosForTown, getService, locationEnabledServices } from '../lib/data';
 import { paths } from '../lib/urls';
+import type { Region } from '../types';
 import type { Crumb } from '../lib/schema';
 
 const crumbs: Crumb[] = [
   { name: 'Home', path: paths.home },
   { name: 'Areas', path: paths.areas },
 ];
+
+const regions: { key: Region; name: string; note: string }[] = [
+  {
+    key: 'central',
+    name: 'Central',
+    note: 'The oldest stock on the island and the hardest access. Small 1970s lift cars in Toa Payoh, pre-war walk-ups with no lift in Tiong Bahru, lift-less private blocks through the Geylang lorongs, and CBD basement carparks that a 14ft lorry cannot clear.',
+  },
+  {
+    key: 'east',
+    name: 'East',
+    note: 'Large mature towns with an unusually big landed component. The constraint here is frontage rather than floor level: the lanes through Frankel and Opera Estate have no turning space, so a full-size lorry often stages on the main road.',
+  },
+  {
+    key: 'north-east',
+    name: 'North-East',
+    note: 'A split between mature Hougang and Serangoon, where executive maisonettes add an internal staircase, and young Sengkang and Punggol, where almost every job is a first move-in to an empty flat with new, generous lifts.',
+  },
+  {
+    key: 'west',
+    name: 'West',
+    note: 'Mostly 1980s and 1990s stock spread over long distances, so travel time between precincts is a real cost. Bukit Batok adds slope: several blocks sit above the road with external steps up to the lift lobby.',
+  },
+  {
+    key: 'north',
+    name: 'North',
+    note: 'Newer blocks and easier access on site, but far from the island centre, so some vendors price extra travel time in. Woodlands has the added quirk of Causeway traffic loading the approach roads from mid-afternoon.',
+  },
+];
+
+const byRegion = regions.map((region) => ({
+  ...region,
+  towns: locations.filter((town) => town.region === region.key),
+}));
+
+const anyPublished = locations.some((town) => publishedCombosForTown(town.slug).length > 0);
 ---
 
 <BaseLayout
   title="Areas We Cover in Singapore | HomeToMoved"
-  description="We match customers with vetted movers across all 27 residential towns in Singapore, from Ang Mo Kio to Yishun."
+  description="We match customers with vetted movers across all 27 residential towns in Singapore, from Ang Mo Kio to Yishun. What changes the price in each area."
   path={paths.areas}
   crumbs={crumbs}
 >
   <h1>Areas we cover</h1>
   <p>
-    We match customers with vetted movers across all {locations.length} residential towns in Singapore.
-    Town pages are being published in batches; where a town has no page yet, tell us your move and we will
-    still match you.
+    We match customers with vetted, insured movers across all {locations.length} residential towns in
+    Singapore. There is no town we do not cover, and no surcharge for being in one rather than another.
+  </p>
+  <p>
+    What does change by area is <strong>access</strong>, and access is what moves a quote more than distance
+    ever does. The floor you are on, whether your lift takes a three-seater upright, how far the lorry can
+    park from the lift lobby, and whether a 24ft vehicle can physically reach your gate. A 4-room flat in a
+    1978 Toa Payoh slab block and a 4-room flat in a 2019 Punggol block are the same flat on paper and two
+    different jobs in practice.
+  </p>
+  <p>
+    That is the whole reason we write a page per town rather than swapping a name into a template. Those
+    pages are being published in batches. Where a town is not yet linked below, tell us about your move
+    anyway and we will still match you.
   </p>
 
-  <h2>Towns</h2>
-  <ul>
-    {
-      locations.map((town) => {
-        const live = publishedCombosForTown(town.slug);
-        return (
-          <li>
-            <strong>{town.name}</strong>
-            {live.length > 0 && (
-              <>
-                {': '}
-                {live.map((combo, i) => (
+  {
+    byRegion.map((region) => (
+      <>
+        <h2>{region.name}</h2>
+        <p>{region.note}</p>
+        <ul>
+          {region.towns.map((town) => {
+            const live = publishedCombosForTown(town.slug);
+            return (
+              <li>
+                <strong>{town.name}</strong>
+                {live.length > 0 && (
                   <>
-                    {i > 0 && ', '}
-                    <a href={paths.location(combo.serviceSlug, town.slug)}>{getService(combo.serviceSlug).name}</a>
+                    {' — '}
+                    {live.map((combo, i) => (
+                      <>
+                        {i > 0 && ', '}
+                        <a href={paths.location(combo.serviceSlug, town.slug)}>
+                          {getService(combo.serviceSlug).name}
+                        </a>
+                      </>
+                    ))}
                   </>
-                ))}
-              </>
-            )}
-          </li>
-        );
-      })
-    }
-  </ul>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    ))
+  }
 
   <h2>Services available island-wide</h2>
+  <p>
+    Every service below is matched across all {locations.length} towns, whether or not that town has its own
+    page yet.
+  </p>
   <ul>
     {locationEnabledServices.map((s) => <li><a href={paths.service(s.slug)}>{s.name}</a></li>)}
   </ul>
+  {
+    !anyPublished && (
+      <p>
+        Town-level pages are written and are being released in batches, starting with the highest-population
+        towns. <a href={paths.contact}>Send us your move</a> and we will match you regardless of which town
+        you are in.
+      </p>
+    )
+  }
+
+  <p class="mt-10 border-l-4 border-brand bg-brand-wash px-5 py-4">
+    <strong>Moving anywhere in Singapore?</strong><br />
+    Tell us the town, the property type and roughly what needs shifting. <a href={paths.contact}>Get matched with movers</a>.
+  </p>
 </BaseLayout>
+

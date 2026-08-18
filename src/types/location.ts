@@ -11,9 +11,13 @@
  */
 export type PopulationTier = 'very-large' | 'large' | 'medium' | 'small';
 
+/** URA planning region. Groups the town index; nothing else uses it. */
+export type Region = 'north' | 'north-east' | 'east' | 'west' | 'central';
+
 export interface Location {
   slug: string;
   name: string;
+  region: Region;
   /** Must be symmetric across the dataset and reference real slugs. */
   adjacentSlugs: string[];
   /**
