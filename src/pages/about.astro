@@ -21,14 +21,10 @@ const crumbs: Crumb[] = [
 
   <h2>The entity behind the service</h2>
   <p>
-    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, UEN {company.uen},
-    a Singapore-registered company established in {company.yearEstablished}.
+    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, a Singapore-registered
+    company established in {company.yearEstablished}.
   </p>
-  <p>
-    {company.address.street}, {company.address.unit}, Singapore {company.address.postalCode}<br />
-    {company.phone} &middot; {company.email}
-  </p>
-  <p>{company.operatingHours.map((h) => h.label).join(' | ')}</p>
+  <p>We operate {company.operatingHours.map((h) => h.label).join(" and ")}.</p>
 
   <h2>What we do and do not do</h2>
   <p>

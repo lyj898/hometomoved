@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { company, isPlaceholder } from '../lib/data';
+import { company } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
 
@@ -23,7 +23,7 @@ const lastUpdated = '18 August 2026';
 
   <p>
     These terms govern your use of hometomoved.com and the matching service offered through it, operated by
-    <strong>{company.legalName}</strong> (UEN {company.uen}), trading as {company.tradingName}
+    <strong>{company.legalName}</strong>, trading as {company.tradingName}
     (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By submitting an enquiry you accept these terms.
   </p>
 
@@ -129,11 +129,9 @@ const lastUpdated = '18 August 2026';
 
   <h2>10. Contact</h2>
   <p>
-    {company.legalName} (trading as {company.tradingName})<br />
-    UEN {company.uen}<br />
-    {!isPlaceholder(company.address.street) && <>{company.address.street}<br /></>}
-    {!isPlaceholder(company.address.postalCode) && <>Singapore {company.address.postalCode}<br /></>}
-    {!isPlaceholder(company.email) ? company.email : <em>[Contact email to be added before launch]</em>}
+    {company.legalName}, trading as {company.tradingName}. Use the
+    <a href={paths.contact}> enquiry form</a> for any question about these terms or about an enquiry you have
+    submitted.
   </p>
 
   <p><a href={paths.privacy}>Privacy policy</a> &middot; <a href={paths.vendorStandards}>How we vet movers</a></p>

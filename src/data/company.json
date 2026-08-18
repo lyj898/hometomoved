@@ -1,17 +1,8 @@
 {
   "legalName": "SKAP Waste Management Pte Ltd",
   "tradingName": "HomeToMoved",
-  "uen": "[UEN]",
   "yearEstablished": 2009,
   "foundingDate": "2009",
-  "address": {
-    "street": "[STREET ADDRESS]",
-    "unit": "[UNIT]",
-    "postalCode": "[POSTAL CODE]",
-    "country": "SG"
-  },
-  "phone": "[PHONE]",
-  "email": "[EMAIL]",
   "operatingHours": [
     {
       "days": "Mo,Tu,We,Th,Fr",

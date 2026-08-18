@@ -68,7 +68,7 @@ Everything on this site is generated from four JSON files. **No template contain
 | `src/data/services.json` | The 7 service pages, pricing tables, FAQs |
 | `src/data/locations.json` | The 27 towns, adjacency graph, housing profiles |
 | `src/data/combos.json` | Which service × town location pages exist (generated) |
-| `src/data/company.json` | Entity, UEN, NAP, hours, GST position |
+| `src/data/company.json` | Entity name, hours, GST position. **No UEN, address, phone or email** |
 | `src/data/site-faqs.json` | Homepage FAQs only |
 
 Types live in `src/types/`. Templates read data through `src/lib/data.ts` and never import the JSON directly.
@@ -204,13 +204,17 @@ Three hard rules, each enforced by `scripts/audit-build.mjs`:
 
 ---
 
-## Placeholders to replace before launch
+## No contact details, anywhere
 
-In `src/data/company.json`: `[UEN]`, `[PHONE]`, `[WHATSAPP_DIGITS_NO_PLUS]`, `[EMAIL]`,
-`[STREET ADDRESS]`, `[UNIT]`, `[POSTAL CODE]`.
+The site publishes **no UEN, address, phone or email**. The enquiry form is the only channel, and the
+privacy and terms pages route data-protection and legal questions through it.
 
-`npm run data:validate` lists every remaining one. While a number is a placeholder, WhatsApp and phone CTAs
-fall back to `/contact/` instead of emitting a broken `wa.me` or `tel:` link (`src/lib/cta.ts`).
+This is enforced:  fails the build if , , ,  or
+ reappear in . The Organization JSON-LD carries name, legalName, url,
+foundingDate and areaServed only.
+
+The one exception is the form action, which necessarily contains the FormSubmit destination. Switching
+ to the hashed token endpoint removes the address from the page source.
 
 ---
 

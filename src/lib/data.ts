@@ -93,18 +93,3 @@ export function relatedServices(service: Service): Service[] {
 export function renderH1(service: Service, townName?: string): string {
   return service.h1Template.replace('{town}', townName ?? 'Singapore');
 }
-
-/* -------------------------------------------------------------- company -- */
-
-const PLACEHOLDER = /\[[A-Z_ ]+\]/;
-
-/** Returns undefined for values still carrying a [PLACEHOLDER]. */
-export function realValue(value: string | undefined): string | undefined {
-  if (!value || PLACEHOLDER.test(value)) return undefined;
-  return value;
-}
-
-/** True when the value is a placeholder, so templates can hide the field. */
-export function isPlaceholder(value: string): boolean {
-  return PLACEHOLDER.test(value);
-}

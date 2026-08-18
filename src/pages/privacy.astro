@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { company, isPlaceholder } from '../lib/data';
+import { company } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
 
@@ -22,7 +22,7 @@ const lastUpdated = '18 August 2026';
   <p><em>Last updated {lastUpdated}.</em></p>
 
   <p>
-    This policy explains how <strong>{company.legalName}</strong> (UEN {company.uen}), trading as
+    This policy explains how <strong>{company.legalName}</strong>, trading as
     {company.tradingName}, collects, uses, discloses and protects personal data. It is written to comply with
     the Singapore Personal Data Protection Act 2012 (PDPA).
   </p>
@@ -151,14 +151,12 @@ const lastUpdated = '18 August 2026';
     disclose data to vendors will be reflected in the consent wording on the enquiry form.
   </p>
 
-  <h2>Contact our Data Protection Officer</h2>
+  <h2>Contacting us about your data</h2>
   <p>
-    <strong>Data Protection Officer</strong><br />
-    {company.legalName} (trading as {company.tradingName})<br />
-    UEN {company.uen}<br />
-    {!isPlaceholder(company.address.street) && <>{company.address.street}<br /></>}
-    {!isPlaceholder(company.address.postalCode) && <>Singapore {company.address.postalCode}<br /></>}
-    {!isPlaceholder(company.email) ? company.email : <em>[DPO contact email to be added before launch]</em>}
+    Use the <a href={paths.contact}>enquiry form</a> to make an access, correction or withdrawal request, and
+    say clearly in the message that it is a data protection request rather than a moving enquiry. It reaches
+    the person responsible for data protection at {company.legalName}. We respond within 30 days, or tell you
+    when to expect a response if we need longer.
   </p>
   <p>
     If you are not satisfied with our response, you may contact the Personal Data Protection Commission of

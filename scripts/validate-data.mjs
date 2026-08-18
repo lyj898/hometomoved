@@ -124,11 +124,17 @@ if (combos.length !== expected) {
 }
 
 // ----------------------------------------------------------------- company --
-for (const [k, v] of Object.entries(company)) {
-  if (typeof v === 'string' && /\[[A-Z_ ]+\]/.test(v)) warnings.push(`company.${k} is still a placeholder: ${v}`);
+// The site publishes no contact details and no UEN by design. Guard against
+// either creeping back in through the data file.
+for (const banned of ['uen', 'phone', 'email', 'address', 'whatsappNumber']) {
+  if (banned in company) {
+    errors.push(`company.${banned} is present — this site publishes no contact details or UEN`);
+  }
 }
-for (const [k, v] of Object.entries(company.address)) {
-  if (typeof v === 'string' && /\[[A-Z_ ]+\]/.test(v)) warnings.push(`company.address.${k} is still a placeholder: ${v}`);
+for (const [k, v] of Object.entries(company)) {
+  if (typeof v === 'string' && /\[[A-Z_ ]+\]/.test(v)) {
+    warnings.push(`company.${k} is still a placeholder: ${v}`);
+  }
 }
 
 // ------------------------------------------------------------------ report --

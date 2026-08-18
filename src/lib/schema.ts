@@ -10,11 +10,9 @@
  *     FAQ rich results in May 2026. It is not a ranking lever and no layout
  *     decision anywhere depends on it.
  *
- * Placeholder company values ([UEN], [PHONE] ...) are stripped rather than
- * emitted, so the graph never publishes a literal placeholder.
  */
 import type { Service, Location } from '../types';
-import { company, realValue } from './data';
+import { company } from './data';
 import { SITE_ORIGIN, canonical, paths } from './urls';
 
 export const ORG_ID = `${SITE_ORIGIN}/#org`;
@@ -28,35 +26,20 @@ function compact(obj: Json): Json {
 
 /* --------------------------------------------------------- organization -- */
 
+/**
+ * No identifier (UEN), telephone, email or address: the site publishes no
+ * contact details, so asserting them in structured data would claim more than
+ * the page shows. areaServed stays, since that is a genuine fact about the
+ * service rather than a way to reach us.
+ */
 export function organizationNode(): Json {
-  const street = realValue(company.address.street);
-  const postal = realValue(company.address.postalCode);
-  const unit = realValue(company.address.unit);
-
-  const address =
-    street || postal
-      ? compact({
-          '@type': 'PostalAddress',
-          streetAddress: [street, unit].filter(Boolean).join(', ') || undefined,
-          postalCode: postal,
-          addressCountry: 'SG',
-          addressLocality: 'Singapore',
-        })
-      : undefined;
-
   return compact({
     '@type': 'Organization',
     '@id': ORG_ID,
     name: company.tradingName,
     legalName: company.legalName,
-    // UEN is the Singapore entity identifier. Omitted entirely while it is a
-    // placeholder rather than emitted as "[UEN]".
-    identifier: realValue(company.uen),
     url: SITE_ORIGIN,
     foundingDate: company.foundingDate,
-    telephone: realValue(company.phone),
-    email: realValue(company.email),
-    address,
     areaServed: { '@type': 'Country', name: 'Singapore' },
     description: company.businessModelStatement,
   });

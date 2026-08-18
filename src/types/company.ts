@@ -1,25 +1,20 @@
 /**
  * Operating entity. Rendered in the footer, the Organization JSON-LD node,
- * and the legal pages. Placeholders are marked with [SQUARE BRACKETS] and
- * must be replaced before launch.
+ * and the legal pages.
+ *
+ * Deliberately carries no UEN, address, phone or email: the site publishes no
+ * contact details at all, and the enquiry form is the only channel. If those
+ * ever need to come back, add them here, to organizationNode() in
+ * src/lib/schema.ts, and to the footer.
  */
 
 export interface Company {
-  /** Registered entity. Must appear in the footer verbatim. */
+  /** Registered entity. */
   legalName: string;
   /** Public-facing brand. */
   tradingName: string;
-  uen: string;
   yearEstablished: number;
   foundingDate: string;
-  address: {
-    street: string;
-    unit: string;
-    postalCode: string;
-    country: 'SG';
-  };
-  phone: string;
-  email: string;
   operatingHours: {
     /** schema.org openingHours day tokens. */
     days: string;
