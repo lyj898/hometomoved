@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import EntityLink from '../components/EntityLink.astro';
 import { company } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
@@ -21,7 +22,7 @@ const crumbs: Crumb[] = [
 
   <h2>The entity behind the service</h2>
   <p>
-    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, a Singapore-registered
+    {company.tradingName} is the trading name of <EntityLink strong={true} />, a Singapore-registered
     company established in {company.yearEstablished}.
   </p>
   <p>We operate {company.operatingHours.map((h) => h.label).join(" and ")}.</p>

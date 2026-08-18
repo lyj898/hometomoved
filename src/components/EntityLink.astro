@@ -1,0 +1,35 @@
+---
+/**
+ * The registered entity name, linked to the entity's own site.
+ *
+ * Every visible mention of the legal name on this site goes through here, so
+ * the destination is set in one place (company.entityUrl) and cannot drift.
+ *
+ * Note: the original brief said not to link to sibling sites. That was
+ * overridden deliberately -- the entity name should resolve to the entity.
+ */
+import { company } from '../lib/data';
+
+interface Props {
+  /** Extra classes for the anchor, e.g. footer colours. */
+  class?: string;
+  /** Render inside <strong>, which most body copy does. */
+  strong?: boolean;
+}
+
+const { class: className = '', strong = false } = Astro.props;
+---
+
+{
+  strong ? (
+    <strong>
+      <a href={company.entityUrl} rel="noopener" class={className}>
+        {company.legalName}
+      </a>
+    </strong>
+  ) : (
+    <a href={company.entityUrl} rel="noopener" class={className}>
+      {company.legalName}
+    </a>
+  )
+}

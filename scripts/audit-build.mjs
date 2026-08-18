@@ -175,6 +175,25 @@ for (const field of ['title', 'description']) {
   }
 }
 
+// -- entity links --------------------------------------------------------------
+// Every visible mention of the registered entity must be a link to its own
+// site. Checked by removing the qualifying anchors from the body and asserting
+// nothing is left over, which is exact rather than a regex guess at nesting.
+const ENTITY = 'SKAP Waste Management Pte Ltd';
+const ENTITY_URL = 'https://junktoclear.com.sg';
+for (const file of htmlFiles) {
+  const html = readFileSync(file, 'utf8');
+  const path = urlPathOf(file);
+  const body = html.replace(/[\s\S]*?<\/head>/, '');
+  const stripped = body.replace(
+    new RegExp(`<a[^>]+href="${ENTITY_URL}"[^>]*>[\\s\\S]*?</a>`, 'g'),
+    '',
+  );
+  if (stripped.includes(ENTITY)) {
+    errors.push(`${path}: "${ENTITY}" appears without a link to ${ENTITY_URL}`);
+  }
+}
+
 // -- lead form -----------------------------------------------------------------
 // The whole site exists to produce leads, so the form is checked in the built
 // output rather than trusted. An empty action posts back to the page itself and

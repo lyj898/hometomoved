@@ -13,6 +13,11 @@ export interface Company {
   legalName: string;
   /** Public-facing brand. */
   tradingName: string;
+  /**
+   * Where the registered entity name links to. Every visible mention of the
+   * legal name is rendered through EntityLink.astro and points here.
+   */
+  entityUrl: string;
   yearEstablished: number;
   foundingDate: string;
   operatingHours: {

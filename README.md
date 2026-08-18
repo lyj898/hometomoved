@@ -204,6 +204,17 @@ Three hard rules, each enforced by `scripts/audit-build.mjs`:
 
 ---
 
+## Entity name links out
+
+Every visible mention of **SKAP Waste Management Pte Ltd** is a link to `company.entityUrl`
+(junktoclear.com.sg), rendered through `src/components/EntityLink.astro` so the destination is set in one
+place. `scripts/audit-build.mjs` fails the build if the name appears anywhere in a page body without that
+link. Meta descriptions still carry the name as plain text, since a description cannot contain a link.
+
+This overrides the original brief line about not linking sibling sites.
+
+---
+
 ## No contact details, anywhere
 
 The site publishes **no UEN, address, phone or email**. The enquiry form is the only channel, and the

@@ -18,7 +18,8 @@
  *
  * No localStorage or sessionStorage. Progress is held in memory only.
  */
-import { locations, publishedServices } from '../lib/data';
+import { locations, publishedServices, company } from '../lib/data';
+import EntityLink from './EntityLink.astro';
 import { paths } from '../lib/urls';
 import optionsJson from '../data/form-options.json';
 
@@ -281,7 +282,7 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
       <label class="flex cursor-pointer items-start gap-3">
         <input type="checkbox" id="consent" name="PDPA consent" value="Given" class="mt-1 h-5 w-5 shrink-0 accent-[#8a5a1f]" />
         <span class="text-[0.925rem] leading-relaxed">
-          I consent to <strong>SKAP Waste Management Pte Ltd</strong> (trading as HomeToMoved) collecting and
+          I consent to <EntityLink strong={true} /> (trading as {company.tradingName}) collecting and
           using my personal data to contact me about this enquiry, and to
           <strong> disclosing my details to the moving vendors it matches me with</strong> so that they can
           quote for my job. I understand I can withdraw consent at any time, as set out in the{' '}

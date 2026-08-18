@@ -8,6 +8,7 @@
  * SVG with explicit width and height.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import EntityLink from '../components/EntityLink.astro';
 import FaqList from '../components/FaqList.astro';
 import { publishedServices, company, locations, publishedCombosForTown } from '../lib/data';
 import { paths } from '../lib/urls';
@@ -85,7 +86,7 @@ const snapshot = publishedServices
     <div class="wrap grid gap-6 py-8 sm:grid-cols-3">
       <div>
         <p class="font-serif text-xl">Operating since {company.yearEstablished}</p>
-        <p class="mt-1 text-sm text-paper/65">{company.legalName}, trading as {company.tradingName}</p>
+        <p class="mt-1 text-sm text-paper/65"><EntityLink class="underline underline-offset-2 hover:text-white" />, trading as {company.tradingName}</p>
       </div>
       <div>
         <p class="font-serif text-xl">Vetted, insured vendors</p>
