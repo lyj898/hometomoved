@@ -233,6 +233,19 @@ Do not link to hometoclean.com or any sibling site.
 
 ## Deployment
 
+**Currently deployed to GitHub Pages** via `.github/workflows/deploy.yml`, because hometomoved.com
+ already pointed there. Every push to `main` builds and publishes. The one required repo setting is
+**Settings → Pages → Source = "GitHub Actions"**. Build-time env vars come from repo Variables
+(Settings → Secrets and variables → Actions → Variables): `PUBLIC_FORM_ENDPOINT`, `PUBLIC_GA4_ID`.
+
+`public/CNAME` carries the custom domain into the published output — do not delete it.
+
+Note that `public/_headers` and `public/_redirects` are **Cloudflare-only** and are ignored by GitHub
+Pages, so the security headers and cache rules are not currently applied. They take effect if you move to
+Cloudflare Pages.
+
+### Moving to Cloudflare Pages instead
+
 Cloudflare Pages, from GitHub (`lyj898/hometomoved`, branch `main`).
 
 **One-time setup in the Cloudflare dashboard** — Workers & Pages → Create → Pages → Connect to Git:
