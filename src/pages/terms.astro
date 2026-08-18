@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EntityLink from '../components/EntityLink.astro';
 import { company } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
@@ -24,7 +23,7 @@ const lastUpdated = '18 August 2026';
 
   <p>
     These terms govern your use of hometomoved.com and the matching service offered through it, operated by
-    <EntityLink strong={true} />, trading as {company.tradingName}
+    <strong>{company.legalName}</strong>, trading as {company.tradingName}
     (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By submitting an enquiry you accept these terms.
   </p>
 
@@ -130,7 +129,7 @@ const lastUpdated = '18 August 2026';
 
   <h2>10. Contact</h2>
   <p>
-    <EntityLink />, trading as {company.tradingName}. Use the
+    {company.legalName}, trading as {company.tradingName}. Use the
     <a href={paths.contact}> enquiry form</a> for any question about these terms or about an enquiry you have
     submitted.
   </p>

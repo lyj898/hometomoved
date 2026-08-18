@@ -1,4 +1,13 @@
 ---
+/**
+ * About. The only page on the site that links out to the operating entity.
+ *
+ * The origin story is the strongest trust asset here, because it explains
+ * where the vendor list actually came from. Two figures in it are data-driven
+ * rather than typed in: the number of years (derived from yearEstablished) and
+ * the vendor count (company.vettedVendorCount, null until a real figure
+ * exists -- the sentence drops the number rather than printing a guess).
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EntityLink from '../components/EntityLink.astro';
 import { company } from '../lib/data';
@@ -9,28 +18,53 @@ const crumbs: Crumb[] = [
   { name: 'Home', path: paths.home },
   { name: 'About', path: paths.about },
 ];
+
+const yearsReferring = 2026 - company.yearEstablished;
+const vendorCount = company.vettedVendorCount;
 ---
 
 <BaseLayout
   title="About HomeToMoved | Singapore Mover Matching"
-  description="HomeToMoved is the trading name of SKAP Waste Management Pte Ltd, established 2009. We match Singapore households with vetted, insured moving vendors."
+  description="HomeToMoved is run by the people behind Junk to Clear, clearing Singapore flats and offices since 2009. We match you with movers we have seen work."
   path={paths.about}
   crumbs={crumbs}
 >
   <h1>About {company.tradingName}</h1>
   <p>{company.businessModelStatement}</p>
 
+  <h2>Where this came from</h2>
+  <p>
+    {company.tradingName} is run by the people behind <EntityLink />, {company.parentBrandDescription} since
+    {' '}{company.yearEstablished}.
+  </p>
+  <p>
+    That work put us in people's homes at a particular moment. Customers clearing a flat were usually moving
+    out, moving in, or handing over to a landlord. They would ask whether we knew someone who could handle
+    the cleaning, or the move, or the bit we did not do. So we would recommend someone.
+  </p>
+  <p>
+    Over {yearsReferring} years of doing that, we learned things you only learn by referring real jobs and
+    hearing what happened afterwards. Which vendors turn up when they said they would. Which ones quote low
+    and find reasons to charge more once they are inside. Which ones you never hear a complaint about. Some
+    vendors we stopped referring after a single job.
+  </p>
+  <p>
+    That list &mdash; {vendorCount !== null ? `the ${vendorCount} vendors` : 'the vendors'} we have actually
+    seen work &mdash; is what this site is built on. We are not a directory anyone can pay to join, and we do
+    not carry out moves ourselves. We match you with people we would use, and you deal with them directly.
+  </p>
+
   <h2>The entity behind the service</h2>
   <p>
-    {company.tradingName} is the trading name of <EntityLink strong={true} />, a Singapore-registered
+    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, a Singapore-registered
     company established in {company.yearEstablished}.
   </p>
-  <p>We operate {company.operatingHours.map((h) => h.label).join(" and ")}.</p>
+  <p>We operate {company.operatingHours.map((h) => h.label).join(' and ')}.</p>
 
   <h2>What we do and do not do</h2>
   <p>
-    We take your requirements and pass them to moving vendors who have passed our checks. We do not own lorries,
-    employ movers or carry out any move. The contract for the move itself is between you and the vendor you choose.
-    <a href={paths.vendorStandards}>How we vet movers</a>.
+    We take your requirements and pass them to moving vendors who have passed our checks. We do not own
+    lorries, employ movers or carry out any move. The contract for the move itself is between you and the
+    vendor you choose. <a href={paths.vendorStandards}>How we vet movers</a>.
   </p>
 </BaseLayout>

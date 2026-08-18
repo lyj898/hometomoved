@@ -175,22 +175,20 @@ for (const field of ['title', 'description']) {
   }
 }
 
-// -- entity links --------------------------------------------------------------
-// Every visible mention of the registered entity must be a link to its own
-// site. Checked by removing the qualifying anchors from the body and asserting
-// nothing is left over, which is exact rather than a regex guess at nesting.
-const ENTITY = 'SKAP Waste Management Pte Ltd';
+// -- entity link -----------------------------------------------------------------
+// The outbound link to the operating entity belongs on /about/ and nowhere
+// else. One link from the page that explains the relationship, rather than the
+// same link repeated in every footer.
 const ENTITY_URL = 'https://junktoclear.com.sg';
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf8');
   const path = urlPathOf(file);
-  const body = html.replace(/[\s\S]*?<\/head>/, '');
-  const stripped = body.replace(
-    new RegExp(`<a[^>]+href="${ENTITY_URL}"[^>]*>[\\s\\S]*?</a>`, 'g'),
-    '',
-  );
-  if (stripped.includes(ENTITY)) {
-    errors.push(`${path}: "${ENTITY}" appears without a link to ${ENTITY_URL}`);
+  const links = (html.match(new RegExp(`href="${ENTITY_URL}`, 'g')) ?? []).length;
+  if (path === '/about/' && links === 0) {
+    errors.push(`/about/: expected a link to ${ENTITY_URL}, found none`);
+  }
+  if (path !== '/about/' && links > 0) {
+    errors.push(`${path}: links to ${ENTITY_URL} — that link belongs on /about/ only`);
   }
 }
 

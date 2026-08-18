@@ -1,35 +1,24 @@
 ---
 /**
- * The registered entity name, linked to the entity's own site.
+ * Link to the operating entity's own site.
  *
- * Every visible mention of the legal name on this site goes through here, so
- * the destination is set in one place (company.entityUrl) and cannot drift.
+ * Used on the about page only. Everywhere else the entity name is plain text,
+ * which is deliberate: one outbound link from the page that explains the
+ * relationship, rather than the same link repeated in every footer.
+ * scripts/audit-build.mjs enforces that.
  *
- * Note: the original brief said not to link to sibling sites. That was
- * overridden deliberately -- the entity name should resolve to the entity.
+ * Defaults to the brand customers would recognise (Junk to Clear) rather than
+ * the registered name, since that is what the origin story refers to.
  */
 import { company } from '../lib/data';
 
 interface Props {
-  /** Extra classes for the anchor, e.g. footer colours. */
+  /** Link text. Defaults to the parent brand name. */
+  label?: string;
   class?: string;
-  /** Render inside <strong>, which most body copy does. */
-  strong?: boolean;
 }
 
-const { class: className = '', strong = false } = Astro.props;
+const { label = company.parentBrandName, class: className = '' } = Astro.props;
 ---
 
-{
-  strong ? (
-    <strong>
-      <a href={company.entityUrl} rel="noopener" class={className}>
-        {company.legalName}
-      </a>
-    </strong>
-  ) : (
-    <a href={company.entityUrl} rel="noopener" class={className}>
-      {company.legalName}
-    </a>
-  )
-}
+<a href={company.entityUrl} rel="noopener" class={className || undefined}>{label}</a>

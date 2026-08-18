@@ -204,12 +204,16 @@ Three hard rules, each enforced by `scripts/audit-build.mjs`:
 
 ---
 
-## Entity name links out
+## Entity link
 
-Every visible mention of **SKAP Waste Management Pte Ltd** is a link to `company.entityUrl`
-(junktoclear.com.sg), rendered through `src/components/EntityLink.astro` so the destination is set in one
-place. `scripts/audit-build.mjs` fails the build if the name appears anywhere in a page body without that
-link. Meta descriptions still carry the name as plain text, since a description cannot contain a link.
+The outbound link to the operating entity appears on **/about/ only**, labelled with the brand
+(`company.parentBrandName`) rather than the registered name, inside the "Where this came from" section.
+Everywhere else the entity name is plain text.
+
+`scripts/audit-build.mjs` enforces both halves: /about/ must contain the link, and no other page may.
+
+`company.vettedVendorCount` is `null`. The about page drops the number from the sentence rather than
+printing a guess. Set it to a real figure and the sentence picks it up.
 
 This overrides the original brief line about not linking sibling sites.
 

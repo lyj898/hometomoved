@@ -18,6 +18,15 @@ export interface Company {
    * legal name is rendered through EntityLink.astro and points here.
    */
   entityUrl: string;
+  /** The operating brand customers may already know, e.g. on the about page. */
+  parentBrandName: string;
+  parentBrandDescription: string;
+  /**
+   * How many vendors we have actually referred work to and seen perform.
+   * null until a real figure is supplied -- the about page drops the number
+   * from the sentence rather than printing a guess or a [PLACEHOLDER].
+   */
+  vettedVendorCount: number | null;
   yearEstablished: number;
   foundingDate: string;
   operatingHours: {
