@@ -1,0 +1,133 @@
+{
+  "propertyTypes": [
+    {
+      "value": "HDB 1- or 2-room",
+      "hint": "Smaller flat"
+    },
+    {
+      "value": "HDB 3-room",
+      "hint": "Typically a 10ft lorry"
+    },
+    {
+      "value": "HDB 4-room",
+      "hint": "Typically a 14ft lorry"
+    },
+    {
+      "value": "HDB 5-room",
+      "hint": "Typically a 14ft lorry"
+    },
+    {
+      "value": "HDB Executive or maisonette",
+      "hint": "Internal staircase"
+    },
+    {
+      "value": "Condominium",
+      "hint": "MCST permit and lift booking"
+    },
+    {
+      "value": "Landed property",
+      "hint": "Terrace, semi-D or bungalow"
+    },
+    {
+      "value": "Office or commercial",
+      "hint": "After-hours move"
+    }
+  ],
+  "accessNotes": [
+    {
+      "value": "Lift reaches my floor",
+      "hint": "Standard access"
+    },
+    {
+      "value": "Small or old lift car",
+      "hint": "Sofa may not fit upright"
+    },
+    {
+      "value": "No lift at all",
+      "hint": "Walk-up block"
+    },
+    {
+      "value": "Stairs at one or both ends",
+      "hint": "Landed or maisonette"
+    },
+    {
+      "value": "Long carry from the lorry",
+      "hint": "Multi-storey carpark"
+    },
+    {
+      "value": "Carpark height limit",
+      "hint": "Basement under 2.4m"
+    },
+    {
+      "value": "Not sure yet",
+      "hint": "We will ask"
+    }
+  ],
+  "extras": [
+    {
+      "value": "Packing",
+      "hint": "Cartons and materials supplied"
+    },
+    {
+      "value": "Unpacking",
+      "hint": "At the new place"
+    },
+    {
+      "value": "Disposal of unwanted items",
+      "hint": "Same trip as the move"
+    },
+    {
+      "value": "Dismantling and reassembly",
+      "hint": "Beds, wardrobes, tables"
+    },
+    {
+      "value": "A piano, safe or gym equipment",
+      "hint": "Specialist handling"
+    },
+    {
+      "value": "Storage",
+      "hint": "Gap between the two dates"
+    },
+    {
+      "value": "Nothing extra",
+      "hint": "Just the move"
+    }
+  ],
+  "timing": [
+    {
+      "value": "Date is fixed",
+      "hint": "Key collection or lease end"
+    },
+    {
+      "value": "Flexible by a few days",
+      "hint": "Can shift for a better rate"
+    },
+    {
+      "value": "Flexible by a few weeks",
+      "hint": "Still planning"
+    },
+    {
+      "value": "As soon as possible",
+      "hint": "Urgent"
+    }
+  ],
+  "destinationExtra": [
+    {
+      "slug": "not-decided",
+      "name": "Not decided yet"
+    },
+    {
+      "slug": "outside-singapore",
+      "name": "Outside Singapore"
+    }
+  ],
+  "serviceHints": {
+    "hdb-moving": "Whole-flat move",
+    "condo-moving": "MCST permit and lift booking",
+    "landed-moving": "Terrace, semi-D or bungalow",
+    "office-relocation": "After hours, IT equipment",
+    "single-item-moving": "Sofa, fridge, piano, safe",
+    "packing-services": "Cartons and materials supplied",
+    "disposal-and-moving": "Declutter on the same trip"
+  }
+}

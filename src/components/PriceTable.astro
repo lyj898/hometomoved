@@ -1,0 +1,92 @@
+---
+/**
+ * Price tiers for one service. Every figure comes from services.json; nothing
+ * is written into this component.
+ *
+ * Tiers with a null min are market rates we could not establish, so they are
+ * listed as quoted-per-job rather than being given an invented number.
+ */
+import type { Service } from '../types';
+import { company } from '../lib/data';
+
+interface Props {
+  service: Service;
+  /** Location pages use the compact list; service and pricing pages the table. */
+  compact?: boolean;
+}
+
+const { service, compact = false } = Astro.props;
+
+const priced = service.priceTiers.filter((t) => t.min !== null);
+const unpriced = service.priceTiers.filter((t) => t.min === null);
+
+const money = (min: number | null, max: number | null): string =>
+  max !== null ? `S$${min} – S$${max}` : `From S$${min}`;
+
+const headline =
+  service.priceRangeSGD.min !== null && service.priceRangeSGD.max !== null
+    ? `S$${service.priceRangeSGD.min} – S$${service.priceRangeSGD.max}`
+    : service.priceRangeSGD.min !== null
+      ? `From S$${service.priceRangeSGD.min}`
+      : 'Quoted per job';
+---
+
+<div>
+  <p class="font-serif text-3xl text-brand">{headline}</p>
+  <p class="mt-1 text-[0.95rem] text-ink-soft">{service.priceRangeSGD.unit}</p>
+
+  {
+    priced.length > 0 &&
+      (compact ? (
+        <ul class="mt-6 divide-y divide-line border-y border-line">
+          {priced.map((tier) => (
+            <li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">
+              <span class="font-medium">{tier.label}</span>
+              <span class="whitespace-nowrap font-semibold text-brand-deep">{money(tier.min, tier.max)}</span>
+              <span class="w-full text-[0.875rem] text-ink-faint">{tier.unit}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full min-w-[36rem] border-collapse text-left">
+            <caption class="sr-only">{service.name} price tiers</caption>
+            <thead>
+              <tr class="border-b border-line-strong text-sm uppercase tracking-wider text-ink-faint">
+                <th scope="col" class="py-3 pr-4 font-semibold">Job</th>
+                <th scope="col" class="py-3 pr-4 font-semibold">Typical range</th>
+                <th scope="col" class="py-3 font-semibold">Basis and notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {priced.map((tier) => (
+                <tr class="border-b border-line align-top">
+                  <td class="py-4 pr-4 font-medium">{tier.label}</td>
+                  <td class="py-4 pr-4 whitespace-nowrap font-semibold text-brand-deep">
+                    {money(tier.min, tier.max)}
+                  </td>
+                  <td class="py-4 text-[0.9rem] text-ink-soft">
+                    {tier.unit}. {tier.notes}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))
+  }
+
+  <p class="mt-6 text-[0.95rem] leading-relaxed text-ink-soft">{service.priceRangeSGD.notes}</p>
+
+  {
+    unpriced.length > 0 && (
+      <p class="mt-4 text-[0.95rem] leading-relaxed text-ink-soft">
+        Quoted individually after a survey, because we have no reliable published market rate for them:{' '}
+        {unpriced.map((t) => t.label.toLowerCase()).join(', ')}. We would rather say so than print a number
+        we cannot stand behind.
+      </p>
+    )
+  }
+
+  <p class="mt-4 text-sm text-ink-faint">{company.gstPosition}</p>
+</div>

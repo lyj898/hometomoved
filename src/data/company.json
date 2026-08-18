@@ -1,0 +1,33 @@
+{
+  "legalName": "SKAP Waste Management Pte Ltd",
+  "tradingName": "HomeToMoved",
+  "uen": "[UEN]",
+  "yearEstablished": 2009,
+  "foundingDate": "2009",
+  "address": {
+    "street": "[STREET ADDRESS]",
+    "unit": "[UNIT]",
+    "postalCode": "[POSTAL CODE]",
+    "country": "SG"
+  },
+  "phone": "[PHONE]",
+  "email": "[EMAIL]",
+  "operatingHours": [
+    {
+      "days": "Mo,Tu,We,Th,Fr",
+      "opens": "09:00",
+      "closes": "18:00",
+      "label": "Monday to Friday, 9am to 6pm"
+    },
+    {
+      "days": "Sa",
+      "opens": "09:00",
+      "closes": "13:00",
+      "label": "Saturday, 9am to 1pm"
+    }
+  ],
+  "areaServed": "Singapore",
+  "siteUrl": "https://hometomoved.com",
+  "gstPosition": "All prices shown are in Singapore dollars and exclude GST. Whether GST is charged on your move depends on whether the matched vendor is GST-registered; this is stated on the quote you receive.",
+  "businessModelStatement": "HomeToMoved is a matching service. We connect households and businesses in Singapore with vetted, insured moving vendors. We do not carry out moves ourselves."
+}

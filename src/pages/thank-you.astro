@@ -1,0 +1,80 @@
+---
+/**
+ * FormSubmit redirects here after accepting a lead (_next).
+ *
+ * form_submit fires here rather than on the click, so the event only counts
+ * enquiries that were actually delivered. noindex: this is a funnel endpoint,
+ * not a page anyone should reach from search.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publishedServices } from '../lib/data';
+import { paths } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Enquiry Received | HomeToMoved"
+  description="Thanks — your moving enquiry has been received. We will match you with vetted movers and reply within one working day."
+  path={paths.home}
+  noindex={true}
+  bare={true}
+>
+  <section class="wrap wrap-narrow py-20 text-center md:py-28">
+    <svg
+      class="mx-auto text-brand"
+      width="52"
+      height="52"
+      viewBox="0 0 52 52"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle cx="26" cy="26" r="24" stroke="currentColor" stroke-width="2"></circle>
+      <path d="M16 26.5 23 33.5 36 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+
+    <h1 class="mt-6 text-[length:var(--text-display)]">Your enquiry is on its way</h1>
+    <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
+      Thanks. We have your details and we will match you with vetted, insured movers who handle your kind of
+      job. Expect a reply within one working day, usually sooner.
+    </p>
+
+    <div class="mx-auto mt-10 max-w-lg border border-line bg-paper-warm p-6 text-left">
+      <p class="eyebrow">What happens next</p>
+      <ol class="mt-4 space-y-3 text-[0.95rem] leading-relaxed text-ink-soft">
+        <li><strong class="text-ink">1.</strong> We check your enquiry and pick vendors who do this kind of move.</li>
+        <li><strong class="text-ink">2.</strong> They contact you directly with quotes.</li>
+        <li><strong class="text-ink">3.</strong> You compare and choose. The contract is between you and the mover.</li>
+      </ol>
+    </div>
+
+    <div class="mt-12">
+      <p class="text-ink-soft">While you wait, worth a read:</p>
+      <ul class="mt-4 flex flex-wrap justify-center gap-2">
+        <li>
+          <a href={paths.vendorStandards} class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] no-underline hover:border-brand hover:text-brand-deep">
+            How we vet movers
+          </a>
+        </li>
+        <li>
+          <a href={paths.pricing} class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] no-underline hover:border-brand hover:text-brand-deep">
+            Pricing guide
+          </a>
+        </li>
+        {
+          publishedServices.slice(0, 3).map((s) => (
+            <li>
+              <a href={paths.service(s.slug)} class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] no-underline hover:border-brand hover:text-brand-deep">
+                {s.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <script is:inline>
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'form_submit', { page_path: '/thank-you/' });
+    }
+  </script>
+</BaseLayout>

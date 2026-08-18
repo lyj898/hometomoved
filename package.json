@@ -1,0 +1,33 @@
+{
+  "name": "hometomoved",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run data:validate && astro build && npm run audit && npm run data:swaptest",
+    "preview": "astro preview",
+    "check": "astro check",
+    "data:combos": "node scripts/generate-combos.mjs",
+    "data:validate": "node scripts/validate-data.mjs",
+    "audit": "node scripts/audit-build.mjs",
+    "data:swaptest": "node scripts/swap-test.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^5.18.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  }
+}

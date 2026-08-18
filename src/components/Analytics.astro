@@ -1,0 +1,34 @@
+---
+/**
+ * GA4. Renders nothing unless PUBLIC_GA4_ID is set, so local builds and
+ * previews stay clean and no half-configured tag ships.
+ *
+ * Loaded with `defer` rather than in-head blocking: the location page has the
+ * least performance headroom on the site and analytics should not spend it.
+ *
+ * Events fired anywhere on the site:
+ *   form_start   — first interaction with the lead form (LeadForm.astro)
+ *   form_submit  — on /thank-you/, i.e. only after FormSubmit accepted the lead
+ *
+ * There is deliberately no generic button_click event, and nothing here should
+ * be marked a key event unless it has a real data path behind it.
+ */
+const measurementId = import.meta.env.PUBLIC_GA4_ID;
+---
+
+{
+  measurementId && (
+    <>
+      <script is:inline defer src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
+      <script is:inline define:vars={{ measurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', measurementId);
+      </script>
+    </>
+  )
+}

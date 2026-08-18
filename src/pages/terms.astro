@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, isPlaceholder } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Terms of service', path: paths.terms },
+];
+
+const lastUpdated = '18 August 2026';
+---
+
+<BaseLayout
+  title="Terms of Service | HomeToMoved"
+  description="Terms governing use of HomeToMoved, a mover matching service operated by SKAP Waste Management Pte Ltd. We match, we do not move."
+  path={paths.terms}
+  crumbs={crumbs}
+>
+  <h1>Terms of service</h1>
+  <p><em>Last updated {lastUpdated}.</em></p>
+
+  <p>
+    These terms govern your use of hometomoved.com and the matching service offered through it, operated by
+    <strong>{company.legalName}</strong> (UEN {company.uen}), trading as {company.tradingName}
+    (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By submitting an enquiry you accept these terms.
+  </p>
+
+  <h2>1. We are a matching service, not the service provider</h2>
+  <p>
+    <strong>{company.businessModelStatement}</strong>
+  </p>
+  <p>
+    We do not own lorries, employ movers, or carry out any move, packing, disposal or relocation work. When
+    you submit an enquiry, we pass your requirements to one or more independent moving vendors, who then
+    contact you directly.
+  </p>
+  <p>
+    <strong>
+      Any contract for a move is formed between you and the moving vendor you choose. We are not a party to
+      it.
+    </strong>
+    The vendor sets its own price, terms, insurance and cancellation policy. Read them before you engage the
+    vendor.
+  </p>
+
+  <h2>2. What we do and do not promise</h2>
+  <p>We undertake to:</p>
+  <ul>
+    <li>Pass your enquiry only to vendors that have met the checks set out on our vendor standards page.</li>
+    <li>Handle your personal data as described in our privacy policy.</li>
+    <li>Correct information on this site that we find to be inaccurate.</li>
+  </ul>
+  <p>We do not promise:</p>
+  <ul>
+    <li>That any vendor will quote, or quote within a particular time or price.</li>
+    <li>That a quote you receive is the lowest available in the market.</li>
+    <li>
+      That a vendor will perform the job to a particular standard. Vetting reduces risk; it is not a
+      guarantee of performance, and it is not a warranty by us of the vendor's work.
+    </li>
+    <li>That the site will be uninterrupted or error free.</li>
+  </ul>
+
+  <h2>3. Prices shown on this site</h2>
+  <p>
+    Price ranges published on this site are indicative market rates for moving services in Singapore,
+    compiled from publicly available vendor pricing. <strong>They are not our prices, they are not quotes,
+    and they are not binding on any vendor.</strong> The only price that binds anyone is the one in the
+    quotation the vendor gives you.
+  </p>
+  <p>{company.gstPosition}</p>
+  <p>
+    Access conditions, timing, volume and surcharges can move a real quote outside a published range. We
+    update these figures periodically but do not warrant that they are current.
+  </p>
+
+  <h2>4. Your responsibilities</h2>
+  <ul>
+    <li>Give accurate information about your move. Understated volume or undisclosed access problems are the most common reason a quote changes on the day.</li>
+    <li>Submit an enquiry only for yourself, or for someone who has authorised you to share their details.</li>
+    <li>Deal directly with the vendor on scheduling, payment, claims and cancellation.</li>
+    <li>Arrange any permit, lift booking or deposit your building requires. For condominiums this is between you and your MCST.</li>
+    <li>Do not use the site to submit false enquiries, to scrape content, or to interfere with its operation.</li>
+  </ul>
+
+  <h2>5. Disputes with a vendor</h2>
+  <p>
+    Complaints about a move, including damage, delay, pricing and insurance claims, must be raised with the
+    vendor, whose insurer handles claims. We are not liable for a vendor's acts or omissions.
+  </p>
+  <p>
+    We do want to hear about it. Tell us and we will look into whether the vendor should stay on our network.
+    Removing a vendor is the remedy available to us; it is not compensation, and we cannot award any.
+  </p>
+
+  <h2>6. Liability</h2>
+  <p>
+    To the fullest extent permitted by Singapore law, we are not liable for loss or damage arising from a
+    move performed by a vendor, from a vendor's failure to quote or perform, from reliance on indicative
+    price ranges, or from your use of this site. Nothing in these terms excludes liability that cannot
+    lawfully be excluded, including liability for death or personal injury caused by our negligence, or for
+    fraud.
+  </p>
+  <p>
+    Where liability cannot be excluded, our total aggregate liability to you is limited to S$100, reflecting
+    that the matching service is provided to you at no charge.
+  </p>
+
+  <h2>7. Intellectual property</h2>
+  <p>
+    The content of this site, including the written guidance on services, pricing and individual towns, is
+    ours and is protected by copyright. You may read, print and share it for your own use. You may not
+    republish or resell it, in whole or in substantial part, without our written permission.
+  </p>
+
+  <h2>8. Changes and termination</h2>
+  <p>
+    We may amend these terms; the date above shows when they last changed. We may decline or stop passing on
+    an enquiry, or withdraw access to the site, if these terms are breached.
+  </p>
+
+  <h2>9. Governing law</h2>
+  <p>
+    These terms are governed by the laws of Singapore, and the courts of Singapore have exclusive
+    jurisdiction.
+  </p>
+
+  <h2>10. Contact</h2>
+  <p>
+    {company.legalName} (trading as {company.tradingName})<br />
+    UEN {company.uen}<br />
+    {!isPlaceholder(company.address.street) && <>{company.address.street}<br /></>}
+    {!isPlaceholder(company.address.postalCode) && <>Singapore {company.address.postalCode}<br /></>}
+    {!isPlaceholder(company.email) ? company.email : <em>[Contact email to be added before launch]</em>}
+  </p>
+
+  <p><a href={paths.privacy}>Privacy policy</a> &middot; <a href={paths.vendorStandards}>How we vet movers</a></p>
+</BaseLayout>

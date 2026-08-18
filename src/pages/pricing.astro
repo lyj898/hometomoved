@@ -1,0 +1,55 @@
+---
+/**
+ * Pricing guide. Built entirely from services.json price tiers -- no figure
+ * is written into this template.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publishedServices, company } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Pricing', path: paths.pricing },
+];
+---
+
+<BaseLayout
+  title="Moving Cost Guide Singapore | HomeToMoved"
+  description="What movers charge in Singapore for HDB, condo, landed, office, single-item, packing and disposal jobs, with the basis for each price stated."
+  path={paths.pricing}
+  crumbs={crumbs}
+>
+  <h1>What moving costs in Singapore</h1>
+  <p>
+    These are the ranges vendors charge in the Singapore market. We are a matching service, so these are not
+    our prices, and the quote you receive comes from the mover.
+  </p>
+  <p>{company.gstPosition}</p>
+
+  {
+    publishedServices.map((service) => {
+      const priced = service.priceTiers.filter((t) => t.min !== null);
+      return (
+        <section>
+          <h2><a href={paths.service(service.slug)}>{service.name}</a></h2>
+          <p>{service.priceRangeSGD.notes}</p>
+          {priced.length > 0 && (
+            <table>
+              <thead><tr><th>Job</th><th>Typical range</th><th>Basis</th></tr></thead>
+              <tbody>
+                {priced.map((tier) => (
+                  <tr>
+                    <td>{tier.label}</td>
+                    <td>{tier.max !== null ? `S$${tier.min} - S$${tier.max}` : `From S$${tier.min}`}</td>
+                    <td>{tier.unit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </section>
+      );
+    })
+  }
+</BaseLayout>

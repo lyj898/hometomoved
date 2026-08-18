@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, isPlaceholder } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Privacy policy', path: paths.privacy },
+];
+
+const lastUpdated = '18 August 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy | HomeToMoved"
+  description="How SKAP Waste Management Pte Ltd collects, uses and discloses your personal data under Singapore PDPA, including disclosure to matched moving vendors."
+  path={paths.privacy}
+  crumbs={crumbs}
+>
+  <h1>Privacy policy</h1>
+  <p><em>Last updated {lastUpdated}.</em></p>
+
+  <p>
+    This policy explains how <strong>{company.legalName}</strong> (UEN {company.uen}), trading as
+    {company.tradingName}, collects, uses, discloses and protects personal data. It is written to comply with
+    the Singapore Personal Data Protection Act 2012 (PDPA).
+  </p>
+
+  <p>
+    <strong>{company.businessModelStatement}</strong> That matters for your privacy, because the core of the
+    service is passing your enquiry to third-party moving vendors. If you are not comfortable with that
+    disclosure, please do not submit an enquiry.
+  </p>
+
+  <h2>What we collect</h2>
+  <p>We collect only what a mover needs to quote your job:</p>
+  <ul>
+    <li>Your name, mobile number and email address.</li>
+    <li>
+      Details of the move: the type of move, property type, access notes, the towns you are moving from and
+      to, floor levels, your preferred date and flexibility, any extra services, and anything you write in
+      the message field.
+    </li>
+    <li>The page on our site from which you submitted the enquiry.</li>
+    <li>
+      If analytics is enabled, standard usage data such as pages viewed and approximate location, collected
+      through Google Analytics 4. This is not linked to your enquiry.
+    </li>
+  </ul>
+  <p>
+    We do not ask for and do not want NRIC numbers, financial details, or copies of identity documents. Please
+    do not send them.
+  </p>
+
+  <h2>Why we collect it</h2>
+  <ul>
+    <li>To contact you about your enquiry.</li>
+    <li>To pass your requirements to moving vendors so that they can quote.</li>
+    <li>To answer follow-up questions and resolve any complaint about a matched vendor.</li>
+    <li>To understand which pages generate enquiries, so we can improve the site.</li>
+    <li>To comply with legal and record-keeping obligations.</li>
+  </ul>
+
+  <h2>Disclosure to moving vendors</h2>
+  <p>
+    <strong>This is the most important part of this policy.</strong> When you submit an enquiry, we disclose
+    the details above to one or more moving vendors on our network so that they can prepare a quote and
+    contact you directly. This is the service, and we ask you to consent to it explicitly on the enquiry
+    form rather than burying it in this document.
+  </p>
+  <p>
+    Vendors receive your details as independent organisations, not as our agents. Once your details are with
+    a vendor, that vendor is responsible under the PDPA for how it handles them, and its own privacy policy
+    applies to what it does next. We require vendors on our network to use enquiry data only to quote and
+    fulfil the job you asked about.
+  </p>
+  <p>
+    We also use third-party service providers to operate the site: a form-processing provider that delivers
+    enquiries to us by email, and our website host. We do not sell your personal data, and we do not share it
+    with advertisers or data brokers.
+  </p>
+
+  <h2>Consent, and withdrawing it</h2>
+  <p>
+    We rely on your consent, given by ticking the consent box on the enquiry form. The box is never ticked
+    for you.
+  </p>
+  <p>
+    You may withdraw consent at any time by writing to our Data Protection Officer using the details below.
+    We will action a withdrawal within a reasonable time. Withdrawing consent means we can no longer pass
+    your enquiry to vendors, so we would not be able to continue matching you. Withdrawal does not affect
+    disclosures already made before we received your request, and it does not oblige a vendor that already
+    holds your details to delete them; you would need to ask that vendor directly.
+  </p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li><strong>Enquiries that do not proceed:</strong> retained for up to 12 months, then deleted.</li>
+    <li>
+      <strong>Enquiries that result in a matched job:</strong> retained for up to 3 years from the date of
+      the move, so we can deal with any dispute or complaint about the vendor we matched you with.
+    </li>
+    <li>
+      <strong>Records we are legally required to keep:</strong> retained for the period the relevant law
+      requires.
+    </li>
+  </ul>
+  <p>We delete or anonymise personal data once the purpose it was collected for no longer applies.</p>
+
+  <h2>Your right of access and correction</h2>
+  <p>
+    Under the PDPA you may ask us for a copy of the personal data we hold about you and information about how
+    it has been used or disclosed in the past year, and you may ask us to correct anything inaccurate. Write
+    to our Data Protection Officer using the details below. We respond within 30 days, or tell you when to
+    expect a response if we need longer. A reasonable fee may apply to an access request, and we will tell
+    you the amount before proceeding.
+  </p>
+
+  <h2>Protection</h2>
+  <p>
+    We apply reasonable security arrangements to protect personal data against unauthorised access,
+    collection, use, disclosure, copying, modification or disposal. The site is served over HTTPS and
+    enquiry data is limited to the staff and vendors who need it. No method of transmission over the internet
+    is completely secure, and we cannot guarantee absolute security.
+  </p>
+
+  <h2>Cookies and analytics</h2>
+  <p>
+    This site sets no advertising cookies and does not use localStorage or sessionStorage. If Google
+    Analytics 4 is enabled, it sets its own cookies to measure usage. You can block these in your browser
+    settings without affecting the enquiry form.
+  </p>
+
+  <h2>Overseas transfer</h2>
+  <p>
+    Our website host and form-processing provider may store data on servers outside Singapore. Where that
+    happens we take steps to ensure a standard of protection comparable to the PDPA. Moving vendors we match
+    you with are Singapore-based.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    The site is intended for adults arranging a move. We do not knowingly collect personal data from anyone
+    under 13.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy. The date at the top shows when it last changed. Material changes to how we
+    disclose data to vendors will be reflected in the consent wording on the enquiry form.
+  </p>
+
+  <h2>Contact our Data Protection Officer</h2>
+  <p>
+    <strong>Data Protection Officer</strong><br />
+    {company.legalName} (trading as {company.tradingName})<br />
+    UEN {company.uen}<br />
+    {!isPlaceholder(company.address.street) && <>{company.address.street}<br /></>}
+    {!isPlaceholder(company.address.postalCode) && <>Singapore {company.address.postalCode}<br /></>}
+    {!isPlaceholder(company.email) ? company.email : <em>[DPO contact email to be added before launch]</em>}
+  </p>
+  <p>
+    If you are not satisfied with our response, you may contact the Personal Data Protection Commission of
+    Singapore.
+  </p>
+
+  <p><a href={paths.terms}>Terms of service</a> &middot; <a href={paths.vendorStandards}>How we vet movers</a></p>
+</BaseLayout>

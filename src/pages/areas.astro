@@ -1,0 +1,60 @@
+---
+/**
+ * Town index. Lists all 27 towns and links only to released location pages.
+ * A town with no released page is named but not linked -- we never link to a
+ * page that is not in the sitemap.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { locations, publishedCombosForTown, getService, locationEnabledServices } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Areas', path: paths.areas },
+];
+---
+
+<BaseLayout
+  title="Areas We Cover in Singapore | HomeToMoved"
+  description="We match customers with vetted movers across all 27 residential towns in Singapore, from Ang Mo Kio to Yishun."
+  path={paths.areas}
+  crumbs={crumbs}
+>
+  <h1>Areas we cover</h1>
+  <p>
+    We match customers with vetted movers across all {locations.length} residential towns in Singapore.
+    Town pages are being published in batches; where a town has no page yet, tell us your move and we will
+    still match you.
+  </p>
+
+  <h2>Towns</h2>
+  <ul>
+    {
+      locations.map((town) => {
+        const live = publishedCombosForTown(town.slug);
+        return (
+          <li>
+            <strong>{town.name}</strong>
+            {live.length > 0 && (
+              <>
+                {': '}
+                {live.map((combo, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <a href={paths.location(combo.serviceSlug, town.slug)}>{getService(combo.serviceSlug).name}</a>
+                  </>
+                ))}
+              </>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <h2>Services available island-wide</h2>
+  <ul>
+    {locationEnabledServices.map((s) => <li><a href={paths.service(s.slug)}>{s.name}</a></li>)}
+  </ul>
+</BaseLayout>

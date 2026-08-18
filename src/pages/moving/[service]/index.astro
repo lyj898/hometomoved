@@ -1,0 +1,246 @@
+---
+/**
+ * Service page: /moving/{service}/
+ *
+ * Paths come from services.json. No hardcoded list; adding a service to the
+ * JSON adds a page with no edit to this file.
+ *
+ * All prose is service-specific and lives in the data, not here. The only
+ * strings in this template are section headings and the two connective
+ * sentences around the town list.
+ */
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FaqList from '../../../components/FaqList.astro';
+import PriceTable from '../../../components/PriceTable.astro';
+import CtaBlock from '../../../components/CtaBlock.astro';
+import type { Service } from '../../../types';
+import {
+  publishedServices,
+  renderH1,
+  relatedServices,
+  locations,
+  isComboPublished,
+} from '../../../lib/data';
+import { paths } from '../../../lib/urls';
+import { serviceTitle, serviceDescription } from '../../../lib/seo';
+import { serviceNode, faqNode, type Crumb } from '../../../lib/schema';
+
+export const getStaticPaths = (() =>
+  publishedServices.map((service) => ({
+    params: { service: service.slug },
+    props: { service },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const path = paths.service(service.slug);
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: service.name, path },
+];
+
+const related = relatedServices(service);
+
+/**
+ * Coverage list. Every town is named, but only towns with a released page for
+ * THIS service are linked -- an indexable page must never link to a noindex one.
+ */
+const townCoverage = service.locationEnabled
+  ? locations.map((town) => ({ town, live: isComboPublished(service.slug, town.slug) }))
+  : [];
+const hasLiveTowns = townCoverage.some((t) => t.live);
+---
+
+<BaseLayout
+  title={serviceTitle(service)}
+  description={serviceDescription(service)}
+  path={path}
+  crumbs={crumbs}
+  bare={true}
+  schemaNodes={[serviceNode(service), faqNode(service.faqs)]}
+>
+  <!-- ============================================================= hero -- -->
+  <section class="border-b border-line bg-paper-warm">
+    <div class="wrap py-14 md:py-20">
+      <p class="eyebrow">Singapore</p>
+      <h1 class="mt-3 max-w-3xl text-[length:var(--text-display)]">{renderH1(service)}</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{service.shortDescription}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={paths.contact} class="btn btn-primary">Get matched with movers</a>
+        <a href={paths.pricing} class="btn btn-secondary">See full pricing guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= overview -- -->
+  <section class="wrap wrap-narrow py-14 md:py-20">
+    <p class="text-lg leading-relaxed">{service.longDescription}</p>
+  </section>
+
+  <!-- ================================================= what's included -- -->
+  <section class="border-y border-line bg-paper-warm">
+    <div class="wrap py-14 md:py-20">
+      <div class="grid gap-12 md:grid-cols-2">
+        <div>
+          <p class="eyebrow">Included</p>
+          <h2 class="mt-3 text-[length:var(--text-h2)]">What a quote covers</h2>
+          <ul class="mt-6 space-y-3">
+            {
+              service.inclusions.map((item) => (
+                <li class="flex gap-3 text-[0.975rem] leading-relaxed">
+                  <svg
+                    class="mt-1.5 shrink-0 text-brand"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path d="M2 7.5 5.5 11 12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <p class="eyebrow">Not included</p>
+          <h2 class="mt-3 text-[length:var(--text-h2)]">What it does not</h2>
+          <ul class="mt-6 space-y-3">
+            {
+              service.exclusions.map((item) => (
+                <li class="flex gap-3 text-[0.975rem] leading-relaxed text-ink-soft">
+                  <svg
+                    class="mt-1.5 shrink-0 text-ink-faint"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== pricing -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="pricing-heading">
+    <p class="eyebrow">What it costs</p>
+    <h2 id="pricing-heading" class="mt-3 text-[length:var(--text-h2)]">How {service.name.toLowerCase()} is priced</h2>
+    <p class="mt-4 max-w-2xl text-ink-soft">
+      These are market rates that movers in Singapore charge, not our prices. You pay the vendor you choose.
+      Knowing the range is how you tell a fair quote from a bad one.
+    </p>
+    <div class="mt-8">
+      <PriceTable service={service} />
+    </div>
+
+    <div class="mt-10 border-l-2 border-brand pl-5">
+      <h3 class="text-[length:var(--text-h3)]">How long it takes</h3>
+      <p class="mt-2 max-w-2xl text-[0.975rem] leading-relaxed text-ink-soft">{service.durationTypical}</p>
+    </div>
+  </section>
+
+  <!-- ========================================================== process -- -->
+  <section class="border-y border-line bg-paper-warm" aria-labelledby="process-heading">
+    <div class="wrap py-14 md:py-20">
+      <p class="eyebrow">How it runs</p>
+      <h2 id="process-heading" class="mt-3 text-[length:var(--text-h2)]">Start to finish</h2>
+      <ol class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          service.process.map((step, i) => (
+            <li>
+              <p class="font-serif text-2xl text-brand">{String(i + 1).padStart(2, '0')}</p>
+              <h3 class="mt-2 text-[length:var(--text-h3)]">{step.title}</h3>
+              <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{step.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================= faqs -- -->
+  <section class="wrap wrap-narrow py-14 md:py-20" aria-labelledby="faq-heading">
+    <p class="eyebrow">Questions</p>
+    <h2 id="faq-heading" class="mt-3 mb-8 text-[length:var(--text-h2)]">{service.name} FAQs</h2>
+    <FaqList faqs={service.faqs} />
+  </section>
+
+  <!-- ============================================================ towns -- -->
+  {
+    townCoverage.length > 0 && (
+      <section class="border-y border-line bg-paper-warm" aria-labelledby="towns-heading">
+        <div class="wrap py-14 md:py-20">
+          <p class="eyebrow">Coverage</p>
+          <h2 id="towns-heading" class="mt-3 text-[length:var(--text-h2)]">
+            {service.name} by town
+          </h2>
+          <p class="mt-4 max-w-2xl text-ink-soft">
+            {hasLiveTowns
+              ? 'We match across every residential town in Singapore. Towns with their own page are linked below.'
+              : 'We match across every residential town in Singapore. Town pages are being written and published in batches, so tell us where you are and we will match you regardless.'}
+          </p>
+          <ul class="mt-8 flex flex-wrap gap-2">
+            {townCoverage.map(({ town, live }) => (
+              <li>
+                {live ? (
+                  <a
+                    href={paths.location(service.slug, town.slug)}
+                    class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] text-ink no-underline hover:border-brand hover:text-brand-deep"
+                  >
+                    {town.name}
+                  </a>
+                ) : (
+                  <span class="inline-block border border-line px-3 py-1.5 text-[0.9rem] text-ink-faint">
+                    {town.name}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ========================================================== related -- -->
+  {
+    related.length > 0 && (
+      <section class="wrap py-14 md:py-20" aria-labelledby="related-heading">
+        <p class="eyebrow">Also worth booking together</p>
+        <h2 id="related-heading" class="mt-3 text-[length:var(--text-h2)]">Related services</h2>
+        <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {related.map((r) => (
+            <li class="bg-paper">
+              <a href={paths.service(r.slug)} class="block h-full p-6 no-underline hover:bg-paper-warm">
+                <h3 class="text-[length:var(--text-h3)] text-ink">{r.name}</h3>
+                <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{r.shortDescription}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <CtaBlock
+    service={service}
+    heading={`Get quotes for ${service.name.toLowerCase()}`}
+    body="Tell us the property type, the town and roughly what needs shifting. We will match you with vetted, insured movers who do this kind of job."
+  />
+</BaseLayout>

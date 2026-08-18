@@ -1,0 +1,46 @@
+---
+/**
+ * The differentiator page. We do not move anything, so the only thing we
+ * control is who receives an enquiry. Phase 3/4 writes the full copy.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Vendor standards', path: paths.vendorStandards },
+];
+---
+
+<BaseLayout
+  title="How We Vet Movers | HomeToMoved"
+  description="The checks every moving vendor must pass before they can receive an enquiry from us: registration, insurance, workforce compliance and disposal licensing."
+  path={paths.vendorStandards}
+  crumbs={crumbs}
+>
+  <h1>How we vet movers</h1>
+  <p>{company.businessModelStatement}</p>
+  <p>
+    Because we do not carry out the move, the only thing we control is which vendors are allowed to receive
+    your enquiry. These are the checks a vendor has to pass. Phase 4 writes this page in full.
+  </p>
+
+  <h2>What we check</h2>
+  <ul>
+    <li>ACRA registration and a current UEN</li>
+    <li>Goods-in-transit and public liability insurance, with the certificate sighted and in date</li>
+    <li>Workforce compliance: valid work passes for every worker entering a customer's home</li>
+    <li>Vehicle roadworthiness and correct commercial insurance</li>
+    <li>For disposal work, evidence that waste goes to a licensed facility</li>
+    <li>A written quotation practice, so the customer is not re-priced on moving day</li>
+  </ul>
+
+  <h2>What we do not claim</h2>
+  <ul>
+    <li>We do not publish a rating or review score until we have genuinely collected reviews.</li>
+    <li>We do not claim to be the largest, cheapest or number one at anything.</li>
+    <li>We do not perform moves ourselves, and no vendor on the network is us.</li>
+  </ul>
+</BaseLayout>

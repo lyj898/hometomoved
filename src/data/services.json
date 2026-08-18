@@ -1,0 +1,907 @@
+[
+  {
+    "slug": "hdb-moving",
+    "name": "HDB Moving",
+    "h1Template": "HDB Moving Services in {town}",
+    "shortDescription": "Get matched with vetted movers for a 2-room to executive HDB flat move, sized to your flat type, block age and lift access.",
+    "longDescription": "Around eight in ten households in Singapore live in an HDB flat, so this is the move most vendors on our network handle every day. It is also the move most often mis-quoted, because the price is driven less by the flat type printed on your lease than by three things a quote form rarely asks about: how much you actually own, how small the lift car is, and how far the lorry can park from the lift lobby. A 4-room flat in a 1978 Toa Payoh slab block and a 4-room flat in a 2019 Punggol block are the same flat on paper and two different jobs in practice. HomeToMoved takes your flat type, block age, floor, access notes and inventory, and passes them to vetted movers who quote against the real job. That way the vendor is not surprised on the morning, and the number you were given is the number you pay.",
+    "inclusions": [
+      "Pre-quote assessment by phone or WhatsApp photos, so the lorry and crew are sized before the day",
+      "Lorry and driver matched to flat type: typically 10ft for 2- and 3-room, 14ft for 4- and 5-room, 24ft or two trips for executive and maisonette",
+      "Two to four movers depending on volume, floor and stair carry",
+      "Trolleys, webbing straps, moving blankets and corner protection for lift interiors and door frames",
+      "Dismantling and reassembly of standard bed frames, wardrobes and dining tables",
+      "Loading, transport, unloading and placement of items in the room you nominate at the new flat",
+      "Removal of the vendor's own blankets, straps and protective materials at the end of the job"
+    ],
+    "exclusions": [
+      "Packing your belongings into cartons, unless packing services are added to the booking",
+      "Cartons, bubble wrap and packing materials, unless quoted as a separate line",
+      "Aircon dismantling, reinstallation or gas top-up, which needs a licensed aircon contractor",
+      "Electrical, plumbing, carpentry and built-in cabinetry work",
+      "Disposal of unwanted items, unless disposal and moving is booked together",
+      "Cash, jewellery, personal documents, live plants, pets and flammable goods, which vendor insurance excludes",
+      "Town council bulky-item collection, which you arrange yourself and which is free for up to three items a month"
+    ],
+    "pricingModel": "per-truck-load",
+    "priceRangeSGD": {
+      "min": 200,
+      "max": 2000,
+      "unit": "per whole-flat move, spanning a DIY-packed 2-room to a full-service executive flat",
+      "notes": "Basis is one lorry load plus manpower, the standard Singapore pricing model for residential moves. Excludes GST. Excludes packing, disposal, piano or safe handling, and stair surcharges. Peak surcharges of roughly 10 to 25 percent apply at month end, weekends and in the weeks before Chinese New Year.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "2-room flat",
+        "min": 200,
+        "max": 650,
+        "unit": "per move",
+        "notes": "Typically a 10ft lorry with 2 movers. Lower end is DIY-packed, upper end includes packing."
+      },
+      {
+        "label": "3-room flat",
+        "min": 350,
+        "max": 900,
+        "unit": "per move",
+        "notes": "Typically a 10ft or 14ft lorry with 2 to 3 movers."
+      },
+      {
+        "label": "4-room flat",
+        "min": 500,
+        "max": 1300,
+        "unit": "per move",
+        "notes": "Typically a 14ft lorry with 3 movers."
+      },
+      {
+        "label": "5-room flat",
+        "min": 700,
+        "max": 1600,
+        "unit": "per move",
+        "notes": "Typically a 14ft lorry with 3 to 4 movers."
+      },
+      {
+        "label": "Executive flat or maisonette",
+        "min": 900,
+        "max": 2000,
+        "unit": "per move",
+        "notes": "Typically a 14ft or 24ft lorry with 4 movers. Maisonettes add an internal staircase at the origin."
+      },
+      {
+        "label": "Stair carry surcharge",
+        "min": 50,
+        "max": 150,
+        "unit": "per flight",
+        "notes": "Applies where an item will not fit the lift and has to be walked down or up."
+      }
+    ],
+    "process": [
+      {
+        "title": "Send photos, not a room count",
+        "body": "Flat type tells a vendor less than a photo of your living room, your lift lobby and the corridor outside your door. Volume decides the lorry size and lift car size decides whether the sofa goes down the stairs. Both are settled from photos on WhatsApp before anyone quotes."
+      },
+      {
+        "title": "Fixed written quote",
+        "body": "You get a quote with the lorry size, the crew count, the arrival window and every surcharge named: stair carry, long carry, peak date. If a vendor will not put stair carry in writing before the day, that is the vendor who re-prices you at 9am with your flat half-packed."
+      },
+      {
+        "title": "Confirm the date and the keys",
+        "body": "Book two to four weeks out. HDB needs no permit and no lift booking, but you do need both sets of keys in hand and, if you are disposing of anything, either a town council slot or disposal added to the job."
+      },
+      {
+        "title": "Moving day",
+        "body": "Crew protects the lift interior, door frames and corridor, dismantles what needs dismantling, and loads heaviest first. Anything that will not clear the lift goes down the staircase, which is why it was priced in advance."
+      },
+      {
+        "title": "Placement, then a walkthrough",
+        "body": "Cartons and furniture go to the room you nominate rather than being stacked at the door. Walk both flats before the crew leaves and check the corridor and lift for damage while they are still there."
+      }
+    ],
+    "durationTypical": "3 to 6 hours for a 3- or 4-room flat with lift access. 6 to 9 hours for a 5-room, executive or maisonette, or where either address involves stair carry.",
+    "faqs": [
+      {
+        "q": "Do I need an HDB permit to move house?",
+        "a": "No. HDB does not require a moving permit or a lift booking to move in or out of a flat. That requirement belongs to condominiums, where the MCST controls the service lift. What you do need to arrange yourself is disposal of anything you are not taking, since town council bulky-item collection is booked by the resident, not by the mover."
+      },
+      {
+        "q": "What size lorry will my flat need?",
+        "a": "As a rough guide, a 2- or 3-room flat fits a 10ft lorry, a 4- or 5-room flat needs a 14ft, and an executive flat or maisonette with a full household needs a 24ft or two 14ft trips. It is volume rather than floor area that decides, so a lightly furnished 5-room can fit a 14ft while a heavily stocked 4-room cannot. Vendors confirm the size from photos before quoting."
+      },
+      {
+        "q": "My block is old and the lift is small. Does that change the price?",
+        "a": "Often, yes. Since the Lift Upgrading Programme nearly every HDB block has lift access on every floor, so the old walk-up problem is largely gone. What remains is lift car size. Blocks from the 1970s and early 1980s have small cars that will not take a three-seater sofa, a tall wardrobe or a king mattress upright, so those items go down the staircase instead. That is extra manpower and extra time, and it should be priced before the day rather than discovered on it."
+      },
+      {
+        "q": "Can the movers take away furniture I do not want?",
+        "a": "Yes, if you book disposal alongside the move. Your town council will collect up to three bulky items per household per month at no charge, on weekday afternoons, but it will not dismantle built-in items, will not clear a whole flat, and requires each item to fit in the lift and be liftable by one person. Anything beyond that is a paid disposal job, and doing it on the same day as the move costs less than booking a separate trip."
+      },
+      {
+        "q": "How far in advance should I book?",
+        "a": "Two to four weeks for a weekday move. The last weekend of the month, month-end weekdays and the weeks before Chinese New Year are the tightest slots in the calendar, and vendors commonly price a peak surcharge into them. If your date is fixed by a key collection or a lease end, start as soon as that date is confirmed."
+      },
+      {
+        "q": "Are my belongings insured during the move?",
+        "a": "Vendors on our network carry goods-in-transit and public liability cover. The limits, the excess and the list of excluded items differ between vendors, and high-value items usually have to be declared in advance to be covered at all. We check that cover is current as part of vetting, and we set out exactly what we check on our vendor standards page."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "disposal-and-moving",
+      "packing-services",
+      "single-item-moving"
+    ],
+    "locationEnabled": true,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "condo-moving",
+    "name": "Condo Moving",
+    "h1Template": "Condo Moving Services in {town}",
+    "shortDescription": "Get matched with vetted movers for a condominium move, including MCST permit paperwork, service lift booking and restricted weekday moving windows.",
+    "longDescription": "A condominium move is a building-management job with a removal attached. The physical work is much the same as an HDB move of similar size, but almost everything that goes wrong happens before anyone lifts a box. Most MCSTs require a move-in or move-out permit submitted several working days ahead, carrying the vendor's company details, the workers' NRIC or work pass numbers and the lorry registration. Most restrict moving to weekday office hours. Most collect a refundable deposit against damage to common property, and most insist the service lift is booked and padded before the crew arrives. Miss one of those and security turns the lorry away at the boom gate, and you pay for a wasted trip. HomeToMoved matches you with vendors who handle MCST paperwork routinely and who will tell you what your management office needs before you commit to a date rather than after.",
+    "inclusions": [
+      "Preparation of the vendor-side documents your MCST requires: company details, workers' identification, vehicle registration and insurance certificate",
+      "Coordination of the booked service lift window with the management office so the crew arrives inside it",
+      "Service lift padding and protection of lobby floors, door frames and common corridors",
+      "Lorry and crew sized to the unit, allowing for loading bay distance and any basement height restriction",
+      "Dismantling and reassembly of standard bed frames, wardrobes and dining tables",
+      "Loading, transport, unloading and room-by-room placement at the new unit",
+      "Clearance of the vendor's own protective materials before the lift window closes"
+    ],
+    "exclusions": [
+      "The refundable lift or move-in deposit and any administrative fee, which you pay directly to the MCST",
+      "Any fine levied by the management for damage to common property, which is settled between you, the MCST and the vendor's insurer",
+      "Packing and packing materials, unless added to the booking",
+      "Aircon, electrical, plumbing and carpentry work",
+      "Curtain and blind removal or reinstallation",
+      "Disposal of unwanted items, unless disposal and moving is booked together",
+      "Cash, jewellery, personal documents, live plants, pets and flammable goods"
+    ],
+    "pricingModel": "per-truck-load",
+    "priceRangeSGD": {
+      "min": 350,
+      "max": 2200,
+      "unit": "per unit move, one-bedroom to four-bedroom and above",
+      "notes": "Basis is one lorry load plus manpower. Condominium moves typically run 10 to 20 percent above an HDB move of the same volume because of restricted time windows, longer carry from the loading bay, and permit coordination. Excludes GST. Excludes the MCST deposit, which is refundable and paid by you directly.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "1-bedroom or studio",
+        "min": 350,
+        "max": 700,
+        "unit": "per move",
+        "notes": "Typically a 10ft lorry with 2 movers."
+      },
+      {
+        "label": "2-bedroom",
+        "min": 550,
+        "max": 1100,
+        "unit": "per move",
+        "notes": "Typically a 14ft lorry with 3 movers."
+      },
+      {
+        "label": "3-bedroom",
+        "min": 800,
+        "max": 1800,
+        "unit": "per move",
+        "notes": "Upper end includes full packing. Typically a 14ft lorry with 3 to 4 movers."
+      },
+      {
+        "label": "4-bedroom and penthouse",
+        "min": 1200,
+        "max": 2200,
+        "unit": "per move",
+        "notes": "Typically a 24ft lorry or two trips with 4 movers."
+      },
+      {
+        "label": "MCST refundable deposit",
+        "min": 100,
+        "max": 1000,
+        "unit": "per move, paid to the management office",
+        "notes": "Not a moving charge and not paid to the vendor. Refunded after the management inspects the lift and lobby. Amount varies widely by development."
+      },
+      {
+        "label": "Long carry surcharge",
+        "min": 80,
+        "max": 200,
+        "unit": "per trip",
+        "notes": "Applies where the lorry cannot get near the service lift and items are carried a long distance or shuttled."
+      }
+    ],
+    "process": [
+      {
+        "title": "Get your MCST's rules first",
+        "body": "Before you fix a date, ask the management office three things: which days and hours moving is allowed, how far ahead the permit must be submitted, and how much the deposit is. Most condos restrict moving to weekday office hours, so the building decides your date, not you."
+      },
+      {
+        "title": "Book the service lift, then the mover",
+        "body": "The lift slot is the scarce resource. Once you have a confirmed window, the vendor sizes the crew to finish inside it, which usually means more people over fewer hours than an equivalent HDB job."
+      },
+      {
+        "title": "Submit the permit paperwork",
+        "body": "The vendor supplies company details, workers' NRIC or work pass numbers, the lorry registration and the insurance certificate. You submit it and pay the refundable deposit. Missing paperwork means security turns the lorry away at the boom gate and you pay for a wasted trip."
+      },
+      {
+        "title": "Check the carpark height",
+        "body": "Basement carparks commonly cap at 2.1 to 2.4 metres, which excludes a 14ft or 24ft lorry outright. If there is no surface loading bay, the vendor shuttles with a smaller vehicle. This is the single most common cause of a condo move overrunning."
+      },
+      {
+        "title": "Move inside the window",
+        "body": "Lift padding goes up, lobby floors and door frames are protected, and the crew clears its own materials before the slot closes. Management inspects the lift and common areas afterwards and releases your deposit."
+      }
+    ],
+    "durationTypical": "4 to 7 hours for a two- or three-bedroom unit. Most condominium moving windows run four to eight hours inside weekday office hours, which is why larger units are often split across two days.",
+    "faqs": [
+      {
+        "q": "What will my condo management need before the move?",
+        "a": "Most MCSTs ask for a move-in or move-out permit submitted a few working days ahead. It typically carries the moving company name and contact, the NRIC or work pass numbers of the workers entering the estate, the lorry registration number, your booked service lift slot, and a copy of the vendor's insurance. A refundable deposit is collected at the same time. Rules differ by development, so ask your management office for their form early."
+      },
+      {
+        "q": "How much is the lift deposit and do I get it back?",
+        "a": "It is commonly between S$100 and S$500, and premium developments sometimes ask for considerably more. It is refundable once the management inspects the service lift and common areas and finds no damage. It is paid to the MCST, not to the mover, so it does not appear in your moving quote and it is not something we or the vendor can waive."
+      },
+      {
+        "q": "Can I move on a weekend or a public holiday?",
+        "a": "Often not. Most condominiums restrict moving to weekday office hours, and many disallow weekends and public holidays outright to avoid disturbing residents. This is a rule of the building rather than of the mover, so check it with your management office before you fix a date. Where weekend moves are allowed they tend to be shorter windows and priced at a premium."
+      },
+      {
+        "q": "Who supplies the lift padding?",
+        "a": "It varies by development. Some managements fit their own protective boards or blankets in the service lift and hold a deposit against damage. Others require the moving vendor to bring and fit padding, and will refuse entry without it. Confirm which applies at your condo and pass the answer on when you request quotes."
+      },
+      {
+        "q": "Why does a condo move cost more than the same-sized HDB move?",
+        "a": "Four reasons, and none of them are the boxes. The carry from the loading bay to the service lift is usually much longer. The move has to finish inside a fixed window, which means more crew on the job rather than fewer over a longer day. The permit and security process consumes vendor admin time. And basement carparks with 2.1 to 2.4 metre height limits sometimes exclude a 14ft or 24ft lorry entirely, which forces a shuttle with a smaller vehicle."
+      },
+      {
+        "q": "My basement carpark has a height limit. What happens?",
+        "a": "The vendor will either load at the surface bay if the estate has one, or shuttle with a van or smaller lorry between the unit and a full-size lorry parked outside. Both add time and cost. Say so at quotation stage. A height barrier discovered on the morning of the move is one of the most common causes of an overrun and a revised price."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "hdb-moving",
+      "packing-services",
+      "disposal-and-moving"
+    ],
+    "locationEnabled": true,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "landed-moving",
+    "name": "Landed Property Moving",
+    "h1Template": "Landed Property Moving Services in {town}",
+    "shortDescription": "Get matched with vetted movers for terrace, semi-detached and bungalow moves, including multi-storey carry, garden items and store rooms.",
+    "longDescription": "A landed move is not a big flat move. Volume is the obvious difference, but the parts that actually decide the price are structural. There is no lift, so every item moves by staircase, and a two- or three-storey house means each piece is carried up or down at least one flight at both ends. There is usually a store room, an attic, a bomb shelter or a yard holding a decade of things nobody has looked at. There is a garden with pots, outdoor furniture, a barbecue and sometimes a shed. And access is the quiet killer: many landed lanes in Singapore are single-carriageway with no turning space and no legal standing room, so a 24ft lorry cannot get to the gate and items are shuttled from the main road. Vendors who move landed properties routinely will walk the access before they quote rather than after.",
+    "inclusions": [
+      "Pre-move site survey, in person for larger properties, because volume and access cannot be judged reliably from photos alone",
+      "Larger crew of four or more movers, sized for continuous staircase carry rather than lift access",
+      "24ft lorry, or multiple lorries and trips where a single vehicle cannot reach the gate",
+      "Floor, banister and door frame protection along the carry route on every storey",
+      "Clearance of store rooms, attics, bomb shelters, yards and garden storage",
+      "Handling of outdoor items: potted plants, garden furniture, barbecues and play equipment",
+      "Dismantling and reassembly of standard bed frames, wardrobes and dining tables",
+      "Room-by-room and storey-by-storey placement at the new property"
+    ],
+    "exclusions": [
+      "Removal or reinstallation of built-in carpentry, fitted kitchens and wall-mounted units",
+      "Aircon, electrical, plumbing and swimming pool equipment work",
+      "Safes over roughly 100kg, pianos and gym equipment, which are quoted as specialist items",
+      "Uprooting or transplanting garden trees and shrubs",
+      "Vehicles, motorcycles and boats",
+      "Crane or hoist work where an item will not fit the staircase, which is quoted separately",
+      "Disposal of unwanted contents, unless disposal and moving is booked together"
+    ],
+    "pricingModel": "per-project",
+    "priceRangeSGD": {
+      "min": 1500,
+      "max": 4500,
+      "unit": "per property, terrace to large semi-detached",
+      "notes": "Priced per project after a site survey rather than by lorry load, because volume, storey count and access vary too much to bracket. Excludes GST. Excludes specialist items such as pianos and safes. Bungalow and good class bungalow moves are quoted individually and routinely exceed the top of this range.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "Two-storey terrace",
+        "min": 1500,
+        "max": 2500,
+        "unit": "per move",
+        "notes": "Typically a 24ft lorry with 4 or more movers, often over a full day."
+      },
+      {
+        "label": "Semi-detached, three to four bedrooms",
+        "min": 2500,
+        "max": 4500,
+        "unit": "per move",
+        "notes": "Frequently split across two days, with a packing day and a moving day."
+      },
+      {
+        "label": "Bungalow and good class bungalow",
+        "min": null,
+        "max": null,
+        "unit": "quoted per project",
+        "notes": "No defensible published range. Requires a site survey. Needs a figure from our vendor network before it is shown on the site."
+      },
+      {
+        "label": "Shuttle transfer where the lorry cannot reach the gate",
+        "min": null,
+        "max": null,
+        "unit": "quoted per project",
+        "notes": "Common on narrow landed lanes. No reliable published rate found. Confirm with vendors."
+      }
+    ],
+    "process": [
+      {
+        "title": "Site survey, in person",
+        "body": "Photos are not enough above a terrace. A surveyor walks the store room, the attic, the bomb shelter and the yard, checks whether the staircase turns tightly enough to block a wardrobe, and drives the approach to see whether a 24ft lorry can actually reach your gate."
+      },
+      {
+        "title": "Plan the access before the inventory",
+        "body": "On narrow landed lanes the answer is often a full-size lorry staged on the main road and a shuttle to the house. That decision changes the crew size and the day length far more than the furniture list does, so it is settled first."
+      },
+      {
+        "title": "Decide one day or two",
+        "body": "A two-storey terrace is a long single day. A semi-detached or larger is usually a packing day followed by a moving day, which costs about the same as forcing it into one very long day and carries far less risk of damage in the tired last hour."
+      },
+      {
+        "title": "Protect the route on every storey",
+        "body": "Floors, banisters and door frames are covered along the carry path at both properties, because every item travels by staircase at both ends. Garden items, shed contents and potted plants are loaded last and unloaded first."
+      },
+      {
+        "title": "Specialist items separately",
+        "body": "Pianos, safes over about 100kg and anything needing a hoist are quoted as their own line and often handled by a different crew on the same day. They are not absorbed into a per-property price."
+      }
+    ],
+    "durationTypical": "A full day for a two-storey terrace with four or more movers. Two days for a semi-detached or larger, usually a packing day followed by a moving day.",
+    "faqs": [
+      {
+        "q": "Why does a landed move cost so much more than a large flat?",
+        "a": "Three compounding reasons. There is no lift, so every item is carried by staircase at both ends and each flight adds handling time. Landed homes hold far more, because store rooms, attics, bomb shelters and yards accumulate things a flat has no space for. And the outdoor portion, meaning plants, garden furniture and sheds, is real volume that people forget to mention when they estimate their own job."
+      },
+      {
+        "q": "Do I need a site survey, or will photos do?",
+        "a": "For a terrace, detailed photos are often enough. For anything larger, insist on a site survey. It is the only way a vendor can judge the true volume of a store room and an attic, check whether the staircase turns tightly enough to block a wardrobe, and see whether a 24ft lorry can actually reach your gate. A quote given without a survey on a large property is a quote that will be revised on the day."
+      },
+      {
+        "q": "My lane is narrow and there is nowhere to turn a lorry. What happens?",
+        "a": "This is common on older landed estates. The vendor stages a full-size lorry on the nearest main road and shuttles between it and the house using a van or a smaller lorry. It adds time and crew and it should be priced in from the start. Tell the vendor the road name and, if you can, send a photo of the frontage. It changes the plan more than the furniture list does."
+      },
+      {
+        "q": "Can you move things from the garden?",
+        "a": "Yes. Potted plants, outdoor furniture, barbecues, play equipment and shed contents are all standard. Very large potted trees are heavy and awkward and are usually quoted as individual items. Uprooting or transplanting anything growing in the ground is landscaping work, not moving work, and needs a different contractor."
+      },
+      {
+        "q": "What happens to a wardrobe that will not go down the staircase?",
+        "a": "It gets dismantled, and if it cannot be dismantled it does not leave the house through the stairs. Occasionally an item has to go out through a window or a balcony with a hoist, which is quoted separately and needs planning. This is exactly the kind of problem a site survey catches a fortnight early rather than at 8am on moving day."
+      },
+      {
+        "q": "Should I move over two days?",
+        "a": "For a semi-detached or larger, usually yes. Splitting into a packing day and a moving day gets the crew out of the destination property before the evening, keeps the job inside normal working hours, and reduces the risk of damage that comes from a tired crew rushing the last hour. It also tends to cost about the same as forcing it into one very long day."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "packing-services",
+      "disposal-and-moving",
+      "single-item-moving"
+    ],
+    "locationEnabled": false,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "office-relocation",
+    "name": "Office Relocation",
+    "h1Template": "Office Relocation Services in {town}",
+    "shortDescription": "Get matched with vetted commercial movers for after-hours office moves, IT equipment handling and workstation dismantling and reassembly.",
+    "longDescription": "An office move is measured in downtime, not in hours of labour. Staff who cannot sit down and work on Monday morning cost more than the entire moving quote, which is why almost every office relocation in Singapore happens after hours or over a weekend, and why sequencing matters more than speed. The work splits into three streams that have to be planned together: the furniture, which means workstations dismantled, transported and reassembled to a floor plan; the IT, which means servers, network equipment and workstations powered down, labelled, moved and brought back up in a known order; and the building, which means loading dock and goods lift bookings at both ends, security clearance for after-hours access, and insurance certificates lodged with two sets of building management. HomeToMoved matches you with vendors who work commercially and can hold all three streams at once.",
+    "inclusions": [
+      "Pre-move site survey at both premises and a written move plan with a sequence and timings",
+      "After-hours, overnight or weekend execution to keep business downtime to a minimum",
+      "Workstation and partition dismantling, transport and reassembly to your new floor plan",
+      "Labelling system tying every crate, workstation and monitor to a destination desk or room",
+      "Handling of IT equipment: desktops, monitors, printers, network cabinets and server racks",
+      "Supply of reusable crates for desk contents and files",
+      "Coordination of loading dock, goods lift and after-hours access with building management at both addresses",
+      "Insurance certificates and workers' details submitted to both buildings ahead of the move"
+    ],
+    "exclusions": [
+      "IT decommissioning and recommissioning: unplugging is included, but configuring servers, networks and telephony is your IT provider's work",
+      "Data backup before the move, which should be done and verified by you regardless of who moves the hardware",
+      "Structured cabling, electrical and network points at the new premises",
+      "Fit-out, carpentry, partition construction and reinstatement works at the outgoing premises",
+      "Making good and dilapidation works required by your outgoing lease",
+      "Disposal of redundant furniture and equipment, unless booked as disposal alongside the move",
+      "Confidential document shredding and certified data destruction, which need a specialist provider"
+    ],
+    "pricingModel": "per-project",
+    "priceRangeSGD": {
+      "min": 800,
+      "max": 3500,
+      "unit": "per relocation, small offices of roughly 5 to 30 staff",
+      "notes": "Priced per project after a site survey. The drivers are headcount, workstation count, IT volume, after-hours working and building access at both ends. Excludes GST. Offices above roughly 30 staff are quoted individually and we have no defensible published range for them.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "5 to 10 staff",
+        "min": 800,
+        "max": 1500,
+        "unit": "per relocation",
+        "notes": "Covers furniture handling, transport and basic IT or equipment packing."
+      },
+      {
+        "label": "10 to 30 staff",
+        "min": 1500,
+        "max": 3500,
+        "unit": "per relocation",
+        "notes": "Upper end reflects after-hours working, workstation dismantling and reassembly, and IT coordination."
+      },
+      {
+        "label": "Above 30 staff",
+        "min": null,
+        "max": null,
+        "unit": "quoted per project",
+        "notes": "No defensible published range. Requires a site survey and a phased move plan. Needs a figure from our vendor network before it is shown on the site."
+      },
+      {
+        "label": "Server rack relocation",
+        "min": null,
+        "max": null,
+        "unit": "quoted per rack",
+        "notes": "No reliable published rate found. Specialist handling, quoted individually. Confirm with vendors."
+      }
+    ],
+    "process": [
+      {
+        "title": "Survey both premises, six to eight weeks out",
+        "body": "Headcount, workstation count, IT volume and the loading arrangements at both buildings. The moving itself needs two to four weeks of notice; the building approvals, the IT scheduling and the decision about which furniture is actually coming take considerably longer."
+      },
+      {
+        "title": "Written move plan with a sequence",
+        "body": "Not a price and a date, but an order of operations: what powers down when, which floor loads first, when IT arrives at the new premises to bring systems back up. Downtime is the real cost of an office move and sequencing is what controls it."
+      },
+      {
+        "title": "Two sets of building paperwork",
+        "body": "Loading dock and goods lift windows, after-hours access clearance, security passes for the crew and insurance certificates, lodged with both the outgoing and incoming building. The outgoing building usually has the tighter rules and the shorter patience."
+      },
+      {
+        "title": "Label everything to a destination desk",
+        "body": "Every crate, monitor and workstation is tagged to a specific desk or room on the new floor plan. This is the difference between staff sitting down and working on Monday and staff spending Monday looking for their own monitor."
+      },
+      {
+        "title": "Move after hours, verify before staff return",
+        "body": "Overnight or across a weekend. Your IT provider brings servers, network and telephony back up in the planned order, and someone walks the floor before Monday rather than discovering a dead network point at 9am."
+      }
+    ],
+    "durationTypical": "A single overnight or one weekend day for an office of up to about 15 staff. Two to three nights, or a full weekend, for 15 to 30 staff where workstations are dismantled and reassembled.",
+    "faqs": [
+      {
+        "q": "Why do office moves happen after hours?",
+        "a": "Because downtime is the real cost. Moving on a Friday night or across a weekend means staff walk into a working office on Monday instead of losing a day or two of productivity. It also fits building rules: many commercial buildings restrict goods lift and loading dock use during office hours precisely so tenant moves do not block them."
+      },
+      {
+        "q": "Will the movers handle our IT equipment?",
+        "a": "They will physically handle it: powering down, unplugging, labelling, crating, transporting and setting it back on the correct desk. What they will not do is configure it. Servers, network equipment and telephony need your IT provider on site at the new premises to bring everything back up in the right order. Schedule that for the same window as the move, not for the following morning."
+      },
+      {
+        "q": "Should we back up before the move?",
+        "a": "Yes, and verify the backup restores. Movers carry insurance on hardware, but no insurance replaces data. This is standard practice for any hardware relocation and it is not a reflection on the vendor."
+      },
+      {
+        "q": "What does building management need from us?",
+        "a": "Usually a booked loading dock slot and goods lift window at both addresses, after-hours access clearance and security passes for the crew, the moving company's insurance certificate, and sometimes a refundable deposit against damage to common areas. Two buildings means two sets of paperwork on two different forms, and the outgoing building often has the tighter rules."
+      },
+      {
+        "q": "Can we dispose of old workstations at the same time?",
+        "a": "Yes, and it is worth doing together. Offices almost always shed furniture in a move, since the new floor plan rarely matches the old one. Booking the disposal into the same window means one crew, one set of building bookings and no second after-hours access request. Confidential documents and data-bearing drives are the exception and need a certified destruction provider."
+      },
+      {
+        "q": "How far ahead should we plan an office move?",
+        "a": "Start six to eight weeks out. The moving itself needs two to four weeks of notice, but the building approvals, the IT scheduling, the floor plan and the decision about what furniture is actually coming with you take longer than people expect. A site survey at both premises early in that window is what stops the plan from unravelling in the final week."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "disposal-and-moving",
+      "packing-services",
+      "single-item-moving"
+    ],
+    "locationEnabled": false,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "single-item-moving",
+    "name": "Single Item Moving",
+    "h1Template": "Single Item Moving Services in {town}",
+    "shortDescription": "One sofa, fridge, piano, safe or treadmill. Get matched with vendors who price per item rather than charging you for a whole lorry.",
+    "longDescription": "Sometimes there is no move, just one object that will not fit in a car. A three-seater bought secondhand and needing collection across the island. A fridge going to a parent's flat. An upright piano that has to leave a fourth-floor unit. A gun safe, a treadmill, a marble dining table. Booking a full house move for a single item means paying for a lorry and a crew you do not need, which is why this is priced per item and not per load. The variables are weight, whether it fits the lift, how many flights of stairs sit between the item and the lorry, and how far the carry is at each end. An upright piano moved lift-to-lift between two modern blocks and the same piano carried down three flights of a walk-up are quoted very differently, and honest vendors ask about the stairs before they give you a number.",
+    "inclusions": [
+      "Per-item pricing, so you are not paying for lorry capacity you will not use",
+      "Two or more movers sized to the weight and awkwardness of the specific item",
+      "Trolleys, straps, shoulder harnesses and moving blankets appropriate to the item",
+      "Protection of lift interiors, door frames and staircases along the carry route",
+      "Dismantling and reassembly where the item needs it to clear a doorway, such as bed frames and large tables",
+      "Collection from one address and placement in the room you nominate at the other",
+      "Specialist handling for pianos, safes and gym equipment, using vendors who do it regularly"
+    ],
+    "exclusions": [
+      "Multiple items at multiple addresses, which is priced as a small move rather than per item",
+      "Aircon units, which need a licensed aircon contractor to dismantle first",
+      "Piano tuning after the move, which is a separate trade and should be booked a couple of weeks later",
+      "Wall mounting, bracket fixing and any drilling at the destination",
+      "Appliance connection: plumbing in a washing machine or gas connection is licensed work",
+      "Crane or hoist work where the item will not fit the staircase or lift, which is quoted separately",
+      "Disposal of the item it replaces, unless you add disposal to the booking"
+    ],
+    "pricingModel": "per-item",
+    "priceRangeSGD": {
+      "min": 100,
+      "max": 1200,
+      "unit": "per item, from a sofa to a grand piano",
+      "notes": "Priced per item and subject to a minimum charge, because the vendor is committing a vehicle and a crew regardless of how small the job is. Excludes GST. Stair carry, long carry and lift restrictions are the main variables and should be disclosed when you ask for a quote.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "Sofa, mattress, wardrobe or cabinet",
+        "min": 100,
+        "max": 200,
+        "unit": "per item",
+        "notes": "Assumes lift access at both ends. Stair carry is charged on top."
+      },
+      {
+        "label": "Fridge or washing machine",
+        "min": 100,
+        "max": 250,
+        "unit": "per item",
+        "notes": "Fridges should be emptied, defrosted and left upright. Connection at the destination is not included."
+      },
+      {
+        "label": "Treadmill or gym equipment",
+        "min": null,
+        "max": null,
+        "unit": "per item",
+        "notes": "No reliable published rate found. Usually requires dismantling. Confirm with vendors before publishing."
+      },
+      {
+        "label": "Upright piano",
+        "min": 150,
+        "max": 500,
+        "unit": "per item",
+        "notes": "Depends heavily on floor level, stairs and whether the lift takes it. Tuning after the move is separate."
+      },
+      {
+        "label": "Baby grand or grand piano",
+        "min": 350,
+        "max": 1200,
+        "unit": "per item",
+        "notes": "Requires specialist handling and sometimes leg removal. Concert instruments needing a crane sit above this range."
+      },
+      {
+        "label": "Safe over roughly 100kg",
+        "min": 200,
+        "max": 450,
+        "unit": "per item",
+        "notes": "Weight and access decide the price. Very heavy safes may need a stair-climbing trolley or additional crew."
+      },
+      {
+        "label": "Stair carry surcharge",
+        "min": 10,
+        "max": 80,
+        "unit": "per floor per item, or a flat fee",
+        "notes": "Vendors differ on whether this is charged per floor or as a flat fee. Confirm which applies."
+      }
+    ],
+    "process": [
+      {
+        "title": "Photograph the item and the stairs",
+        "body": "The item decides very little. Send a photo of the piece, the lift interior at both addresses and any staircase involved. An upright piano moved lift to lift and the same piano carried down three flights of a walk-up are quoted very differently, and the difference is the staircase."
+      },
+      {
+        "title": "Per-item quote, minimum charge stated",
+        "body": "You are quoted for the item, not for a lorry load you will not fill. There is a minimum charge, because a vehicle and at least two people are committed regardless. Stair and long-carry surcharges are named in the quote rather than added on the day."
+      },
+      {
+        "title": "Confirm both ends",
+        "body": "Collections from a shop, a warehouse or a private seller are standard, but the collection address must know the pickup window. A wasted trip is chargeable and it is the most common way a single-item job goes wrong."
+      },
+      {
+        "title": "Prepare the item",
+        "body": "Fridges emptied, defrosted and dried a day ahead with doors secured. Treadmills and gym equipment usually need dismantling. Pianos are moved as they are; tuning is a separate trade and is best booked a couple of weeks after the move."
+      },
+      {
+        "title": "Delivered to the room, not the doorway",
+        "body": "The item is placed where you want it and reassembled if it was dismantled to clear a doorway. Appliance connection, wall mounting and any drilling are not included, because plumbing and electrical work are licensed trades."
+      }
+    ],
+    "durationTypical": "1 to 3 hours door to door for a standard item with lift access at both ends. Longer where stairs, long carry or dismantling are involved.",
+    "faqs": [
+      {
+        "q": "Is there a minimum charge for one item?",
+        "a": "Yes, and there has to be. The vendor is sending a vehicle and at least two people, and that cost exists whether they carry one sofa or six. What per-item pricing avoids is paying for a full lorry load, which is what happens if you book a house move for a single object."
+      },
+      {
+        "q": "What decides the price of moving a piano?",
+        "a": "Mostly not the piano. It is the floor level, whether the instrument fits the lift, how many flights of stairs are involved, how far the carry is from the lift to the lorry, and whether the destination has the same constraints. A digital piano and an upright are very different weights, and a grand is a different job again because the legs and pedal lyre usually come off. Send photos of the instrument and of the staircase."
+      },
+      {
+        "q": "Do I need to empty the fridge?",
+        "a": "Yes. Empty it, defrost it and dry it out at least a day ahead, and secure the doors. Keep it upright in transit where possible. If it has been laid down, leave it standing for a few hours before switching it back on so the compressor oil settles. Plumbing in a washing machine at the destination is licensed work and not part of the move."
+      },
+      {
+        "q": "Can you collect from a shop or a secondhand seller?",
+        "a": "Yes. Collection from a retailer, a warehouse or a private seller and delivery to your home is a standard single-item job. Make sure the collection address is expecting the crew and knows the pickup window, because a wasted trip is chargeable and it is the most common way these jobs go wrong."
+      },
+      {
+        "q": "The lift will not take my sofa. Now what?",
+        "a": "It goes down the staircase, which is more crew, more time and a surcharge. In a small number of cases an item genuinely cannot clear a stairwell turn, and then it has to be dismantled or, rarely, hoisted through a window. A vendor who asks about your lift dimensions before quoting is telling you they have hit this before."
+      },
+      {
+        "q": "Can you take away the old one at the same time?",
+        "a": "Yes, if you add disposal to the booking. Bringing in a new sofa and removing the old one on the same trip costs far less than two separate jobs. Note that your town council will take up to three bulky items a month at no charge if you would rather arrange it yourself and can wait for a slot."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "disposal-and-moving",
+      "hdb-moving",
+      "condo-moving"
+    ],
+    "locationEnabled": false,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "packing-services",
+    "name": "Packing Services",
+    "h1Template": "Packing and Unpacking Services in {town}",
+    "shortDescription": "Get matched with vendors for full or partial packing, with cartons, bubble wrap, fragile boxes and wardrobe boxes supplied.",
+    "longDescription": "Packing is where most of the labour in a move actually sits, and where most of the breakages are decided. A crew that packs a kitchen properly will get glassware into a double-walled carton with dividers and paper between every piece, mark the box, and load it high in the lorry rather than under a bookcase. A household that packs its own kitchen at midnight the day before will not. You do not have to choose all or nothing. Partial packing, where the vendor handles the kitchen, the fragiles and the wardrobes and you do the books, the clothes and the linen, is the option most people should take and the one least often offered. Wardrobe boxes are worth asking about specifically: hanging clothes go straight from the rail into a tall carton with a hanging rail inside, and come out at the other end still on their hangers.",
+    "inclusions": [
+      "Supply of cartons, tape, bubble wrap, packing paper and protective materials",
+      "Double-walled cartons and dividers for glassware, crockery and other fragiles",
+      "Wardrobe boxes with an internal hanging rail, so hanging clothes move on their hangers",
+      "Room-by-room labelling so every carton is delivered to the correct room at the new address",
+      "Protective wrapping of furniture, mattresses, mirrors, artwork and televisions",
+      "Optional unpacking at the destination, including placing contents into cupboards and wardrobes",
+      "Removal of used cartons and packing waste after unpacking"
+    ],
+    "exclusions": [
+      "The move itself, which is quoted separately under HDB, condo, landed or office moving",
+      "Packing of cash, jewellery, personal documents, keys and medication, which you should carry yourself",
+      "Flammables, chemicals, paint, aerosols and gas cylinders, which cannot be transported",
+      "Perishable and frozen food",
+      "Live plants and pets",
+      "Dismantling of built-in carpentry and fitted units",
+      "Cleaning of items before they are packed"
+    ],
+    "pricingModel": "per-box",
+    "priceRangeSGD": {
+      "min": 8,
+      "max": null,
+      "unit": "per standard carton packed, materials supplied",
+      "notes": "Per-carton pricing is the common published basis, from around S$8 a box. We have no defensible upper bound for the per-carton rate and it needs a figure from our vendor network. Whole-home packing is more often quoted as an add-on to the move, and that figure is in the tiers below. Excludes GST.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "Per carton packed, materials supplied",
+        "min": 8,
+        "max": null,
+        "unit": "per carton",
+        "notes": "Lower bound is the common published entry rate. Upper bound not established. Confirm with vendors."
+      },
+      {
+        "label": "Full-home packing added to a move",
+        "min": 200,
+        "max": 600,
+        "unit": "per move",
+        "notes": "Typical add-on for a 3- to 5-room flat. Sits on top of the moving price rather than replacing it."
+      },
+      {
+        "label": "Partial packing, kitchen and fragiles only",
+        "min": null,
+        "max": null,
+        "unit": "quoted per job",
+        "notes": "No defensible published range. Commonly offered but rarely published. Needs a figure from our vendor network."
+      },
+      {
+        "label": "Unpacking at the destination",
+        "min": null,
+        "max": null,
+        "unit": "quoted per job",
+        "notes": "No defensible published range. Confirm with vendors."
+      },
+      {
+        "label": "Materials only, no packing labour",
+        "min": null,
+        "max": null,
+        "unit": "per carton and per roll",
+        "notes": "No defensible published range. Confirm with vendors."
+      }
+    ],
+    "process": [
+      {
+        "title": "Decide full or partial",
+        "body": "Pay for the kitchen and the fragiles at minimum, because that is where breakages happen and where technique beats effort. Books, clothes, linen and toys are forgiving and are the bulk of the carton count, so most households are better served by partial packing than by all or nothing."
+      },
+      {
+        "title": "Materials delivered ahead",
+        "body": "Cartons, tape, bubble wrap, packing paper, double-walled boxes with dividers for glassware, and wardrobe boxes with an internal hanging rail. Ask for wardrobe boxes specifically; they are not always offered by default and they save the folding and the re-ironing."
+      },
+      {
+        "title": "Pack the day before the move",
+        "body": "Whole-home packing is done the day before, so the moving crew arrives to sealed and labelled cartons and can load straight away. Packing on moving day itself is how a six-hour job becomes an eleven-hour one."
+      },
+      {
+        "title": "Label by destination room",
+        "body": "Every carton is marked with the room it belongs in at the new address, not the room it came from. Fragiles are marked and loaded high in the lorry rather than under a bookcase."
+      },
+      {
+        "title": "Unpacking, if you want it",
+        "body": "Quoted separately: contents placed into cupboards and wardrobes and the used cartons taken away. Worth it for a large home, for anyone moving with young children, and for anyone who has to be back at work the next morning."
+      }
+    ],
+    "durationTypical": "Half a day for partial packing of a 3- or 4-room flat. A full day, usually the day before the move, for whole-home packing of a 4- or 5-room flat or a three-bedroom condo.",
+    "faqs": [
+      {
+        "q": "Should I pack myself or pay for it?",
+        "a": "Pay for the kitchen and the fragiles at minimum. That is where the breakages happen and where doing it properly takes materials and technique rather than effort. Books, clothes, linen and toys are worth packing yourself, because they are forgiving and they are the bulk of the carton count. Partial packing usually gives you most of the protection for a fraction of the full price."
+      },
+      {
+        "q": "When does the packing happen?",
+        "a": "Whole-home packing is almost always done the day before the move, so the crew arrives on moving day to a flat of sealed and labelled cartons and can load straight away. Partial packing is sometimes done on the morning of the move for smaller homes. Packing everything on moving day itself is how a six-hour job becomes an eleven-hour one."
+      },
+      {
+        "q": "What is a wardrobe box?",
+        "a": "A tall carton with a hanging rail across the top. Clothes go from your wardrobe rail straight into it, still on their hangers, and come out the same way at the other end. It saves the folding and the re-ironing, and it is the single most useful specialist carton in a house move. Ask specifically for them, because they are not always offered by default."
+      },
+      {
+        "q": "Will they unpack as well?",
+        "a": "Most vendors offer it, including placing contents into cupboards and wardrobes and taking the used cartons away afterwards. It is worth considering for a large home, for anyone moving with young children, and for anyone who has to be back at work the next morning. It is quoted separately from the packing."
+      },
+      {
+        "q": "What should I pack myself no matter what?",
+        "a": "Cash, jewellery, passports and identity documents, house and car keys, medication, laptops and anything with irreplaceable data, and the small box of things you will need on the first night. Carry these yourself in your own car or bag. Vendor insurance excludes most of them, and that exclusion is standard across the industry rather than a sign of a weak vendor."
+      },
+      {
+        "q": "What cannot be packed or transported at all?",
+        "a": "Flammables and chemicals, including paint, thinners, aerosols, gas cylinders and pool chemicals. Perishable and frozen food. Live plants and pets. These are excluded for safety and insurance reasons by every reputable vendor. Run down what you can in the weeks before the move and dispose of the rest properly rather than hoping it slips onto the lorry."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "hdb-moving",
+      "condo-moving",
+      "landed-moving"
+    ],
+    "locationEnabled": false,
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "disposal-and-moving",
+    "name": "Disposal and Moving",
+    "h1Template": "Moving and Disposal Services in {town}",
+    "shortDescription": "Move and declutter in one booking. Get matched with vendors who take the old sofa, mattress and wardrobe away on the same trip as the move.",
+    "longDescription": "Most people throw things out because they are moving. The old three-seater does not suit the new living room, the spare mattress has nowhere to go, and the wardrobe was built for a room you no longer have. Handled separately, that becomes two bookings, two lorries, two sets of manpower and two days off work. Handled together, the crew that is already in your flat with a trolley and a lorry takes the unwanted items down on the same trip. Your town council will collect up to three bulky items a month at no cost, which covers a light declutter but not a move-out clearance, and it will not dismantle anything. This is our strongest service because it is the one where combining genuinely saves money rather than merely bundling. It is also where vendor vetting matters most, because disposal has to end at a licensed facility, not in a back lane.",
+    "inclusions": [
+      "A single booking and a single crew covering both the move and the disposal",
+      "Removal of unwanted furniture, mattresses, appliances and general household clutter on the same trip as the move",
+      "Dismantling of items that will not fit the lift or the staircase, including bed frames, wardrobes and dining tables",
+      "Sorting on site so that anything you decide at the last minute to keep still goes on the lorry",
+      "Transport of disposed items to a licensed disposal or recycling facility",
+      "Sweeping and clearing of the emptied areas so the unit is left broom-clean",
+      "Loading, transport and room-by-room placement of everything you are keeping"
+    ],
+    "exclusions": [
+      "Renovation and construction debris, which is a separate licensed waste stream and needs a dedicated contractor",
+      "Hacking or removal of built-in carpentry, kitchen cabinets, wardrobes fixed to the wall, or flooring",
+      "Chemicals, paint, batteries, gas cylinders and other hazardous waste",
+      "Aircon units, which need a licensed aircon contractor to dismantle before disposal",
+      "Items already booked with the town council under the free bulky-item collection",
+      "Guaranteed resale or donation value for items in good condition, which depends entirely on the item",
+      "Deep cleaning of the vacated unit, which is a separate service"
+    ],
+    "pricingModel": "per-truck-load",
+    "priceRangeSGD": {
+      "min": 150,
+      "max": 700,
+      "unit": "disposal component, added to the price of the move",
+      "notes": "Priced by lorry volume taken away, not by item count, once you are past a handful of pieces. Excludes GST. This range is the disposal element only; the move itself is priced separately under HDB, condo or landed moving. Combining the two typically costs less than booking a separate disposal trip because there is no second callout, no second lorry and no second crew.",
+      "verifiedAgainstVendorRates": false
+    },
+    "priceTiers": [
+      {
+        "label": "Single bulky item",
+        "min": 69,
+        "max": 150,
+        "unit": "per item",
+        "notes": "Sofa, mattress, wardrobe or appliance. Subject to a minimum charge. Cheaper when added to a move already booked."
+      },
+      {
+        "label": "Half lorry load",
+        "min": 150,
+        "max": 400,
+        "unit": "per load",
+        "notes": "Roughly a partial declutter: a few pieces of furniture plus loose items."
+      },
+      {
+        "label": "Full lorry load",
+        "min": 400,
+        "max": 700,
+        "unit": "per load",
+        "notes": "Roughly a full move-out clearance of unwanted contents."
+      },
+      {
+        "label": "Dismantling of a fitted item",
+        "min": 20,
+        "max": 80,
+        "unit": "per item",
+        "notes": "Applies to built-in wardrobes, large bed frames and dining tables that must be broken down to leave the unit."
+      },
+      {
+        "label": "Stair carry surcharge",
+        "min": 10,
+        "max": 80,
+        "unit": "per floor per item, or a flat fee",
+        "notes": "Charged where an item cannot be taken in the lift. Vendors differ on whether this is per floor or a flat fee, so confirm which."
+      }
+    ],
+    "process": [
+      {
+        "title": "Photograph what is going and what is staying",
+        "body": "Send the vendor photos of the pieces you want gone as well as the flat you are moving. Disposal is priced by the volume that leaves on the lorry, so a rough sense of half a load versus a full one is what turns an estimate into a quote."
+      },
+      {
+        "title": "Check what the town council will take first",
+        "body": "Up to three bulky items per household per month, free, collected on weekday afternoons, provided each item fits the lift and one person can move it. Book that yourself for the easy pieces and pay only for what it will not take: dismantling, whole-flat clearance and anything past three items."
+      },
+      {
+        "title": "One booking, one crew, one trip",
+        "body": "The move and the disposal are quoted together and run on the same day. You are paying for the extra volume and the extra time, not for a second callout, a second lorry and a second day off work."
+      },
+      {
+        "title": "Sort on the day",
+        "body": "Most people change their mind once the new place is in front of them. Tell the vendor at booking that the volume may shift, because the difference between half a lorry and a full one affects both the price and how long the crew stays."
+      },
+      {
+        "title": "Licensed disposal, not a back lane",
+        "body": "Disposed items go to a licensed disposal or recycling facility. Renovation debris is a separate licensed stream and cannot be mixed into a household load. Aircon units must be dismantled by a licensed contractor before they can be taken."
+      }
+    ],
+    "durationTypical": "Add roughly 1 to 3 hours to the move itself for a partial declutter, and 3 to 5 hours for a full move-out clearance where items need dismantling.",
+    "faqs": [
+      {
+        "q": "Is it cheaper to combine disposal with the move?",
+        "a": "Usually yes, and for a straightforward reason. A standalone disposal job pays for a callout, a lorry and a crew all over again. Combined, the lorry is already at your door and the crew is already carrying things down. You pay for the extra volume and the extra time, not for a second job."
+      },
+      {
+        "q": "What can the town council take for free?",
+        "a": "Up to three bulky items per household per month, at no charge, collected on weekday afternoons. The item has to fit in your block's lift and be manageable for one person to move. The service will not dismantle built-in wardrobes or cabinets, will not take renovation debris, and will not clear a whole flat. It is genuinely useful for a light declutter and not a substitute for a move-out clearance."
+      },
+      {
+        "q": "Where do my disposed items actually go?",
+        "a": "To a licensed disposal or recycling facility. This is one of the specific things we check when we vet a vendor, because illegal dumping is the customer's exposure as much as the contractor's. Items in resaleable condition are sometimes diverted to resale or donation, but no vendor should promise you a value for them in advance."
+      },
+      {
+        "q": "Can I decide on the day what to throw?",
+        "a": "Within reason, yes, and most people do. It is easier to judge what fits once the new place is in front of you. Tell the vendor at booking that the disposal volume may change, because the difference between half a lorry and a full one affects both the price and how long the crew needs to stay."
+      },
+      {
+        "q": "Will you take renovation debris?",
+        "a": "No. Construction and renovation waste is a separate licensed stream with different disposal facilities and different documentation, and mixing it into a household disposal load is not permitted. If your unit has both, you need a renovation debris contractor for that portion. The vendor can usually tell you which is which when they see photos."
+      },
+      {
+        "q": "What about the fridge, the washing machine and the aircon?",
+        "a": "Fridges, washing machines, ovens and televisions can all go with a household disposal load. Aircon is different: the unit has to be dismantled by a licensed aircon contractor first, because of the refrigerant. Arrange that before the moving date so the dismantled unit is ready to be taken."
+      }
+    ],
+    "relatedServiceSlugs": [
+      "hdb-moving",
+      "condo-moving",
+      "single-item-moving"
+    ],
+    "locationEnabled": true,
+    "batch": 1,
+    "published": true
+  }
+]

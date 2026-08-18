@@ -1,0 +1,24 @@
+---
+/**
+ * 404. Canonical points at the home page rather than self-referencing, because
+ * this URL is not a page we want indexed under its own address.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { publishedServices } from '../lib/data';
+import { paths } from '../lib/urls';
+---
+
+<BaseLayout
+  title="Page Not Found | HomeToMoved"
+  description="That page does not exist. Browse our moving services or the areas we cover in Singapore."
+  path={paths.home}
+  noindex={true}
+>
+  <h1>Page not found</h1>
+  <p>That page does not exist.</p>
+  <ul>
+    <li><a href={paths.home}>Home</a></li>
+    <li><a href={paths.areas}>Areas we cover</a></li>
+    {publishedServices.map((s) => <li><a href={paths.service(s.slug)}>{s.name}</a></li>)}
+  </ul>
+</BaseLayout>

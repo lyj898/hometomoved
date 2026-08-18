@@ -1,0 +1,92 @@
+---
+/**
+ * Site header.
+ *
+ * The URL architecture has no /moving/ index, so "Services" is a disclosure
+ * listing the seven service pages rather than a link to a route that does not
+ * exist. On desktop it opens on hover and on focus; on mobile it sits inside
+ * the nav panel, already expanded.
+ *
+ * JavaScript: the mobile toggle only. ~20 lines, inline, no framework.
+ */
+import { publishedServices, company } from '../lib/data';
+import { paths } from '../lib/urls';
+
+const links = [
+  { name: 'Vendor standards', path: paths.vendorStandards },
+  { name: 'Pricing', path: paths.pricing },
+  { name: 'Areas', path: paths.areas },
+  { name: 'About', path: paths.about },
+];
+---
+
+<header class="border-b border-line bg-paper">
+  <div class="wrap flex flex-wrap items-center justify-between gap-x-4 py-3.5">
+    <a href={paths.home} class="font-serif text-lg font-semibold tracking-tight text-ink no-underline">
+      {company.tradingName}
+    </a>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-line-strong md:hidden"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Open menu"
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+      </svg>
+    </button>
+
+    <nav id="site-nav" aria-label="Primary" class="hidden w-full md:block md:w-auto">
+      <ul class="flex flex-col gap-1 py-3 text-[0.95rem] md:flex-row md:items-center md:gap-7 md:py-0">
+        <li class="group relative md:static">
+          <span class="block py-2 font-medium text-ink-soft md:cursor-default">Services</span>
+          <ul
+            class="ml-3 border-l border-line pl-3 md:pointer-events-none md:absolute md:left-0 md:top-full md:z-20 md:ml-0 md:w-72 md:border md:border-line md:bg-paper md:p-2 md:opacity-0 md:shadow-sm md:transition-opacity group-hover:md:pointer-events-auto group-hover:md:opacity-100 group-focus-within:md:pointer-events-auto group-focus-within:md:opacity-100"
+          >
+            {
+              publishedServices.map((service) => (
+                <li>
+                  <a
+                    href={paths.service(service.slug)}
+                    class="block px-2 py-2 text-ink-soft no-underline hover:text-brand-deep md:hover:bg-paper-warm"
+                  >
+                    {service.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </li>
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.path} class="block py-2 font-medium text-ink-soft no-underline hover:text-brand-deep">
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+        <li class="pt-2 md:pt-0">
+          <a href={paths.contact} class="btn btn-primary w-full md:w-auto">Get quotes</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById('nav-toggle');
+    var nav = document.getElementById('site-nav');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      nav.classList.toggle('hidden', open);
+    });
+  })();
+</script>

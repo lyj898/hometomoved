@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects for hometomoved.com
+#
+# Intentionally empty. Nothing has moved yet.
+#
+# Rules for when it is not empty:
+#   - One line per rule: /old-path  /new-path  301
+#   - Use 301 for permanent moves. Only use 302 for a genuinely temporary one.
+#   - Do NOT add trailing-slash rules here. trailingSlash is handled by the
+#     Astro build (directory format) plus Cloudflare Pages default behaviour.
+#     Adding manual slash rules is how you create a redirect loop.
+#   - Never redirect a URL that is still in sitemap.xml.
+#   - Cloudflare Pages caps this file at 2000 static rules.

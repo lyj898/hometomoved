@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../lib/data';
+import { paths } from '../lib/urls';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'About', path: paths.about },
+];
+---
+
+<BaseLayout
+  title="About HomeToMoved | Singapore Mover Matching"
+  description="HomeToMoved is the trading name of SKAP Waste Management Pte Ltd, established 2009. We match Singapore households with vetted, insured moving vendors."
+  path={paths.about}
+  crumbs={crumbs}
+>
+  <h1>About {company.tradingName}</h1>
+  <p>{company.businessModelStatement}</p>
+
+  <h2>The entity behind the service</h2>
+  <p>
+    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, UEN {company.uen},
+    a Singapore-registered company established in {company.yearEstablished}.
+  </p>
+  <p>
+    {company.address.street}, {company.address.unit}, Singapore {company.address.postalCode}<br />
+    {company.phone} &middot; {company.email}
+  </p>
+  <p>{company.operatingHours.map((h) => h.label).join(' | ')}</p>
+
+  <h2>What we do and do not do</h2>
+  <p>
+    We take your requirements and pass them to moving vendors who have passed our checks. We do not own lorries,
+    employ movers or carry out any move. The contract for the move itself is between you and the vendor you choose.
+    <a href={paths.vendorStandards}>How we vet movers</a>.
+  </p>
+</BaseLayout>

@@ -1,0 +1,119 @@
+---
+/**
+ * The only layout. Owns <head>, the canonical link and the JSON-LD graph.
+ *
+ * Pages that have not been designed yet (services, locations, legal) render
+ * inside `.rich`, which gives them sane editorial defaults. The homepage passes
+ * bare={true} and lays itself out.
+ */
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Analytics from '../components/Analytics.astro';
+import { canonical, paths } from '../lib/urls';
+import { organizationNode, breadcrumbNode, buildGraph, type Crumb } from '../lib/schema';
+import { assertTitle, assertDescription } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Site-relative path of THIS page. The canonical is always self-referencing. */
+  path: string;
+  /** Extra JSON-LD nodes merged into the single page graph. */
+  schemaNodes?: (Record<string, unknown> | undefined)[];
+  /** Omit on top-level pages; BreadcrumbList is emitted only when present. */
+  crumbs?: Crumb[];
+  /** Set for combos whose batch has not been released yet. */
+  noindex?: boolean;
+  /** true = the page styles its own <main>. */
+  bare?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  schemaNodes = [],
+  crumbs,
+  noindex = false,
+  bare = false,
+} = Astro.props;
+
+assertTitle(title, path);
+assertDescription(description, path);
+
+const canonicalUrl = canonical(path);
+
+const graph = buildGraph([
+  organizationNode(),
+  ...schemaNodes,
+  crumbs && crumbs.length > 1 ? breadcrumbNode(crumbs) : undefined,
+]);
+---
+
+<!doctype html>
+<html lang="en-SG">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#0e1b2a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HomeToMoved" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_SG" />
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json" set:html={graph} is:inline />
+
+    <Analytics />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+    >
+      Skip to content
+    </a>
+
+    <SiteHeader />
+
+    {
+      crumbs && crumbs.length > 1 && (
+        <nav aria-label="Breadcrumb" class="border-b border-line bg-paper-warm">
+          <div class="wrap py-2.5">
+            <ol class="flex flex-wrap items-center gap-x-2 text-[0.8125rem] text-ink-faint">
+              {crumbs.map((crumb, i) => (
+                <li class="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden="true">/</span>}
+                  {i === crumbs.length - 1 ? (
+                    <span aria-current="page" class="text-ink-soft">
+                      {crumb.name}
+                    </span>
+                  ) : (
+                    <a href={crumb.path} class="no-underline hover:text-brand-deep">
+                      {crumb.name}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
+      )
+    }
+
+    <main id="main" class={bare ? '' : 'rich'}>
+      <slot />
+    </main>
+
+    <SiteFooter />
+  </body>
+</html>

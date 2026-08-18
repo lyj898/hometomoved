@@ -1,0 +1,238 @@
+---
+/**
+ * Location page: /moving/{service}/{town}/
+ *
+ * Paths come from combos.json and nowhere else. Every combo is BUILT, so an
+ * unreleased page can be previewed at its real URL, but combos with
+ * published:false carry noindex, are absent from the sitemap, and are linked
+ * from no other page.
+ *
+ * The swap test: replacing the town name in the rendered page must make it
+ * factually wrong, not merely generic. That is carried by two data fields --
+ * town.housingProfile (about the town) and town.serviceAngles[service] (about
+ * this service in this town) -- which together run 159 to 184 words. No
+ * town-specific claim is written into this template.
+ */
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FaqList from '../../../components/FaqList.astro';
+import PriceTable from '../../../components/PriceTable.astro';
+import CtaBlock from '../../../components/CtaBlock.astro';
+import type { Service, Location } from '../../../types';
+import {
+  combos,
+  getService,
+  getLocation,
+  renderH1,
+  adjacentLocations,
+  isComboPublished,
+  publishedCombosForTown,
+} from '../../../lib/data';
+import { paths } from '../../../lib/urls';
+import { locationTitle, locationDescription } from '../../../lib/seo';
+import { serviceNode, faqNode, type Crumb } from '../../../lib/schema';
+
+export const getStaticPaths = (() =>
+  combos.map((combo) => ({
+    params: { service: combo.serviceSlug, town: combo.townSlug },
+    props: {
+      service: getService(combo.serviceSlug),
+      town: getLocation(combo.townSlug),
+      published: combo.published,
+      batch: combo.batch,
+    },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  service: Service;
+  town: Location;
+  published: boolean;
+  batch: number;
+}
+
+const { service, town, published, batch } = Astro.props;
+const path = paths.location(service.slug, town.slug);
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: service.name, path: paths.service(service.slug) },
+  { name: town.name, path },
+];
+
+const angle = town.serviceAngles[service.slug];
+if (!angle) {
+  throw new Error(`No serviceAngles["${service.slug}"] for ${town.slug} — location page cannot render.`);
+}
+
+/** Neighbours, linked only where their page for this service is released. */
+const neighbours = adjacentLocations(town.slug).map((t) => ({
+  town: t,
+  live: isComboPublished(service.slug, t.slug),
+}));
+
+const otherServicesHere = publishedCombosForTown(town.slug).filter((c) => c.serviceSlug !== service.slug);
+---
+
+<BaseLayout
+  title={locationTitle(service, town)}
+  description={locationDescription(service, town)}
+  path={path}
+  crumbs={crumbs}
+  noindex={!published}
+  bare={true}
+  schemaNodes={[serviceNode(service, town), faqNode(service.faqs)]}
+>
+  {
+    !published && (
+      <div class="border-b border-brand bg-brand-wash">
+        <div class="wrap py-3 text-[0.875rem] text-ink-soft">
+          <strong class="text-ink">Unreleased preview.</strong> Batch {batch}. This page carries noindex, is absent
+          from the sitemap, and nothing links to it. Set <code>published: true</code> for{' '}
+          <code>{service.slug}/{town.slug}</code> in combos.json to release it.
+        </div>
+      </div>
+    )
+  }
+
+  <!-- ============================================================= hero -- -->
+  <section class="border-b border-line bg-paper-warm">
+    <div class="wrap py-14 md:py-20">
+      <p class="eyebrow">{town.name} &middot; Singapore</p>
+      <h1 class="mt-3 max-w-3xl text-[length:var(--text-display)]">{renderH1(service, town.name)}</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{service.shortDescription}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={paths.contact} class="btn btn-primary">Get quotes for {town.name}</a>
+        <a href={paths.service(service.slug)} class="btn btn-secondary">About {service.name.toLowerCase()}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== local relevance -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="local-heading">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.15fr]">
+      <div>
+        <p class="eyebrow">Local knowledge</p>
+        <h2 id="local-heading" class="mt-3 text-[length:var(--text-h2)]">
+          What moving in {town.name} actually involves
+        </h2>
+      </div>
+      <div class="space-y-5 text-[1.03rem] leading-relaxed">
+        <p>{town.housingProfile}</p>
+        <p>{angle}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== pricing -- -->
+  <section class="border-y border-line bg-paper-warm" aria-labelledby="price-heading">
+    <div class="wrap py-14 md:py-20">
+      <div class="grid gap-12 md:grid-cols-[1fr_1.15fr]">
+        <div>
+          <p class="eyebrow">What it costs</p>
+          <h2 id="price-heading" class="mt-3 text-[length:var(--text-h2)]">
+            {service.name} prices in {town.name}
+          </h2>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-ink-soft">
+            Rates do not change by postcode. What changes the price in {town.name} is access: floor, lift car
+            size, carry distance and where a lorry can legally stand.
+          </p>
+        </div>
+        <PriceTable service={service} compact={true} />
+      </div>
+
+      <div class="mt-12 border-l-2 border-brand pl-5">
+        <h3 class="text-[length:var(--text-h3)]">How long a {town.name} job takes</h3>
+        <p class="mt-2 max-w-2xl text-[0.975rem] leading-relaxed text-ink-soft">{service.durationTypical}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= included -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="included-heading">
+    <p class="eyebrow">Included</p>
+    <h2 id="included-heading" class="mt-3 text-[length:var(--text-h2)]">What a {town.name} quote covers</h2>
+    <ul class="mt-8 grid gap-x-10 gap-y-3 md:grid-cols-2">
+      {
+        service.inclusions.map((item) => (
+          <li class="flex gap-3 text-[0.975rem] leading-relaxed">
+            <svg class="mt-1.5 shrink-0 text-brand" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7.5 5.5 11 12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-6 text-[0.95rem] text-ink-soft">
+      <a href={paths.service(service.slug)} class="font-semibold text-brand-deep underline underline-offset-4">
+        See what is not included
+      </a>
+    </p>
+  </section>
+
+  <!-- ============================================================= faqs -- -->
+  <section class="border-y border-line bg-paper-warm" aria-labelledby="faq-heading">
+    <div class="wrap wrap-narrow py-14 md:py-20">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-heading" class="mt-3 mb-8 text-[length:var(--text-h2)]">{service.name} FAQs</h2>
+      <FaqList faqs={service.faqs} />
+    </div>
+  </section>
+
+  <!-- ========================================================== nearby -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="nearby-heading">
+    <p class="eyebrow">Nearby</p>
+    <h2 id="nearby-heading" class="mt-3 text-[length:var(--text-h2)]">Towns next to {town.name}</h2>
+    <p class="mt-4 max-w-2xl text-ink-soft">
+      Moves rarely stay inside one town. These border {town.name} and we cover all of them.
+    </p>
+    <ul class="mt-8 flex flex-wrap gap-2">
+      {
+        neighbours.map(({ town: t, live }) => (
+          <li>
+            {live ? (
+              <a
+                href={paths.location(service.slug, t.slug)}
+                class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] text-ink no-underline hover:border-brand hover:text-brand-deep"
+              >
+                {service.name} in {t.name}
+              </a>
+            ) : (
+              <span class="inline-block border border-line px-3 py-1.5 text-[0.9rem] text-ink-faint">{t.name}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      otherServicesHere.length > 0 && (
+        <>
+          <h3 class="mt-12 text-[length:var(--text-h3)]">Other services in {town.name}</h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {otherServicesHere.map((c) => {
+              const s = getService(c.serviceSlug);
+              return (
+                <li>
+                  <a
+                    href={paths.location(s.slug, town.slug)}
+                    class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] text-ink no-underline hover:border-brand hover:text-brand-deep"
+                  >
+                    {s.name} in {town.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )
+    }
+  </section>
+
+  <CtaBlock
+    service={service}
+    town={town}
+    heading={`Moving in ${town.name}?`}
+    body={`Tell us the block, the floor and roughly what needs shifting. We will match you with vetted, insured movers who work in ${town.name} regularly.`}
+  />
+</BaseLayout>

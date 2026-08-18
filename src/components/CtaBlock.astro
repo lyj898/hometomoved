@@ -1,0 +1,36 @@
+---
+/**
+ * Closing CTA. The enquiry form is the only contact channel on this site --
+ * there are no WhatsApp or phone CTAs anywhere.
+ *
+ * The service and town are passed through to /contact/ as query parameters so
+ * the form arrives with the move type and origin town already selected.
+ */
+import type { Service, Location } from '../types';
+import { paths } from '../lib/urls';
+
+interface Props {
+  service?: Service;
+  town?: Location;
+  heading: string;
+  body: string;
+}
+
+const { service, town, heading, body } = Astro.props;
+
+const params = new URLSearchParams();
+if (service) params.set('service', service.name);
+if (town) params.set('town', town.name);
+const href = params.toString() ? `${paths.contact}?${params.toString()}` : paths.contact;
+---
+
+<section class="bg-navy text-paper">
+  <div class="wrap wrap-narrow py-14 text-center md:py-20">
+    <h2 class="text-[length:var(--text-h2)]">{heading}</h2>
+    <p class="mx-auto mt-4 max-w-xl text-paper/75">{body}</p>
+    <div class="mt-8">
+      <a href={href} class="btn btn-on-dark">Get matched with movers</a>
+    </div>
+    <p class="mt-4 text-sm text-paper/60">Takes about two minutes. No cost to you.</p>
+  </div>
+</section>

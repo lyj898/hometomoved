@@ -1,0 +1,26 @@
+[
+  {
+    "q": "Are you a moving company?",
+    "a": "No. We are a matching service. We take your requirements and pass them to moving vendors who have passed our checks, and you deal directly with the mover you choose. We do not own lorries, employ movers or carry out any move ourselves. The contract for the move is between you and the vendor."
+  },
+  {
+    "q": "What does it cost to use HomeToMoved?",
+    "a": "You pay the mover, not us. The quotes you receive are the vendor's own prices for your job. We publish market ranges on our pricing guide so you can tell whether a quote is reasonable before you accept it."
+  },
+  {
+    "q": "How do you decide which movers to work with?",
+    "a": "Every vendor has to show current ACRA registration, valid goods-in-transit and public liability insurance, correct work passes for the crew entering your home, roadworthy and properly insured vehicles, and, for disposal work, evidence that waste goes to a licensed facility. We set the whole list out on our vendor standards page."
+  },
+  {
+    "q": "Do you cover my area?",
+    "a": "We match across all 27 residential towns in Singapore, from Ang Mo Kio to Yishun. We are Singapore-only and do not handle international relocations."
+  },
+  {
+    "q": "What happens to my personal details?",
+    "a": "They go to the moving vendors we match you with, so that they can quote your job. That disclosure is the service, so we ask you to consent to it explicitly rather than burying it. We do not sell your details, and our privacy policy sets out retention and how to ask for access or correction."
+  },
+  {
+    "q": "How far ahead should I get in touch?",
+    "a": "Two to four weeks for a weekday move. Month-end, weekends and the weeks before Chinese New Year are the busiest slots and often carry a surcharge. If your date is fixed by a key collection or a lease end, start as soon as you know it."
+  }
+]

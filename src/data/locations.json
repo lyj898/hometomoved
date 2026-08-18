@@ -1,0 +1,492 @@
+[
+  {
+    "slug": "ang-mo-kio",
+    "name": "Ang Mo Kio",
+    "adjacentSlugs": [
+      "bishan",
+      "serangoon",
+      "yishun",
+      "toa-payoh",
+      "hougang",
+      "sengkang"
+    ],
+    "housingProfile": "A mature town built out through the 1970s and 1980s. The dominant stock is 3- and 4-room flats along Avenues 1 to 10, with 5-room and executive units in the later Cheng San stretch. Every block has lift access on all floors since the Lift Upgrading Programme, but older slab blocks retain small lift cars that will not take a three-seater sofa or a tall wardrobe upright. Private condos cluster along Ang Mo Kio Ave 1, with landed housing in Teachers' Estate. Multi-storey carparks sit apart from the blocks, so long carry from lorry to lift lobby is routine.",
+    "serviceAngles": {
+      "hdb-moving": "Most jobs here are 3- and 4-room flats in blocks put up between 1975 and 1985, which usually means a 10ft or 14ft lorry and two to three movers. The binding constraint is the lift car. It takes cartons and a mattress but rarely a three-seater or a tall wardrobe upright, so those go down the staircase and should be priced before the day. Multi-storey carparks sit apart from the blocks, so a long carry between lorry and lift lobby is normal rather than exceptional.",
+      "condo-moving": "Condo stock here clusters along Ang Mo Kio Avenue 1 and up towards Upper Thomson, and much of it is 1990s and 2000s rather than new. Older developments of that era tend to have one service lift, a modest loading bay and an MCST that still works on paper permit forms submitted several days ahead. Ask the management office early what they need, because a mid-week slot in a single-service-lift development is the scarcest thing in this move.",
+      "disposal-and-moving": "A mature town produces mature clutter. Flats occupied since the late 1970s tend to hold decades of furniture, and a lot of moves here are older households downsizing or an estate being cleared after a sale, which is full-lorry-load disposal rather than three items. The lift car is the practical limit: anything that will not fit it has to be dismantled or walked down, so wardrobes and bed frames get broken down on site rather than carried whole."
+    },
+    "notes": "High confidence. Small lift cars in 1970s-80s blocks is the key moving-specific fact for this town.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "bedok",
+    "name": "Bedok",
+    "adjacentSlugs": [
+      "tampines",
+      "marine-parade",
+      "pasir-ris",
+      "geylang"
+    ],
+    "housingProfile": "One of the largest and oldest towns in the east. Huge 3- and 4-room stock across Bedok North, Bedok South and Chai Chee, with newer 5-room and executive units around Bedok Reservoir. The private component is unusually large for a mature HDB town: condos along Bedok Reservoir Road and Upper East Coast Road, plus extensive landed estates at Frankel, Opera Estate and Kembangan. Those lanes are single-carriageway with no turning space, so a 24ft lorry frequently cannot reach the gate and items are shuttled from the main road. Older Chai Chee blocks have tight frontage and limited lorry standing room.",
+    "serviceAngles": {
+      "hdb-moving": "Two different jobs share the same town name. A 3-room in the older Chai Chee blocks is a 10ft lorry with a short carry but almost no lorry standing room out front, so the crew works around parked cars. A 5-room or executive near Bedok Reservoir is a 14ft job with a proper bay. Vendors quoting Bedok will ask which precinct before they ask how many rooms, because frontage and access vary more across this town than flat size does.",
+      "condo-moving": "Private stock splits between the Bedok Reservoir Road developments and the older low-rise blocks towards Upper East Coast. The reservoir-side condos are large and modern with proper loading bays and a service lift, so the move is orderly once the permit is in. The Upper East Coast side is lower and older, sometimes with no dedicated service lift at all, which means the passenger lift gets padded and the whole job runs on the management's terms.",
+      "disposal-and-moving": "Bedok generates two very different disposal jobs. In the older Chai Chee and Bedok North blocks it is long-tenure flats being cleared, often a full load, with dismantling needed for built-in wardrobes and old bed frames. In the Frankel and Opera Estate landed lanes it is volume without access, because a 24ft lorry cannot reach most gates and everything is shuttled to the main road. Say which you are before anyone quotes a load size."
+    },
+    "notes": "High confidence. The landed-lane access problem in Frankel and Opera Estate is the strongest local hook.",
+    "populationTier": "very-large"
+  },
+  {
+    "slug": "bishan",
+    "name": "Bishan",
+    "adjacentSlugs": [
+      "ang-mo-kio",
+      "toa-payoh",
+      "serangoon"
+    ],
+    "housingProfile": "A compact, relatively young mature town developed from the mid-1980s. The flat mix skews large: 4-room, 5-room, executive and a notable maisonette population around Bishan Street 11 to 24, with very few small flats. Maisonettes matter for moving because they add an internal staircase inside the unit itself, on top of whatever the block presents. Substantial private stock sits along Bishan Street 21, Sin Ming and Braddell, with landed housing near Jalan Pemimpin. Lift lobbies are generally 1980s or later with workable car sizes. School peak hours around Ai Tong and Catholic High constrain morning loading on the internal roads.",
+    "serviceAngles": {
+      "hdb-moving": "Bishan skews to the large end: 4-room, 5-room, executive and a heavy maisonette population, so a 14ft lorry with three to four movers is the baseline rather than the upgrade. Maisonettes are the thing to flag when you ask for a quote, because an internal staircase inside the unit adds a full carry before anything reaches the lift. Loading on the internal roads is easiest mid-morning, once the Ai Tong and Catholic High school runs have cleared.",
+      "condo-moving": "Bishan's condos sit along Bishan Street 21, Sin Ming and towards Braddell, and include some of the taller newer developments in the area. Newer towers mean generous service lifts and designed-in loading bays, which is the easy version of a condo move. The catch is the time window: these are dense family developments and management offices here are strict about weekday office hours, so a Saturday move is usually simply not permitted.",
+      "disposal-and-moving": "The flat mix here is large, and large flats hold more. Maisonettes in particular tend to have a full upper floor of furniture that has never moved, and clearing one means carrying down an internal staircase before you even reach the lift. Town council collection covers three items a month, which barely touches a maisonette clearance. Combining disposal with the move is worth more here than in a town of 3-room flats simply because the volumes are bigger."
+    },
+    "notes": "High confidence. Maisonette density and the internal-staircase implication is the differentiator here.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "bukit-batok",
+    "name": "Bukit Batok",
+    "adjacentSlugs": [
+      "bukit-panjang",
+      "jurong-east",
+      "choa-chu-kang",
+      "clementi",
+      "bukit-timah",
+      "tengah"
+    ],
+    "housingProfile": "A 1980s western town with mostly 3-, 4- and 5-room flats across Bukit Batok Streets 11 to 52, plus newer BTO infill along Bukit Batok West Avenue. The defining local quirk is terrain. This is genuinely hilly ground, and several blocks sit above the road with staircase approaches from the kerb up to the lift lobby, which adds carry distance even where the lift itself serves every floor. Condos concentrate along Bukit Batok East Ave 3 and 6 and towards Hillview. Multi-storey carparks are standard and the older precinct loop roads leave little standing space near block entrances.",
+    "serviceAngles": {
+      "hdb-moving": "The hills matter more than the flat type. Plenty of blocks here sit above the road, so the crew climbs a flight of external steps from the kerb to the lift lobby with every item, on top of whatever the lift does. That is carry distance a phone quote will miss unless you mention it. Otherwise this is standard 1980s stock: 4- and 5-room flats, a 14ft lorry, three movers, and older loop roads with little standing space near the entrances.",
+      "condo-moving": "Condos concentrate along Bukit Batok East Avenue 3 and 6 and out towards Hillview. The Hillview developments are the ones to flag, because several sit on sloping ground with basement carparks and a long internal drive between the gate and the block. That combination of a height-limited basement and a distance from the boom gate to the service lift is what turns a routine two-bedroom move into a shuttle job with a second vehicle.",
+      "disposal-and-moving": "Disposal in Bukit Batok is priced by the staircase as much as by the load. Where a block sits above the road, every item leaving goes down the external steps from the lobby to the kerb, which is slow and needs more hands. Mention the approach when you send photos. Otherwise this is a standard 1980s estate clearance: a lot of built-in wardrobes and old bed frames that need dismantling before they will fit the lift."
+    },
+    "notes": "High confidence. The slope-to-lobby staircase approach is specific to this town and is a real cost driver.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "bukit-merah",
+    "name": "Bukit Merah",
+    "adjacentSlugs": [
+      "queenstown",
+      "bukit-timah",
+      "central-area",
+      "toa-payoh"
+    ],
+    "housingProfile": "Among the oldest towns, with an unusually high proportion of small flats: 1-, 2- and 3-room stock including rental blocks at Redhill, Henderson and Jalan Bukit Merah. Tiong Bahru is the outlier that changes the job. Its pre-war and 1930s to 1950s SIT walk-up apartments have no lifts at all, narrow stairs and tight landings, which makes them some of the hardest residential moves in Singapore. Newer high-rise sits at Telok Blangah, Bukit Merah View and Kampong Bahru. Dense private condos line Alexandra, Kim Tian and Havelock Road, and kerbside enforcement around Tiong Bahru keeps loading windows short.",
+    "serviceAngles": {
+      "hdb-moving": "The flat mix runs small: a lot of 1-, 2- and 3-room stock at Redhill, Henderson and Jalan Bukit Merah, which is often a 10ft lorry and two movers. Volume is low but access is not easy, because these are among the oldest blocks in Singapore with narrow corridors and small lift cars. SERS and en bloc rehousing also means a steady flow of moves where the destination is a brand new block with entirely different access.",
+      "condo-moving": "This is dense, central condo territory along Alexandra, Kim Tian and Havelock Road, much of it high-rise and relatively recent. Service lifts are decent, but the developments sit on tight urban plots, so the loading bay is often a single marked space that other contractors also want. Deposits at the newer developments here run at the upper end, and kerbside enforcement in the surrounding streets means the lorry cannot wait outside if the bay is occupied.",
+      "disposal-and-moving": "One of the oldest towns, so the disposal side is often larger than the moving side. Small flats at Redhill and Henderson can still hold decades of contents, and SERS and en bloc rehousing produces genuine whole-flat clearances rather than a tidy-up. The Tiong Bahru walk-up apartments are the hard cases: no lift, narrow stairs and tight landings mean every disposed item is carried down by hand, and that is priced per floor."
+    },
+    "notes": "High confidence. Tiong Bahru walk-ups are the single most useful town-specific fact on the site.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "bukit-panjang",
+    "name": "Bukit Panjang",
+    "adjacentSlugs": [
+      "bukit-batok",
+      "choa-chu-kang",
+      "bukit-timah"
+    ],
+    "housingProfile": "A 1990s town and fairly uniform in stock. Predominantly 4- and 5-room flats, with executive maisonettes through the older Petir and Jelapang stretch and newer BTO at Senja and Segar. Because the blocks are newer than the mature-town average, lift cars are larger and lobbies more generous, so the small-lift problem common in 1970s estates is largely absent. Meaningful private stock runs along Upper Bukit Timah Road and Dairy Farm, with landed housing at Chestnut and Cashew. The LRT viaduct and single-carriageway precinct roads restrict lorry turning, and some blocks are reachable only via multi-storey carpark ramps with height limits.",
+    "serviceAngles": {
+      "hdb-moving": "HDB moves here are mostly 4- and 5-room with executive maisonettes through the older Petir and Jelapang stretch. The good news is the blocks are 1990s, so lift cars are larger and a sofa usually goes in upright, which removes the biggest hidden cost of a mature-town move. The awkward part is vehicle access: single-carriageway precinct roads under the LRT viaduct, and some blocks reachable only through a multi-storey carpark ramp with a height limit.",
+      "condo-moving": "Private stock runs along Upper Bukit Timah Road and out to Dairy Farm, including developments built into the slope with multi-level basement carparks. Height clearance is the recurring problem: a 14ft lorry frequently cannot get down to the loading level, so the crew shuttles from a surface drop-off with a van. Add single-carriageway approach roads under the LRT viaduct and the vehicle plan matters more here than the furniture list does.",
+      "disposal-and-moving": "Newer blocks make this easier than in the mature towns. Lift cars are larger, so a wardrobe or a three-seater usually goes down in the lift rather than the staircase, which keeps the disposal element cheaper. What raises it is vehicle access: some blocks are reachable only through a multi-storey carpark ramp with a height limit, so the disposal load may need a smaller vehicle or a shuttle to where a full lorry can legally stand."
+    },
+    "notes": "High confidence. Contrast with mature towns on lift size is a useful and true differentiator.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "bukit-timah",
+    "name": "Bukit Timah",
+    "adjacentSlugs": [
+      "bukit-panjang",
+      "bukit-batok",
+      "queenstown",
+      "central-area",
+      "bukit-merah",
+      "clementi"
+    ],
+    "housingProfile": "Overwhelmingly private, and the HDB presence is small: a pocket at Toh Yi Drive and another near Farrer Road. The dominant stock is landed housing along Dunearn, Sixth Avenue, Namly and Binjai, alongside low-rise condominiums and older private walk-up apartments on Bukit Timah Road with no lift. Landed homes here are commonly two or three storeys with internal staircases plus attic or basement storage, which drives manpower and hours far more than floor area does. The access lanes off Sixth Avenue and Coronation are narrow with no lorry turning space, and loading generally happens on the road itself.",
+    "serviceAngles": {
+      "hdb-moving": "There is very little HDB in Bukit Timah, and what exists is concentrated at Toh Yi Drive and near Farrer Road. Those blocks are newer than the town's private stock and present a fairly ordinary lift-served move. The complication is the surrounding roads rather than the flat: approaches are narrow, kerbside standing is limited and enforcement is active, so vendors will want to know exactly where the lorry can sit before quoting the manpower.",
+      "condo-moving": "Bukit Timah has more private housing than anywhere else on this list, and the condo stock is unusually varied: low-rise older developments along Bukit Timah Road, larger family condos off Sixth Avenue, and everything in between. The low-rise ones are the trap, because a four-storey development may have a lift that is genuinely small or, in the oldest blocks, none at all. Confirm lift dimensions with your management office before anyone quotes on volume alone.",
+      "disposal-and-moving": "Landed homes here hold far more than any flat, and the clearance side of a Bukit Timah move is frequently the bigger half of the job. Attics, basements, store rooms and garden sheds accumulate for decades, and gardens add their own volume in pots, furniture and equipment. Access lanes off Sixth Avenue and Coronation are narrow with nowhere to turn, so the disposal lorry often has to load from the road itself."
+    },
+    "notes": "High confidence. Private walk-ups with no lift are a genuine and often-missed condition here.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "central-area",
+    "name": "Central Area",
+    "adjacentSlugs": [
+      "bukit-merah",
+      "kallang",
+      "toa-payoh",
+      "bukit-timah",
+      "queenstown"
+    ],
+    "housingProfile": "The smallest resident population of any town, with a mix nothing else matches. HDB sits at Cantonment, Chinatown, Rochor and Kampong Glam, ranging from old small-flat blocks to modern high-rise infill, alongside high-rise private condominiums in Tanjong Pagar, Beach Road and River Valley, and conservation shophouse residences with steep narrow internal stairs. Access is the binding constraint rather than the housing. There is little kerbside loading through much of the CBD, parking restrictions are timed and enforced, basement carparks carry 2.1 to 2.4 metre height limits that exclude 14ft and 24ft lorries, and MCST service lift booking is strict.",
+    "serviceAngles": {
+      "hdb-moving": "HDB here sits at Cantonment, Chinatown, Rochor and Kampong Glam, ranging from small older flats to modern high-rise. Nothing about the flats is unusual; everything about getting a lorry to them is. There is little kerbside loading, parking restrictions are timed and enforced through the day, and several blocks are served by basement carparks with height limits that a 14ft lorry cannot clear. Expect a tighter working window and more of the quote going to access than to volume.",
+      "condo-moving": "This is the hardest condo territory in Singapore for access. High-rise developments in Tanjong Pagar, Beach Road and River Valley have proper service lifts and organised MCSTs, so the building side is fine. Getting a lorry to the building is the problem: no kerbside loading on most CBD streets, timed and enforced restrictions, and basement carparks capped at 2.1 to 2.4 metres, which excludes a 14ft or 24ft lorry entirely and forces a shuttle.",
+      "disposal-and-moving": "The constraint is not the volume but the kerb. Central Area flats and condos are not large, so disposal loads tend to be modest, but there is little or no kerbside space to work from, parking restrictions are timed and enforced, and basement carparks exclude a full-size lorry. Conservation shophouse residences add steep narrow internal stairs. Expect the disposal element to be priced on handling and access rather than on how much is actually going."
+    },
+    "notes": "High confidence. Access, not housing type, is the story for this town.",
+    "populationTier": "small"
+  },
+  {
+    "slug": "choa-chu-kang",
+    "name": "Choa Chu Kang",
+    "adjacentSlugs": [
+      "bukit-panjang",
+      "bukit-batok",
+      "jurong-west",
+      "tengah",
+      "woodlands"
+    ],
+    "housingProfile": "A 1990s town, uniform and relatively young. The dominant stock is 4- and 5-room flats with a large executive maisonette population around Choa Chu Kang North and Yew Tee, plus newer BTO at Keat Hong and Sunshine. Maisonettes mean an internal staircase at the origin, which lengthens the job before anything reaches the lift. Private stock is limited but growing near Yew Tee MRT. Precincts are laid out around multi-storey carparks, and the carry from a surface lorry bay to a lift lobby is often sixty to a hundred metres, which affects manpower more than floor level does.",
+    "serviceAngles": {
+      "hdb-moving": "Executive maisonettes are common through Choa Chu Kang North and Yew Tee, so flag it early: an internal staircase inside the unit adds a carry that a 5-room flat of the same floor area does not have. The other local cost is distance rather than height. Precincts are laid out around multi-storey carparks with sheltered walkways, and sixty to a hundred metres between the lorry bay and the lift lobby is routine here, which shows up as manpower on the quote.",
+      "condo-moving": "Private stock is thinner here than in most towns and skews towards executive condominiums and developments near Yew Tee. ECs are the useful thing to know about: they are MCST-managed exactly like private condos, so the permit, the deposit and the service lift booking all apply, which surprises people moving out of an HDB flat in the same town. Loading bays are generally well provided, and the approach roads are wide enough for a 24ft lorry.",
+      "disposal-and-moving": "Executive maisonettes are the disposal story here. An upper floor of furniture has to come down an internal staircase before it reaches the lift, which is real labour and should be photographed and quoted rather than estimated. Add the long carry from the lift lobby to a surface loading bay, sixty to a hundred metres in many precincts, and the crew is walking a considerable distance with every disposed item."
+    },
+    "notes": "High confidence. Long carry distance from bay to lobby is the practical cost driver in this town.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "clementi",
+    "name": "Clementi",
+    "adjacentSlugs": [
+      "bukit-batok",
+      "jurong-east",
+      "queenstown",
+      "bukit-timah",
+      "jurong-west"
+    ],
+    "housingProfile": "A mature 1970s and 1980s western town with dense small-flat stock along Clementi Avenues 1 to 6 and West Coast. Several older blocks have been rebuilt under SERS, so the town now mixes 1970s slab blocks with modern high-rise infill at Clementi Ave 1. Private stock is strong: condominiums along West Coast Road and Sunset Way, and landed housing at Sunset Way and Faber. The distinguishing feature for movers is turnover. Proximity to NUS and Singapore Polytechnic produces constant tenant churn, so many jobs here are single-room or partial moves rather than whole flats. Older internal roads are narrow.",
+    "serviceAngles": {
+      "hdb-moving": "A high share of moves in Clementi are not whole flats. With NUS and Singapore Polytechnic next door, tenant churn produces single-room and partial jobs that suit a 10ft lorry and two movers rather than a full crew. Whole-flat moves split between the 1970s blocks along Clementi Avenues 1 to 6, with narrow corridors and small lifts, and the modern SERS replacement blocks nearby where none of that applies. Say which you are in.",
+      "condo-moving": "Condos here run along West Coast Road and around Sunset Way, mixing older low-rise developments with newer high-rise near the MRT. Expatriate and academic tenancies around the area mean a high share of part-load and lease-end moves rather than whole-household relocations. The older West Coast developments are the ones worth checking early: some have a single lift serving each block and a loading arrangement that predates anyone expecting a 14ft lorry to turn up.",
+      "disposal-and-moving": "A high share of disposal here is partial rather than total, because tenant and student churn means people are clearing a room rather than a flat. Those are small loads and often sit under the single-item threshold. The larger jobs come from the long-tenure flats along Clementi Avenues 1 to 6 and from SERS rehousing, where a household of thirty or forty years is cleared at once and dismantling is the bulk of the time."
+    },
+    "notes": "High confidence. Student and tenant churn producing partial moves is specific and commercially relevant.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "geylang",
+    "name": "Geylang",
+    "adjacentSlugs": [
+      "kallang",
+      "bedok",
+      "marine-parade",
+      "toa-payoh"
+    ],
+    "housingProfile": "An unusual mix. HDB sits at Geylang Bahru, Aljunied, Sims Place and Eunos, much of it 1970s small-flat stock. Alongside it is a large stock of private walk-up apartments through the Geylang lorongs, typically three or four storeys with no lift, steep narrow staircases and no lobby, plus conservation shophouses. This is the town where the absence of lift access genuinely changes the job rather than merely the price. The lorongs are one-way, tightly parked and actively enforced, so a 14ft lorry often cannot stand outside the unit and everything is shuttled to and from the main road.",
+    "serviceAngles": {
+      "hdb-moving": "HDB here is concentrated at Geylang Bahru, Aljunied, Sims Place and Eunos, much of it 1970s small-flat stock served by lifts. The flats are manageable; the streets are not. The lorongs are one-way, densely parked and actively enforced, so the lorry often cannot stop outside the block and items are trolleyed to and from the main road. That shuttle is the single biggest variable in a Geylang quote and it should be settled before the day.",
+      "condo-moving": "Newer condos around Sims Avenue and the Guillemard stretch are straightforward high-rise moves with service lifts and organised management. The difficulty is entirely outside the gate. The lorongs are one-way, tightly parked and enforced, so a lorry that cannot enter the development has nowhere legal to wait, and the crew ends up trolleying from a main road. Confirm with management whether the loading bay takes a 14ft vehicle before you book the lift slot.",
+      "disposal-and-moving": "This is the town where disposal access is genuinely hard. The private walk-up apartments through the lorongs have no lift, so every disposed item comes down a steep narrow staircase by hand, and there is often nowhere for the lorry to stand once it does. The lorongs are one-way, tightly parked and enforced, so items are trolleyed to a main road. Photograph the staircase and the frontage; that is what the quote actually turns on."
+    },
+    "notes": "High confidence. Walk-up density plus lorong access is the clearest differentiator of any town on the list.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "hougang",
+    "name": "Hougang",
+    "adjacentSlugs": [
+      "sengkang",
+      "serangoon",
+      "punggol",
+      "ang-mo-kio"
+    ],
+    "housingProfile": "A large north-eastern town built through the 1980s and 1990s. Mostly 4- and 5-room flats across Hougang Avenues 1 to 10, with executive maisonettes in the Ave 7 and 8 stretch and older small-flat blocks at Lorong Ah Soo. The distinctive element is the landed belt at Kovan and towards Jalan Kayu, two-storey terraces on narrow lanes with no turning space. Private condominiums line Upper Serangoon Road. Some older blocks sit above shop podiums, which makes goods access awkward. Traffic through Kovan and Hougang Central is heavy across the day, pushing vendors towards early-morning slots.",
+    "serviceAngles": {
+      "hdb-moving": "Standard 1980s and 1990s stock across Hougang Avenues 1 to 10, mostly 4- and 5-room, with executive maisonettes in the Avenue 7 and 8 stretch that add an internal staircase. Two local wrinkles worth mentioning when you ask for a quote: some older blocks sit above shop podiums, which makes goods access awkward, and traffic through Hougang Central and Kovan is heavy right through the day, so vendors push these jobs to early-morning slots.",
+      "condo-moving": "Private stock lines Upper Serangoon Road and includes some very large recent developments along Hougang Avenue 7. Big new condos are comfortable to move in and out of, with multiple service lifts and proper bays, but they are also busy, so the lift slots book out further ahead than people expect. The older developments closer to Kovan are the opposite problem: one lift, a small bay and an MCST with a short list of permitted hours.",
+      "disposal-and-moving": "Mature Hougang flats and the maisonettes along Avenues 7 and 8 produce full-load clearances, with an internal staircase to negotiate in the maisonettes. The Kovan landed belt is a different job again: more volume, no lift, and narrow lanes where a lorry cannot turn. Traffic through Hougang Central and Kovan is heavy all day, which matters more for disposal than for moving because the lorry may need to make a second run to the facility."
+    },
+    "notes": "High confidence.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "jurong-east",
+    "name": "Jurong East",
+    "adjacentSlugs": [
+      "jurong-west",
+      "clementi",
+      "bukit-batok",
+      "tengah"
+    ],
+    "housingProfile": "A smaller western town with 1980s stock along Jurong East Streets 13 to 32 covering 3-, 4- and 5-room flats, plus newer high-rise BTO around Toh Guan. Considerable private condominium stock surrounds Jurong Gateway, Toh Guan and Boon Lay Way, with a landed pocket off Jurong East Ave 1. Being the regional centre works against moving logistics: roads around JEM, Westgate and the bus interchange are congested and offer no informal loading space. The 1980s blocks along Street 24 have small lift cars that will not take a three-seater sofa upright, while the newer blocks nearby have no such problem.",
+    "serviceAngles": {
+      "hdb-moving": "Which street you live on decides the job. The 1980s blocks along Jurong East Street 24 have small lift cars that will not take a three-seater upright, so bulky pieces go down the staircase. The newer high-rise around Toh Guan has generous lifts and none of that problem. Either way, the area around the interchange, JEM and Westgate is congested with no informal loading space, so a lorry cannot simply sit while the crew works.",
+      "condo-moving": "Condos here concentrate around Jurong Gateway, Toh Guan and Boon Lay Way, with the newer towers close to the regional centre. Those are well-provisioned buildings, but the surrounding road network is the constraint: the area around the interchange, JEM and Westgate is congested and offers no informal standing space, so a lorry that misses its bay slot has nowhere to go. Book the service lift and the loading bay together rather than separately.",
+      "disposal-and-moving": "Older flats along Jurong East Streets 13 to 32 are the source of most disposal work here, and the small lift cars in the Street 24 blocks mean bulky items are dismantled or walked down. Around Jurong Gateway the problem inverts: buildings are fine but the roads have no informal standing space, so a disposal lorry has to work inside a booked slot rather than idling while the crew brings items down."
+    },
+    "notes": "High confidence.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "jurong-west",
+    "name": "Jurong West",
+    "adjacentSlugs": [
+      "jurong-east",
+      "choa-chu-kang",
+      "tengah",
+      "clementi"
+    ],
+    "housingProfile": "One of the largest towns by population and almost purely HDB. Predominantly 4- and 5-room flats across Jurong West Streets 41 to 93, with a substantial executive and maisonette population through the Boon Lay and Pioneer stretches and very little private or landed stock. The practical consequence of its size is distance. Precincts are spread widely, so multi-stop jobs and moves within the town still burn real travel time between addresses. Multi-storey carparks with height barriers are standard, so lorries usually load at surface bays and the crew carries in along sheltered walkways.",
+    "serviceAngles": {
+      "hdb-moving": "This is an almost purely HDB town, mostly 4- and 5-room with a substantial executive and maisonette population through Boon Lay and Pioneer. The quirk is scale. Precincts are spread over a wide area, so even a move within Jurong West can involve a meaningful drive between addresses, and vendors price travel time accordingly. Height barriers on the multi-storey carparks mean loading usually happens at a surface bay with a covered walkway carry into the block.",
+      "condo-moving": "Private stock is limited in a town that is overwhelmingly HDB, and what exists sits mainly around the Lakeside and Boon Lay fringe, including executive condominiums. ECs are MCST-managed, so the permit, deposit and service lift booking apply in full even though the development sits among HDB blocks. Access itself is generally easy, with wide roads and proper bays; the practical issue is the distance between developments if your move is within the town.",
+      "disposal-and-moving": "An almost purely HDB town with a large executive and maisonette population through Boon Lay and Pioneer, so full-flat clearances with an internal staircase are common. The distinctive local cost is the run to the disposal facility rather than the carry out of the flat: Jurong West sits at the western edge and precincts are spread widely, so a job that fills more than one load pays for the travel twice."
+    },
+    "notes": "High confidence. Intra-town travel distance is a genuine and unusual feature of this town.",
+    "populationTier": "very-large"
+  },
+  {
+    "slug": "kallang",
+    "name": "Kallang",
+    "adjacentSlugs": [
+      "central-area",
+      "geylang",
+      "toa-payoh",
+      "marine-parade"
+    ],
+    "housingProfile": "Dense and mixed. HDB sits at Whampoa, Bendemeer, Boon Keng, Kallang Bahru and Dakota, much of it 1960s and 1970s small-flat stock, some of it already rebuilt through SERS into modern high-rise. Alongside it are older private walk-up apartments around Upper Boon Keng and Jalan Besar with no lift, plus newer condominiums at Kallang Riverside. The constraint is the road network: narrow one-way loops with red-line restrictions during peak hours, which in practice means loading has to happen between mid-morning and mid-afternoon to avoid enforcement, and that shortens the working window.",
+    "serviceAngles": {
+      "hdb-moving": "Much of the HDB at Whampoa, Bendemeer, Boon Keng and Kallang Bahru is 1960s and 1970s small-flat stock, so a 10ft or 14ft lorry covers most jobs. The real constraint is the clock. Narrow one-way loops with red-line restrictions during peak hours mean the lorry can realistically only stand between mid-morning and mid-afternoon, so the crew is sized to finish inside a short window rather than working a leisurely full day.",
+      "condo-moving": "Newer condos at Kallang Riverside and around the Sports Hub fringe are modern high-rise with service lifts and organised management. The older stock near Upper Boon Keng and towards Jalan Besar is the harder half. Either way the local constraint is the same one that affects the HDB blocks: narrow one-way loops with red-line peak restrictions, so the working window sits between mid-morning and mid-afternoon and the crew is sized to finish inside it.",
+      "disposal-and-moving": "Older stock at Whampoa, Bendemeer and Boon Keng means long-tenure flats with a lot to clear, and the private walk-ups around Upper Boon Keng have no lift at all. The narrow one-way loops and red-line peak restrictions cap the working window at roughly mid-morning to mid-afternoon, so a full clearance here is usually staffed heavily to finish in one window rather than spread over a longer, cheaper day."
+    },
+    "notes": "High confidence. Red-line peak restrictions narrowing the working window is specific and useful.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "marine-parade",
+    "name": "Marine Parade",
+    "adjacentSlugs": [
+      "bedok",
+      "geylang",
+      "kallang"
+    ],
+    "housingProfile": "A small resident population with distinctive stock. The HDB along Marine Parade Central, Marine Terrace and Marine Crescent is 1970s reclaimed-land development, mainly 3-, 4- and 5-room including point blocks. The private component is proportionally large: older low-rise condominiums and private walk-up apartments along Still Road, Amber Road and Mountbatten, several of which have no lift, plus landed housing at Katong and towards Joo Chiat. Redevelopment along Amber and Meyer Road produces a steady stream of move-outs. Parking along East Coast Road and Joo Chiat Road is tight and enforced, which limits where a lorry can stand.",
+    "serviceAngles": {
+      "hdb-moving": "The HDB along Marine Parade Central, Marine Terrace and Marine Crescent is 1970s reclaimed-land development, mainly 3-, 4- and 5-room with point blocks in the mix. Point blocks have small central lift cores, so lift dimensions are worth checking before you assume a wardrobe goes in upright. Parking is the other issue: East Coast Road and the surrounding streets are tight and enforced, so where the lorry stands is agreed in advance rather than found on the morning.",
+      "condo-moving": "This is a distinctive condo market. Alongside the large established developments there is a lot of older low-rise stock along Still Road, Amber Road and Mountbatten, some of it without a service lift and a few without any lift. Redevelopment along Amber and Meyer also means a steady flow of move-outs on deadlines set by an en bloc completion date. Parking on the surrounding streets is tight and enforced, so the loading position is agreed in advance.",
+      "disposal-and-moving": "Two sources of disposal volume here. The 1970s HDB along Marine Terrace and Marine Crescent is long-tenure stock being cleared, and the older private blocks along Still Road, Amber Road and Mountbatten include walk-ups with no lift. Redevelopment along Amber and Meyer adds move-outs on a fixed en bloc deadline, where the whole contents of a large older unit has to be gone by a date that cannot move."
+    },
+    "notes": "High confidence. En-bloc-driven move-out volume along Amber and Meyer is worth revisiting periodically.",
+    "populationTier": "small"
+  },
+  {
+    "slug": "pasir-ris",
+    "name": "Pasir Ris",
+    "adjacentSlugs": [
+      "tampines",
+      "bedok",
+      "punggol"
+    ],
+    "housingProfile": "A 1990s eastern town, low-rise by Singapore standards and generously spaced. The dominant stock is 4- and 5-room flats with a notably high executive maisonette count around Pasir Ris Streets 11 to 21, so internal staircases inside the unit are common here rather than exceptional. Newer BTO sits at Pasir Ris Central and along the Sungei Api Api edge. Private stock includes condominiums on Elias Road and Pasir Ris Drive, plus landed housing at Pasir Ris Heights and Jalan Loyang Besar. Wide estate roads and surface carparks make lorry access materially easier here than in most mature towns.",
+    "serviceAngles": {
+      "hdb-moving": "This is one of the easier towns in Singapore to move out of. Estate roads are wide, carparks are largely at surface level and precincts are generously spaced, so the lorry usually gets close to the block and the carry is short. What raises the price instead is the stock itself: a high executive maisonette count around Pasir Ris Streets 11 to 21, which means an internal staircase inside the unit and typically a 14ft or 24ft lorry with four movers.",
+      "condo-moving": "Condos here sit along Elias Road and Pasir Ris Drive, mostly low- to mid-rise developments on generous plots. That is close to ideal for moving: the lorry can usually get near the block, the carry is short and the loading bays are real rather than nominal. Management offices still require the permit, the deposit and a booked service lift window, and most restrict moving to weekday hours, so the paperwork timeline is what to plan around.",
+      "disposal-and-moving": "The executive maisonettes around Pasir Ris Streets 11 to 21 are the big disposal jobs in this town, because an upper floor of furniture comes down an internal staircase before it reaches the lift. Everything after that is easy by Singapore standards: wide estate roads, surface carparks and short carries mean the lorry gets close to the block, so more of your money goes on the dismantling and less on walking items to the kerb."
+    },
+    "notes": "High confidence. Easy vehicle access is a genuine positive differentiator for this town.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "punggol",
+    "name": "Punggol",
+    "adjacentSlugs": [
+      "sengkang",
+      "pasir-ris",
+      "hougang",
+      "tampines"
+    ],
+    "housingProfile": "The newest large town before Tengah. Almost the entire stock is post-2010 BTO and Executive Condominium: 3-, 4- and 5-room flats at Punggol Field, Waterway, Northshore and Matilda, with handover waves still running. The practical consequence is that most jobs here are first moves into an empty unit, timed to follow renovation, and there is very little estate-clearance or downsizing work. Lifts and lobbies are new and generously sized, so the small-lift problem of mature towns does not arise. Loading bays are designed in, but new precincts often have renovation traffic competing for the same bays, which favours early-morning slots.",
+    "serviceAngles": {
+      "hdb-moving": "Nearly every HDB move in Punggol is a first move-in to an empty flat, timed to follow renovation rather than to follow a sale. That changes the job: there is nothing to clear, the destination is bare, and the crew is placing rather than untangling. Lifts and lobbies are new and take furniture upright. The competition is for the loading bay, because several units in the same block are often renovating and moving in the same week, which is why early slots go first.",
+      "condo-moving": "Punggol's private stock is dominated by executive condominiums and waterfront developments, nearly all of it recent. New buildings mean large service lifts, proper loading bays and management offices that handle move-in permits constantly, so the process is well-worn. The competition is the point: whole blocks hand over at once, so lift slots and bays are contested by movers and renovation contractors in the same weeks. Book the window before you commit to a moving date.",
+      "disposal-and-moving": "Punggol is the town where disposal usually is not about clearing an old flat. Most moves here are first move-ins, so the disposal side tends to be renovation-adjacent leftovers and packaging, or furniture brought from a previous home that turns out not to fit the new layout. Note that renovation debris is a separate licensed waste stream and cannot go on a household disposal load, so that portion needs its own contractor."
+    },
+    "notes": "High confidence. First-move-in profile shapes both the copy and the likely lead mix.",
+    "populationTier": "large"
+  },
+  {
+    "slug": "queenstown",
+    "name": "Queenstown",
+    "adjacentSlugs": [
+      "bukit-merah",
+      "clementi",
+      "bukit-timah",
+      "central-area"
+    ],
+    "housingProfile": "Singapore's first satellite town, and the age spread is the widest of any. Old small-flat blocks remain at Tanglin Halt, Commonwealth and Mei Ling, many already through or earmarked for SERS, standing alongside modern high-rise at Dawson and Ghim Moh infill. The private component is strong: condominiums along Commonwealth Avenue, Holland Village and Queensway, with landed housing at Chip Bee Gardens and Holland Grove. Older Commonwealth Drive blocks combine narrow corridors, small lift cars and limited kerbside space. Expatriate turnover around Holland Village generates a steady flow of partial and internationally originated moves.",
+    "serviceAngles": {
+      "hdb-moving": "Queenstown covers the widest age range of any town, and the two ends behave differently. The old blocks at Tanglin Halt, Commonwealth and Mei Ling have narrow corridors, small lift cars and very little kerbside room, and many of these moves are SERS rehousing. The modern high-rise at Dawson and the Ghim Moh infill is a straightforward lift-served job. A vendor quoting Queenstown without asking which of the two you are in has not understood the town.",
+      "condo-moving": "Condo stock spans Commonwealth Avenue, Queensway and out towards Holland Village, mixing tall recent developments with older low-rise blocks. Expatriate turnover around Holland Village produces a lot of lease-end moves, often part-load and often on a fixed handover date that cannot slip. The newer high-rise is straightforward; the older Commonwealth-area developments have tighter internal roads and smaller bays, so confirm what the loading arrangement actually is before assuming a 14ft lorry fits.",
+      "disposal-and-moving": "SERS is the defining factor. Old blocks at Tanglin Halt, Commonwealth and Mei Ling have produced sustained rehousing, and those are genuine whole-flat clearances after decades of occupation, with narrow corridors and small lift cars to work through. The modern Dawson and Ghim Moh blocks are the opposite, straightforward and lift-friendly. Holland Village lease-ends add a steady stream of smaller, faster disposal jobs on fixed handover dates."
+    },
+    "notes": "High confidence.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "sembawang",
+    "name": "Sembawang",
+    "adjacentSlugs": [
+      "yishun",
+      "woodlands"
+    ],
+    "housingProfile": "A younger northern town, largely built from the late 1990s onward. The dominant stock is 4- and 5-room flats around Sembawang Drive, Canberra and Wellington Circle, with newer BTO at Canberra Crescent and towards Bukit Canberra. There is very little old HDB. Private stock is modest, mainly condominiums along Canberra Drive and Sembawang Road, plus a black-and-white and landed pocket near Sembawang Park and Jalan Mempurong. Distance from the island centre is the practical factor: some vendors price extra travel time into a job here, so consolidating a move into a single lorry load matters more than it does elsewhere.",
+    "serviceAngles": {
+      "hdb-moving": "Stock here is mostly late-1990s onward, 4- and 5-room around Sembawang Drive, Canberra and Wellington Circle, with newer BTO towards Bukit Canberra. Blocks are modern, lifts are usable and access is generally uncomplicated, so the job itself is straightforward. The cost driver is geography. Sembawang sits at the far north, and some vendors price additional travel time into a job here, which makes consolidating everything into one lorry load more worthwhile than it would be centrally.",
+      "condo-moving": "Private stock is modest and concentrated along Canberra Drive and Sembawang Road, with a strong showing of executive condominiums. ECs are MCST-managed, so expect the same permit, deposit and lift booking as any private condo. Buildings are newer and access is generally good. The distance factor that affects HDB moves here applies equally: some vendors price extra travel time for the far north, so a single well-planned load beats two trips more than it would centrally.",
+      "disposal-and-moving": "Stock here is newer, so full estate clearances are less common than in the mature towns and most disposal is a partial declutter alongside a move. Lifts are modern and take bulky items whole, which keeps the handling cheap. The cost sits in the travel: Sembawang is at the far north and the run to a licensed disposal facility is longer, so it is worth getting everything into a single load rather than paying for two trips."
+    },
+    "notes": "Medium-high confidence on the travel-time pricing point. Confirm with the vendor network before it is stated as fact in copy.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "sengkang",
+    "name": "Sengkang",
+    "adjacentSlugs": [
+      "punggol",
+      "hougang",
+      "ang-mo-kio",
+      "yishun"
+    ],
+    "housingProfile": "A large, young north-eastern town built mostly through the 2000s across Compassvale, Rivervale, Anchorvale and Fernvale, with infill continuing. The stock is predominantly 4- and 5-room, with few small flats and no executive maisonettes at all, because that flat type stopped being built before the town matured. Significant Executive Condominium and private condominium stock sits along Fernvale Link, Sengkang East and Rivervale Crescent, all MCST-managed and requiring service lift booking and a deposit. Blocks are new with large lifts. LRT viaducts and single-lane precinct roads constrain lorry turning in Fernvale and Anchorvale.",
+    "serviceAngles": {
+      "hdb-moving": "Sengkang has no executive maisonettes, because the flat type stopped being built before the town matured, so the internal-staircase problem common in Hougang next door simply does not arise here. Blocks are 2000s with large lifts that take furniture upright. What does constrain the job is the road layout: single-lane precinct roads under the LRT viaduct through Fernvale and Anchorvale leave a 24ft lorry very little room to turn, so vendors often prefer two 14ft trips.",
+      "condo-moving": "Sengkang has a substantial executive condominium and private condo population along Fernvale Link, Sengkang East and Rivervale Crescent, which catches people out. Moving between an HDB flat and an EC in the same town means the destination has an MCST, a permit, a deposit and a booked service lift while the origin has none of that. Add single-lane precinct roads under the LRT viaduct and a 24ft lorry often has nowhere to turn.",
+      "disposal-and-moving": "A young town, so this is rarely an estate clearance. Most disposal here runs alongside an upsize within the north-east or a move into one of the executive condominiums, and it is furniture that no longer suits rather than decades of accumulation. Blocks are new with large lifts, so items go down whole and dismantling is less of the bill. Single-lane precinct roads under the LRT do limit where the lorry can stand."
+    },
+    "notes": "High confidence. The absence of maisonettes is a real structural fact and distinguishes it from Hougang next door.",
+    "populationTier": "very-large"
+  },
+  {
+    "slug": "serangoon",
+    "name": "Serangoon",
+    "adjacentSlugs": [
+      "hougang",
+      "ang-mo-kio",
+      "bishan",
+      "toa-payoh"
+    ],
+    "housingProfile": "A mid-sized mature town. The HDB along Serangoon North Avenues 1 to 4 and Serangoon Central is mainly 1980s 4- and 5-room with executive maisonettes in the North Avenue stretch. What defines the town for movers is the private component. Serangoon Gardens is an extensive two-storey landed estate on narrow lanes with no turning space, so a 24ft lorry usually has to stage on the main road and shuttle. There are also older private walk-up apartments along Upper Serangoon Road with no lift, and newer condominiums clustered near Serangoon MRT and Lorong Chuan.",
+    "serviceAngles": {
+      "hdb-moving": "The HDB here is mainly 1980s 4- and 5-room along Serangoon North Avenues 1 to 4, with executive maisonettes through the North Avenue stretch that add an internal staircase inside the unit. Blocks are lift-served and reasonably accessible. The thing worth stating in your enquiry is whether the other end of the move is in Serangoon Gardens, because a landed destination on those narrow lanes changes the vehicle plan even when the origin is a straightforward flat.",
+      "condo-moving": "Condos cluster near Serangoon MRT and along Lorong Chuan, including several large recent developments. Those are well-equipped for moving. The complication in this town is usually the other address: Serangoon Gardens sits next door, and a move between a condo here and a landed home there needs two entirely different vehicle plans on the same day, because the Gardens lanes have no turning space and a 24ft lorry has to stage on the main road.",
+      "disposal-and-moving": "The HDB side produces ordinary mature-estate clearances, with maisonettes along Serangoon North Avenue adding an internal staircase. The Serangoon Gardens landed side is where it gets expensive: much larger volumes, no lift, and lanes with no turning space, so a 24ft lorry stages on the main road and everything is shuttled. Older private walk-ups along Upper Serangoon Road have no lift either, which puts the whole load on the staircase."
+    },
+    "notes": "High confidence. Serangoon Gardens access is the key local hook.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "tampines",
+    "name": "Tampines",
+    "adjacentSlugs": [
+      "bedok",
+      "pasir-ris",
+      "punggol"
+    ],
+    "housingProfile": "One of the largest towns, built through the 1980s and 1990s with a wide flat mix. Substantial 4- and 5-room stock runs across Tampines Streets 11 to 91, alongside a large executive and maisonette population and newer BTO at Tampines North and Tampines GreenRidges. Private stock is meaningful, with condominiums along Tampines Avenues 1 and 7 and towards Simei. Precincts are built around multi-storey carparks linked by sheltered walkways, so the distance from a surface loading bay to a lift lobby is frequently long. Tampines Avenues 4 and 5 and the expressway junctions congest outside the mid-morning window.",
+    "serviceAngles": {
+      "hdb-moving": "Tampines has one of the widest flat mixes in Singapore, from 4-room through to a large executive and maisonette population, so the lorry size genuinely varies rather than defaulting to a 14ft. The consistent local factor is layout: precincts are built around multi-storey carparks joined by sheltered linkways, and the distance from a surface loading bay to the lift lobby is frequently long. Avenues 4 and 5 congest outside mid-morning, which pushes most jobs to an early start.",
+      "condo-moving": "Private stock runs along Tampines Avenues 1 and 7 and out towards Simei, including some very large recent developments with several hundred units. Big new condos have multiple service lifts and proper bays, but the sheer unit count means lift slots are booked out well ahead, particularly at month end. The wider Tampines problem applies here too: expressway junctions and Avenues 4 and 5 congest outside mid-morning, so an early start is worth more than a long day.",
+      "disposal-and-moving": "Long-tenure flats and a large executive and maisonette population make full-load clearances common here, with an internal staircase in the maisonettes. The layout is what adds the hours: precincts are built around multi-storey carparks joined by sheltered linkways, so the crew walks a long way between the lift lobby and the lorry with every disposed item. Combine that with congestion outside mid-morning and an early start is worth booking."
+    },
+    "notes": "High confidence.",
+    "populationTier": "very-large"
+  },
+  {
+    "slug": "tengah",
+    "name": "Tengah",
+    "adjacentSlugs": [
+      "jurong-east",
+      "jurong-west",
+      "choa-chu-kang",
+      "bukit-batok"
+    ],
+    "housingProfile": "Singapore's newest town, with the first residents receiving keys in the Plantation district in late 2023. The stock is entirely new BTO across Plantation, Garden and Brickland precincts, covering 2- to 5-room flats, with no resale market of any depth, no older blocks and no landed housing at all. Practically every move here is a first move-in to an empty unit immediately after renovation. The car-lite estate design replaces kerbside standing with underground carparks carrying height limits and designated loading points, and access routes are still partly construction-affected and shift between handover phases.",
+    "serviceAngles": {
+      "hdb-moving": "Every HDB move in Tengah is a first move-in, because the town has no older blocks and effectively no resale depth. The flat is empty, the lifts are new and nothing needs clearing, which makes the handling side simple. The access side is not. Car-lite estate design replaces kerbside standing with underground carparks that carry height limits and designated loading points, and the routes between precincts still change between handover phases, so vendors confirm the approach shortly before the day.",
+      "condo-moving": "Tengah's private stock is only now arriving, in the form of its first executive condominiums, so almost every condo move here is a first move-in rather than a move-out. Management offices are newly established and the permit process is still bedding in, which cuts both ways: procedures are simple, but nobody has years of practice. Car-lite estate design means underground loading points with height limits rather than kerbside standing, so confirm clearance before booking a 14ft lorry.",
+      "disposal-and-moving": "Almost nothing in Tengah is an estate clearance, because there is no older stock to clear. Disposal here is renovation-adjacent: packaging, offcuts and furniture that turned out not to suit a new flat. Renovation and construction debris is a separate licensed waste stream and cannot be mixed into a household load, so be clear about which you have. Car-lite design means designated underground loading points with height limits rather than kerbside standing."
+    },
+    "notes": "High confidence on handover timing and car-lite design. Re-check access notes each year while the town is still building out.",
+    "populationTier": "small"
+  },
+  {
+    "slug": "toa-payoh",
+    "name": "Toa Payoh",
+    "adjacentSlugs": [
+      "bishan",
+      "kallang",
+      "central-area",
+      "serangoon",
+      "ang-mo-kio",
+      "bukit-merah",
+      "geylang"
+    ],
+    "housingProfile": "One of the oldest towns, developed through the 1960s and 1970s, with a very high share of 3- and 4-room flats around Lorongs 1 to 8 and older small-flat blocks at Toa Payoh East. Newer high-rise infill has arrived at Bidadari and Toa Payoh Crest. In the 1970s slab blocks the lift cars are small and the corridors narrow, so large sofas, fridges and king mattresses regularly go down the staircase instead of the lift. Private stock includes condominiums along Lorong 6 and Braddell. Internal roads are narrow one-way loops with heavy parking demand right through the day.",
+    "serviceAngles": {
+      "hdb-moving": "This is the town where lift dimensions matter most. The 1970s slab blocks around Lorongs 1 to 8 have small lift cars and narrow corridors, so large sofas, fridges and king mattresses routinely go down the staircase rather than into the lift, and that is manpower and hours rather than a rounding error. Add narrow one-way internal loops with heavy all-day parking demand, and where the lorry stands becomes part of the quote rather than an afterthought.",
+      "condo-moving": "Condos here sit along Lorong 6, towards Braddell and in the newer Bidadari developments. The Bidadari stock is recent, well-provisioned and used to handling move-ins; the older Lorong 6 developments are the ones to check, because a 1990s condo may run one service lift for the whole block. The town-wide problem also applies: narrow one-way internal loops with heavy all-day parking demand leave little room for a lorry that arrives before its slot.",
+      "disposal-and-moving": "One of the oldest towns and one of the heaviest for disposal. Flats occupied since the 1960s and 1970s hold a great deal, and the small lift cars in the slab blocks around Lorongs 1 to 8 mean sofas, wardrobes and fridges come down the staircase rather than the lift. That is the single biggest driver of the price here. Narrow one-way internal loops also limit where the lorry can stand while it happens."
+    },
+    "notes": "High confidence. Small lifts plus narrow one-way loops is the town-specific cost driver.",
+    "populationTier": "medium"
+  },
+  {
+    "slug": "woodlands",
+    "name": "Woodlands",
+    "adjacentSlugs": [
+      "sembawang",
+      "yishun",
+      "choa-chu-kang"
+    ],
+    "housingProfile": "A very large northern town built mainly through the 1990s. The dominant stock is 4- and 5-room flats across Woodlands Avenues 1 to 9, Marsiling and Admiralty, with an executive and maisonette population in the older Marsiling and Woodlands Circle stretch and newer BTO at Woodlands South and Champions Way. Private stock is limited, amounting to a few condominiums along Woodlands Avenue 6 and a small landed pocket near Woodlands Road. Proximity to the Causeway puts heavy commercial and cross-border traffic on Woodlands Avenue 2 and the approach roads, so vendors generally avoid late-afternoon slots here.",
+    "serviceAngles": {
+      "hdb-moving": "Mostly 4- and 5-room across Woodlands Avenues 1 to 9, Marsiling and Admiralty, with an executive and maisonette population in the older Marsiling and Woodlands Circle stretch. The blocks themselves are 1990s and straightforward. The scheduling is not: Causeway traffic loads the approach roads heavily from mid-afternoon, so vendors will push a Woodlands job to a morning slot, and a late booking that runs long can leave the crew sitting in queues rather than working.",
+      "condo-moving": "Private stock is limited in a town that is overwhelmingly HDB, sitting mainly along Woodlands Avenue 6 and in a handful of executive condominium developments. Those ECs are MCST-managed, so the permit, deposit and lift booking apply in full. Buildings are newer and access on site is generally easy. Scheduling is the local constraint: Causeway traffic loads the approach roads from mid-afternoon, so a morning lift slot is worth asking for specifically.",
+      "disposal-and-moving": "A large 1990s town now reaching the age where households turn over, so full-flat clearances are increasingly common, particularly in the older Marsiling and Woodlands Circle stretch where maisonettes add an internal staircase. Blocks themselves are straightforward and lift-friendly. Scheduling is the local factor: Causeway traffic loads the approach roads from mid-afternoon, and a disposal job that needs a second run to the facility should start early to avoid it."
+    },
+    "notes": "High confidence. Causeway traffic shaping the slot choice is a real and locally recognised constraint.",
+    "populationTier": "very-large"
+  },
+  {
+    "slug": "yishun",
+    "name": "Yishun",
+    "adjacentSlugs": [
+      "sembawang",
+      "ang-mo-kio",
+      "sengkang",
+      "woodlands"
+    ],
+    "housingProfile": "A large 1980s northern town. The dominant stock is 3-, 4- and 5-room flats across Yishun Ring Road and Avenues 1 to 11, with executive maisonettes in the Avenue 4 and 6 stretch and extensive newer BTO at Yishun Avenue 1 and towards Khatib. The older blocks have been through upgrading but retain small lift cars and narrow corridors, so bulky items still go by staircase. Private stock is limited, mainly condominiums along Yishun Avenue 9 and Orchid Park at Yishun Street 81. The ring-road layout makes precinct access one-directional, and a missed entry costs a full detour.",
+    "serviceAngles": {
+      "hdb-moving": "A large 1980s town, mostly 3-, 4- and 5-room across Yishun Ring Road and Avenues 1 to 11, with executive maisonettes through the Avenue 4 and 6 stretch. The older blocks have been upgraded but still have small lift cars and narrow corridors, so bulky items go by staircase. The ring-road layout is the local trap: precinct access is one-directional, and a lorry that misses its entry loses real time going all the way round again.",
+      "condo-moving": "Condo stock is thin relative to the size of the town, concentrated along Yishun Avenue 9 and in a few established developments off Yishun Street 81, plus several executive condominiums. The ECs matter because they are MCST-managed, so a move from an HDB flat to an EC a few streets away suddenly involves a permit, a deposit and a booked lift. Precinct access is one-directional on the ring road, so confirm the entry point with the vendor.",
+      "disposal-and-moving": "Mature 1980s stock means real clearance volumes, and the older blocks retain small lift cars and narrow corridors, so bulky items are dismantled or walked down. Maisonettes through the Avenue 4 and 6 stretch add an internal staircase on top. The ring-road layout is the practical annoyance: precinct access is one-directional, so a lorry making a second run to the disposal facility and back loses time going the long way round."
+    },
+    "notes": "High confidence. Ring-road one-directional access is specific to this town.",
+    "populationTier": "very-large"
+  }
+]

@@ -1,0 +1,67 @@
+---
+/**
+ * Footer. Carries the full NAP and the registered entity name and UEN, which
+ * is a compliance requirement rather than a design choice -- do not move or
+ * abbreviate them.
+ */
+import { publishedServices, company, isPlaceholder } from '../lib/data';
+import { paths } from '../lib/urls';
+
+const year = 2026;
+const addressParts = [company.address.street, company.address.unit].filter((p) => !isPlaceholder(p));
+---
+
+<footer class="mt-24 border-t border-line bg-navy text-paper">
+  <div class="wrap py-14">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <p class="font-serif text-xl font-semibold">{company.tradingName}</p>
+        <p class="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-paper/70">
+          {company.businessModelStatement}
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow-light">Services</p>
+        <ul class="mt-3 space-y-1.5 text-[0.95rem]">
+          {
+            publishedServices.map((service) => (
+              <li>
+                <a href={paths.service(service.slug)} class="text-paper/80 no-underline hover:text-white">
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow-light">Company</p>
+        <ul class="mt-3 space-y-1.5 text-[0.95rem]">
+          <li><a href={paths.vendorStandards} class="text-paper/80 no-underline hover:text-white">How we vet movers</a></li>
+          <li><a href={paths.pricing} class="text-paper/80 no-underline hover:text-white">Pricing guide</a></li>
+          <li><a href={paths.areas} class="text-paper/80 no-underline hover:text-white">Areas we cover</a></li>
+          <li><a href={paths.about} class="text-paper/80 no-underline hover:text-white">About</a></li>
+          <li><a href={paths.contact} class="text-paper/80 no-underline hover:text-white">Contact</a></li>
+          <li><a href={paths.privacy} class="text-paper/80 no-underline hover:text-white">Privacy policy</a></li>
+          <li><a href={paths.terms} class="text-paper/80 no-underline hover:text-white">Terms of service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Registered entity, UEN and NAP. Required in full. -->
+    <div class="mt-12 border-t border-white/15 pt-8 text-[0.875rem] leading-relaxed text-paper/65">
+      <address class="not-italic">
+        <strong class="font-semibold text-paper/90">{company.legalName}</strong> trading as {company.tradingName}<br />
+        UEN {company.uen}<br />
+        {addressParts.length > 0 && <>{addressParts.join(', ')}<br /></>}
+        {!isPlaceholder(company.address.postalCode) && <>Singapore {company.address.postalCode}<br /></>}
+      </address>
+      <p class="mt-3">{company.operatingHours.map((h) => h.label).join(' · ')}</p>
+      <p class="mt-3">
+        Established {company.yearEstablished}. Singapore only. &copy; {year} {company.legalName}.
+      </p>
+    </div>
+  </div>
+</footer>
