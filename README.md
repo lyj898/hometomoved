@@ -209,12 +209,16 @@ Three hard rules, each enforced by `scripts/audit-build.mjs`:
 The site publishes **no UEN, address, phone or email**. The enquiry form is the only channel, and the
 privacy and terms pages route data-protection and legal questions through it.
 
-This is enforced:  fails the build if , , ,  or
- reappear in . The Organization JSON-LD carries name, legalName, url,
-foundingDate and areaServed only.
+This is enforced: `scripts/validate-data.mjs` fails the build if `uen`, `phone`, `email`, `address` or
+`whatsappNumber` reappear in `company.json`. The Organization JSON-LD carries `name`, `legalName`, `url`,
+`foundingDate` and `areaServed` only — no `identifier`, `telephone`, `email` or `address`.
 
-The one exception is the form action, which necessarily contains the FormSubmit destination. Switching
- to the hashed token endpoint removes the address from the page source.
+The one exception is the form action, which necessarily contains the FormSubmit destination. Setting
+`PUBLIC_FORM_ENDPOINT` to the hashed token endpoint removes the address from the page source.
+
+**PDPA note:** section 11(5) of the PDPA requires an organisation to make available the business contact
+information of the individual responsible for data protection. Routing those requests through the enquiry
+form may not satisfy that. Worth checking before relying on it.
 
 ---
 
