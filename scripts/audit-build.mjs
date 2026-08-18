@@ -175,6 +175,30 @@ for (const field of ['title', 'description']) {
   }
 }
 
+// -- lead form -----------------------------------------------------------------
+// The whole site exists to produce leads, so the form is checked in the built
+// output rather than trusted. An empty action posts back to the page itself and
+// loses every enquiry silently -- which is exactly what shipped once, because an
+// unset CI variable arrives as '' and `??` does not catch it.
+{
+  const contact = join(DIST, 'contact', 'index.html');
+  const html = readFileSync(contact, 'utf8');
+  const form = html.match(/<form[^>]*id="lead-form"[^>]*>/)?.[0] ?? '';
+  if (!form) {
+    errors.push('/contact/: lead form not found');
+  } else {
+    const action = form.match(/action="([^"]*)"/)?.[1] ?? '';
+    if (!action) errors.push('/contact/: lead form has no action — leads would post back to the page');
+    else if (!action.startsWith('https://')) errors.push(`/contact/: lead form action is not https: ${action}`);
+    if (!/method="POST"/i.test(form)) errors.push('/contact/: lead form is not method=POST');
+  }
+  if (!/name="PDPA consent"/.test(html)) errors.push('/contact/: PDPA consent field missing');
+  if (/name="PDPA consent"[^>]*\bchecked\b/.test(html)) {
+    errors.push('/contact/: PDPA consent is pre-ticked — it must default to unticked');
+  }
+  if (!/name="_next"/.test(html)) errors.push('/contact/: no _next redirect, so form_submit would never fire');
+}
+
 // -- sitemap -------------------------------------------------------------------
 const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);

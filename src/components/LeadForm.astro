@@ -44,7 +44,16 @@ interface Props {
 }
 const { serviceName, townName } = Astro.props;
 
-const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? 'https://formsubmit.co/lyj898@gmail.com';
+// ?? is wrong here: CI passes an UNSET repo variable as an empty string, not
+// undefined, which produced action="" on the live site and silently posted
+// every lead back to /contact/. Fall back on any blank value, then assert.
+const configured = import.meta.env.PUBLIC_FORM_ENDPOINT;
+const endpoint = (configured && configured.trim()) || 'https://formsubmit.co/lyj898@gmail.com';
+if (!endpoint.startsWith('https://')) {
+  throw new Error(
+    `Lead form endpoint is not an https URL: "${endpoint}". Check PUBLIC_FORM_ENDPOINT.`,
+  );
+}
 const siteUrl = 'https://hometomoved.com';
 
 // Labels come from services.json so a CTA arriving with ?service=<name>
