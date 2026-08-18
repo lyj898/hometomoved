@@ -158,8 +158,16 @@ town. The move-type cards are generated from `services.json`, so those labels al
 
 ### FormSubmit
 
-Posts natively to FormSubmit, which emails the lead and redirects to `/thank-you/`. Native POST rather than
-`fetch` so there is no CORS handling and no way for a network error to silently swallow a lead.
+Submitted by `fetch` to FormSubmit's JSON endpoint (`/ajax/<target>`, derived from
+`PUBLIC_FORM_ENDPOINT`) and acknowledged **inline** — the user never leaves the site.
+
+An earlier version posted natively and relied on FormSubmit redirecting back via `_next`. When that
+redirect did not happen the user was stranded on formsubmit.co with no confirmation. Sending it ourselves
+keeps the acknowledgement on our page and lets a real failure be reported as a failure, with the answers
+preserved so the user can retry.
+
+The form keeps its `method` and `action`, so with JavaScript off it still posts natively and `_next`
+carries the user to `/thank-you/`, which is why that page still exists.
 
 **Activation is required once.** The first submission to a new address triggers a confirmation email from
 FormSubmit; click *Activate Form* in it and submissions start being delivered.
