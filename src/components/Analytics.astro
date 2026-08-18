@@ -13,7 +13,14 @@
  * There is deliberately no generic button_click event, and nothing here should
  * be marked a key event unless it has a real data path behind it.
  */
-const measurementId = import.meta.env.PUBLIC_GA4_ID;
+// CI passes an unset repo variable as '' rather than undefined, so trim to a
+// single falsy value. A malformed ID throws instead of silently collecting
+// nothing -- the same failure mode that shipped an empty form action.
+const configuredId = (import.meta.env.PUBLIC_GA4_ID ?? '').trim();
+if (configuredId && !/^G-[A-Z0-9]{6,12}$/.test(configuredId)) {
+  throw new Error(`PUBLIC_GA4_ID is not a valid GA4 measurement ID: "${configuredId}"`);
+}
+const measurementId = configuredId || null;
 ---
 
 {
