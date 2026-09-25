@@ -4,7 +4,7 @@
  * is written into this template.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { publishedServices, company } from '../lib/data';
+import { publishedServices, company, publishedPropertyTypes } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
 
@@ -63,4 +63,19 @@ const crumbs: Crumb[] = [
       );
     })
   }
+
+  <h2>Moving cost by property type</h2>
+  <p>
+    Most people want the number for their own flat rather than for a service. These break the same figures
+    down by what you are actually moving out of, with the typical lorry size, crew and hours for each.
+  </p>
+  <ul>
+    {
+      publishedPropertyTypes.map((pt) => (
+        <li>
+          <a href={paths.property(pt.slug)}>Moving a {pt.name}</a> &mdash; {pt.lorry}, {pt.crew}
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

@@ -10,7 +10,8 @@ import servicesJson from '../data/services.json';
 import locationsJson from '../data/locations.json';
 import combosJson from '../data/combos.json';
 import companyJson from '../data/company.json';
-import type { Service, Location, Combo, Company } from '../types';
+import propertyTypesJson from '../data/property-types.json';
+import type { Service, Location, Combo, Company, PropertyType, PriceRef, PriceTier } from '../types';
 
 // JSON modules widen string literals (e.g. 'SG' becomes string), so the shape
 // is asserted here once. scripts/validate-data.mjs is what actually guards it,
@@ -19,6 +20,7 @@ export const services = servicesJson as unknown as Service[];
 export const locations = locationsJson as unknown as Location[];
 export const combos = combosJson as unknown as Combo[];
 export const company = companyJson as unknown as Company;
+export const propertyTypes = propertyTypesJson as unknown as PropertyType[];
 
 /* -------------------------------------------------------------- lookups -- */
 
@@ -92,4 +94,29 @@ export function relatedServices(service: Service): Service[] {
  */
 export function renderH1(service: Service, townName?: string): string {
   return service.h1Template.replace('{town}', townName ?? 'Singapore');
+}
+
+/* ------------------------------------------------------ property types -- */
+
+/** Property-type pages that may be built and enter the sitemap. */
+export const publishedPropertyTypes = propertyTypes.filter((p) => p.published);
+
+export function getPropertyType(slug: string): PropertyType {
+  const found = propertyTypes.find((p) => p.slug === slug);
+  if (!found) throw new Error(`Unknown property type slug: ${slug}`);
+  return found;
+}
+
+/**
+ * Resolve a priceRef to the actual tier in services.json. Throws rather than
+ * rendering a blank, so a renamed tier label fails the build instead of
+ * silently dropping a price off a page.
+ */
+export function resolvePriceRef(ref: PriceRef): { service: Service; tier: PriceTier } {
+  const service = getService(ref.serviceSlug);
+  const tier = service.priceTiers.find((t) => t.label === ref.tierLabel);
+  if (!tier) {
+    throw new Error(`No priceTier "${ref.tierLabel}" on service "${ref.serviceSlug}"`);
+  }
+  return { service, tier };
 }

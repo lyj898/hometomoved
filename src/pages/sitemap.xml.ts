@@ -9,7 +9,7 @@
  * built route, including the unreleased batch pages.
  */
 import type { APIRoute } from 'astro';
-import { publishedServices, publishedCombos } from '../lib/data';
+import { publishedServices, publishedCombos, publishedPropertyTypes } from '../lib/data';
 import { canonical, paths, BATCH_0_PATHS } from '../lib/urls';
 
 export const GET: APIRoute = () => {
@@ -18,6 +18,8 @@ export const GET: APIRoute = () => {
     ...BATCH_0_PATHS,
     // Batch 1: service pages
     ...publishedServices.map((service) => paths.service(service.slug)),
+    // Property-type pages
+    ...publishedPropertyTypes.map((pt) => paths.property(pt.slug)),
     // Batch 2 and 3: location pages, released by flipping `published` in combos.json
     ...publishedCombos.map((combo) => paths.location(combo.serviceSlug, combo.townSlug)),
   ];

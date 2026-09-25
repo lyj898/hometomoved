@@ -23,6 +23,7 @@ export const paths = {
   terms: '/terms/',
   service: (serviceSlug: string): string => `/moving/${serviceSlug}/`,
   location: (serviceSlug: string, townSlug: string): string => `/moving/${serviceSlug}/${townSlug}/`,
+  property: (typeSlug: string): string => `/property/${typeSlug}/`,
 } as const;
 
 /** Batch 0: the static pages that ship first and are always in the sitemap. */

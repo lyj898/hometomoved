@@ -1,0 +1,199 @@
+[
+  {
+    "slug": "hdb-2-room",
+    "name": "2-room HDB",
+    "category": "hdb",
+    "floorAreaSqm": {
+      "min": 36,
+      "max": 47
+    },
+    "lorry": "10ft",
+    "crew": "2 movers",
+    "hours": {
+      "min": 2,
+      "max": 4
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "hdb-moving",
+        "tierLabel": "2-room flat"
+      }
+    ],
+    "movingNotes": "The smallest job on the board, and the one most often over-quoted. A 2-room Flexi holds a bed, a wardrobe, a sofa and a fridge, which is a 10ft lorry and two movers, not a half-day operation. Most of these flats are recent BTO with new lifts, so the usual mature-estate problem of a sofa that will not fit the lift car rarely arises. Where it gets expensive is rental blocks in older estates, where the flat is the same size but the lift is small and the corridor narrow.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "hdb-3-room",
+    "name": "3-room HDB",
+    "category": "hdb",
+    "floorAreaSqm": {
+      "min": 60,
+      "max": 69
+    },
+    "lorry": "10ft or 14ft",
+    "crew": "2 to 3 movers",
+    "hours": {
+      "min": 3,
+      "max": 5
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "hdb-moving",
+        "tierLabel": "3-room flat"
+      }
+    ],
+    "movingNotes": "The flat type where lorry size genuinely goes either way. A lightly furnished 3-room fits a 10ft; one with a full living room, two bedrooms of furniture and a storeroom needs a 14ft, and the gap between those two quotes is real money. Most 3-room stock sits in mature estates built in the 1970s and early 1980s, so assume a small lift car until you have checked. That is the single question that decides whether your sofa rides down or gets carried down.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "hdb-4-room",
+    "name": "4-room HDB",
+    "category": "hdb",
+    "floorAreaSqm": {
+      "min": 83,
+      "max": 105
+    },
+    "lorry": "14ft",
+    "crew": "3 movers",
+    "hours": {
+      "min": 4,
+      "max": 6
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "hdb-moving",
+        "tierLabel": "4-room flat"
+      }
+    ],
+    "movingNotes": "The national default, and the size most published moving price lists quote against. If a mover advertises one headline figure with no flat type stated, it is almost always the 4-room number. A 14ft lorry and three movers covers the great majority of these jobs. The variable is not the flat, it is the block: a 4-room in a 1978 slab block with a small lift car and no lorry standing room is a materially different job from the identical flat in a 2019 block with a proper loading bay, and only one of those matches the advertised price.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "hdb-5-room",
+    "name": "5-room HDB",
+    "category": "hdb",
+    "floorAreaSqm": {
+      "min": 110,
+      "max": 123
+    },
+    "lorry": "14ft",
+    "crew": "3 to 4 movers",
+    "hours": {
+      "min": 5,
+      "max": 7
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "hdb-moving",
+        "tierLabel": "5-room flat"
+      }
+    ],
+    "movingNotes": "A 5-room usually still fits one 14ft lorry, but it is the point at which crew size starts to matter more than vehicle size. Three movers will do it; four will finish inside the day. These flats commonly carry a full storeroom and a household that has been in place long enough to accumulate, which is why 5-room moves are the most frequent candidates for combining disposal into the same trip. Ask for the quote with and without disposal before you decide.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "hdb-executive",
+    "name": "Executive HDB and maisonette",
+    "shortName": "Executive HDB",
+    "category": "hdb",
+    "floorAreaSqm": {
+      "min": 130,
+      "max": 150
+    },
+    "lorry": "14ft or 24ft",
+    "crew": "4 movers",
+    "hours": {
+      "min": 6,
+      "max": 9
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "hdb-moving",
+        "tierLabel": "Executive flat or maisonette"
+      }
+    ],
+    "movingNotes": "Flag the maisonette specifically when you ask for a quote, because it is the one HDB type with an internal staircase. Everything on the upper floor is carried down inside your own unit before it reaches the lift, which is a full extra handling stage that a same-sized single-storey executive flat does not have. Maisonette stock is concentrated in Bishan, Pasir Ris, Choa Chu Kang and the older Hougang avenues. Expect four movers and either a 24ft lorry or two 14ft trips.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "condo-1-2-bed",
+    "name": "1 and 2-bedroom condo",
+    "category": "condo",
+    "floorAreaSqm": null,
+    "lorry": "10ft or 14ft",
+    "crew": "2 to 3 movers",
+    "hours": {
+      "min": 3,
+      "max": 5
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "condo-moving",
+        "tierLabel": "1-bedroom or studio"
+      },
+      {
+        "serviceSlug": "condo-moving",
+        "tierLabel": "2-bedroom"
+      }
+    ],
+    "movingNotes": "Small unit, disproportionate admin. The physical job is smaller than a 3-room flat, but you still need the MCST move-in permit, the booked service lift window, the workers' identification submitted in advance and the refundable deposit — the same paperwork a four-bedroom penthouse needs. That is why a one-bedroom condo move often costs more than a larger HDB flat. Budget the time for the management office, not just the movers.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "condo-3-bed-plus",
+    "name": "3-bedroom condo and larger",
+    "shortName": "3-bedroom condo",
+    "category": "condo",
+    "floorAreaSqm": null,
+    "lorry": "14ft or 24ft",
+    "crew": "3 to 4 movers",
+    "hours": {
+      "min": 5,
+      "max": 8
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "condo-moving",
+        "tierLabel": "3-bedroom"
+      },
+      {
+        "serviceSlug": "condo-moving",
+        "tierLabel": "4-bedroom and penthouse"
+      }
+    ],
+    "movingNotes": "This is where the condo time window becomes the binding constraint. Most MCSTs allow moving only inside weekday office hours, so a three or four-bedroom unit has to be finished inside roughly four to eight hours — which means more crew over fewer hours rather than a relaxed full day. The other thing to settle early is the basement height limit. Where a carpark caps at 2.1 to 2.4 metres, a 14ft or 24ft lorry cannot enter at all and the crew shuttles from a surface bay, which is the most common reason a large condo move overruns its slot.",
+    "batch": 1,
+    "published": true
+  },
+  {
+    "slug": "landed",
+    "name": "Landed property",
+    "category": "landed",
+    "floorAreaSqm": null,
+    "lorry": "24ft, sometimes multiple trips",
+    "crew": "4 or more movers",
+    "hours": {
+      "min": 8,
+      "max": 16
+    },
+    "priceRefs": [
+      {
+        "serviceSlug": "landed-moving",
+        "tierLabel": "Two-storey terrace"
+      },
+      {
+        "serviceSlug": "landed-moving",
+        "tierLabel": "Semi-detached, three to four bedrooms"
+      }
+    ],
+    "movingNotes": "No lift, so every item travels by staircase at both ends, and a two or three-storey house means most pieces are carried at least one flight twice over. Volume is higher than any flat because landed homes have store rooms, attics, bomb shelters and yards that flats simply do not. The quiet cost is access: many landed lanes are single-carriageway with nowhere to turn, so a 24ft lorry stages on the main road and everything shuttles. Above a terrace, insist on a site survey rather than a quote from photos.",
+    "batch": 1,
+    "published": true
+  }
+]

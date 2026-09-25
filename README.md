@@ -124,6 +124,21 @@ No town-specific claim may be written into a template. If you find yourself typi
 
 ---
 
+## Property-type pages
+
+`/property/{type}/`, driven by `src/data/property-types.json` (8 types).
+
+Added because the sister site hometoclean.com ranks its equivalent `/property/{type}/` pages at roughly
+**position 3.9**, while every other page across both sites averages around 68. A second axis alongside
+services and towns, and the only page type in the portfolio with evidence behind it.
+
+**Prices are not stored here.** `priceRefs` point at tiers in `services.json` by service slug + tier
+label, resolved by `resolvePriceRef()`, which throws if a label is renamed. One place a figure can be wrong.
+
+`shortName` exists only for types whose `name` would push the title past 60 chars. The build throws
+otherwise.
+
+---
 ## Publication batches
 
 Batch membership is a flag in the data. Nothing is released by editing a template.

@@ -1,0 +1,218 @@
+---
+/**
+ * Property-type page: /property/{type}/
+ *
+ * A second axis alongside services and towns, added because the sister site
+ * hometoclean.com ranks its equivalent pages around position 3.9 while every
+ * other page across both sites averages roughly 68.
+ *
+ * Prices come from services.json via priceRefs. No figure is written here, so
+ * a price can only ever be wrong in one place.
+ */
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaBlock from '../../components/CtaBlock.astro';
+import type { PropertyType } from '../../types';
+import { publishedPropertyTypes, resolvePriceRef, company } from '../../lib/data';
+import { paths } from '../../lib/urls';
+import { assertTitle, assertDescription } from '../../lib/seo';
+import { serviceNode, type Crumb } from '../../lib/schema';
+
+export const getStaticPaths = (() =>
+  publishedPropertyTypes.map((pt) => ({
+    params: { type: pt.slug },
+    props: { pt },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  pt: PropertyType;
+}
+
+const { pt } = Astro.props;
+const path = paths.property(pt.slug);
+
+const crumbs: Crumb[] = [
+  { name: 'Home', path: paths.home },
+  { name: 'Pricing', path: paths.pricing },
+  { name: pt.name, path },
+];
+
+const priced = pt.priceRefs.map(resolvePriceRef);
+const primary = priced[0];
+
+/** Widest span across every tier this type maps to. */
+const lows = priced.map((p) => p.tier.min).filter((n): n is number => n !== null);
+const highs = priced.map((p) => p.tier.max).filter((n): n is number => n !== null);
+const spanLow = lows.length > 0 ? Math.min(...lows) : null;
+const spanHigh = highs.length > 0 ? Math.max(...highs) : null;
+
+const title = assertTitle(`${pt.shortName ?? pt.name} Moving Cost Singapore | HomeToMoved`, path);
+const description = assertDescription(
+  `What it costs to move a ${pt.name.toLowerCase()} in Singapore: typical lorry size, crew, hours and price range, plus what actually changes the quote.`,
+  path,
+);
+
+/** Services worth reading next, derived from the tiers this type references. */
+const relatedServices = [...new Map(priced.map((p) => [p.service.slug, p.service])).values()];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  crumbs={crumbs}
+  bare={true}
+  schemaNodes={primary ? [serviceNode(primary.service)] : []}
+>
+  <!-- ============================================================= hero -- -->
+  <section class="border-b border-line bg-paper-warm">
+    <div class="wrap py-14 md:py-20">
+      <p class="eyebrow">Moving cost by property type</p>
+      <h1 class="mt-3 max-w-3xl text-[length:var(--text-display)]">
+        What it costs to move a {pt.name} in Singapore
+      </h1>
+      {
+        spanLow !== null && (
+          <p class="mt-5 font-serif text-3xl text-brand">
+            {spanHigh !== null ? `S$${spanLow} – S$${spanHigh}` : `From S$${spanLow}`}
+          </p>
+        )
+      }
+      <p class="mt-2 max-w-2xl text-ink-soft">
+        Typically {pt.lorry}, {pt.crew}, {pt.hours.min} to {pt.hours.max} hours. Market rates, not our
+        prices &mdash; you pay the mover you choose.
+      </p>
+      <div class="mt-8">
+        <a href={paths.contact} class="btn btn-primary">Get quotes for your move</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== what's different -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="specifics">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.15fr]">
+      <div>
+        <p class="eyebrow">What changes at this size</p>
+        <h2 id="specifics" class="mt-3 text-[length:var(--text-h2)]">
+          Moving a {pt.name.toLowerCase()}
+        </h2>
+      </div>
+      <div class="space-y-5 text-[1.03rem] leading-relaxed">
+        <p>{pt.movingNotes}</p>
+        {
+          pt.floorAreaSqm && (
+            <p class="text-ink-soft">
+              Floor area is typically {pt.floorAreaSqm.min} to {pt.floorAreaSqm.max} sqm, though what
+              decides the lorry size is how much you own rather than the floor plan. A lightly furnished
+              unit at the top of that range can need less space than a full one at the bottom.
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== the price -- -->
+  <section class="border-y border-line bg-paper-warm" aria-labelledby="price">
+    <div class="wrap py-14 md:py-20">
+      <p class="eyebrow">The numbers</p>
+      <h2 id="price" class="mt-3 text-[length:var(--text-h2)]">{pt.name} moving prices</h2>
+
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[34rem] border-collapse text-left">
+          <caption class="sr-only">Typical moving prices for a {pt.name}</caption>
+          <thead>
+            <tr class="border-b border-line-strong text-sm uppercase tracking-wider text-ink-faint">
+              <th scope="col" class="py-3 pr-4 font-semibold">Job</th>
+              <th scope="col" class="py-3 pr-4 font-semibold">Typical range</th>
+              <th scope="col" class="py-3 font-semibold">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              priced.map(({ service, tier }) => (
+                <tr class="border-b border-line align-top">
+                  <td class="py-4 pr-4 font-medium">
+                    <a href={paths.service(service.slug)} class="text-ink no-underline hover:text-brand-deep">
+                      {tier.label}
+                    </a>
+                  </td>
+                  <td class="py-4 pr-4 whitespace-nowrap font-semibold text-brand-deep">
+                    {tier.max !== null ? `S$${tier.min} – S$${tier.max}` : `From S$${tier.min}`}
+                  </td>
+                  <td class="py-4 text-[0.9rem] text-ink-soft">{tier.notes}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 text-sm text-ink-faint">{company.gstPosition}</p>
+
+      <div class="mt-10 border-l-2 border-brand pl-5">
+        <h3 class="text-[length:var(--text-h3)]">What moves this number</h3>
+        <p class="mt-2 max-w-2xl text-[0.975rem] leading-relaxed text-ink-soft">
+          Access, not floor area. Whether the lift takes a three-seater upright, how far the lorry can park
+          from the lift lobby, how many flights are involved if it does not fit, and whether you are moving
+          at month end or before Chinese New Year. Tell a vendor those four things and the quote you get
+          will be the quote you pay.
+        </p>
+        <p class="mt-3">
+          <a href={paths.pricing} class="font-semibold text-brand-deep underline underline-offset-4">
+            Full pricing guide for every service
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== services -- -->
+  <section class="wrap py-14 md:py-20" aria-labelledby="services">
+    <p class="eyebrow">Services for this property</p>
+    <h2 id="services" class="mt-3 text-[length:var(--text-h2)]">What you might need</h2>
+    <ul class="mt-8 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      {
+        relatedServices.map((s) => (
+          <li class="bg-paper">
+            <a href={paths.service(s.slug)} class="block h-full p-6 no-underline hover:bg-paper-warm">
+              <h3 class="text-[length:var(--text-h3)] text-ink">{s.name}</h3>
+              <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{s.shortDescription}</p>
+            </a>
+          </li>
+        ))
+      }
+      <li class="bg-paper">
+        <a href={paths.service('disposal-and-moving')} class="block h-full p-6 no-underline hover:bg-paper-warm">
+          <h3 class="text-[length:var(--text-h3)] text-ink">Disposal and Moving</h3>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">
+            Clear what you are not taking on the same trip, rather than booking a second lorry.
+          </p>
+        </a>
+      </li>
+    </ul>
+
+    <h3 class="mt-12 text-[length:var(--text-h3)]">Other property types</h3>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        publishedPropertyTypes
+          .filter((other) => other.slug !== pt.slug)
+          .map((other) => (
+            <li>
+              <a
+                href={paths.property(other.slug)}
+                class="inline-block border border-line bg-paper px-3 py-1.5 text-[0.9rem] text-ink no-underline hover:border-brand hover:text-brand-deep"
+              >
+                {other.name}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </section>
+
+  <CtaBlock
+    heading={`Moving a ${pt.name.toLowerCase()}?`}
+    body="Tell us the property, the town and roughly what needs shifting. We will match you with vetted, insured movers who do this size of job."
+  />
+</BaseLayout>
