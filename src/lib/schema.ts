@@ -40,6 +40,9 @@ export function organizationNode(): Json {
     legalName: company.legalName,
     url: SITE_ORIGIN,
     foundingDate: company.foundingDate,
+    // Entity association with the established sibling brand. Passes no link
+    // equity -- it only helps search engines resolve this as the same company.
+    sameAs: company.sameAs.length > 0 ? company.sameAs : undefined,
     areaServed: { '@type': 'Country', name: 'Singapore' },
     description: company.businessModelStatement,
   });

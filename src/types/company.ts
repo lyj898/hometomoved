@@ -18,6 +18,13 @@ export interface Company {
    * legal name is rendered through EntityLink.astro and points here.
    */
   entityUrl: string;
+  /**
+   * Other web presences of the SAME legal entity. Emitted as schema.org
+   * sameAs so search engines can connect this domain to the established
+   * Junk to Clear entity. Only add URLs genuinely operated by
+   * SKAP Waste Management Pte Ltd -- sameAs asserts identity, not partnership.
+   */
+  sameAs: string[];
   /** The operating brand customers may already know, e.g. on the about page. */
   parentBrandName: string;
   parentBrandDescription: string;
