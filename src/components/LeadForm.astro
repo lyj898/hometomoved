@@ -372,9 +372,17 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
         window.gtag('event', 'form_start', { page_path: location.pathname });
       }
     }
-    form.addEventListener('focusin', markStarted);
+    // Count only events a person actually caused. preselect() below calls
+    // .click() on an option card when the page is opened with ?service=, and
+    // every service and location CTA links here that way -- so without the
+    // isTrusted guard, form_start fired on page load for every CTA arrival and
+    // measured "landed from a CTA" rather than "started the form".
+    // Script-dispatched events carry isTrusted === false.
+    form.addEventListener('focusin', function (e) {
+      if (e.isTrusted) markStarted();
+    });
     form.addEventListener('click', function (e) {
-      if (e.target.closest('.opt')) markStarted();
+      if (e.isTrusted && e.target.closest('.opt')) markStarted();
     });
 
     /* ---- option cards mirror into hidden inputs ---- */
