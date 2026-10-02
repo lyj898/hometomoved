@@ -2,9 +2,16 @@
 /**
  * FormSubmit redirects here after accepting a lead (_next).
  *
- * form_submit fires here rather than on the click, so the event only counts
- * enquiries that were actually delivered. noindex: this is a funnel endpoint,
- * not a page anyone should reach from search.
+ * Reached only through the native-POST fallback, i.e. with JavaScript off:
+ * with it on, the form sends by fetch and confirms inline instead.
+ *
+ * Deliberately sends no GA4 event. With JavaScript off, GA4 does not run here
+ * either; with it on, a visit to this page is never a completed enquiry (it is
+ * a reload, a bookmark or a direct visit), so a conversion event here would
+ * only ever count non-leads. generate_lead fires in LeadForm.astro, once,
+ * after FormSubmit confirms success (family standard, jtc-family/PORTFOLIO.md).
+ *
+ * noindex: a funnel endpoint, not a search landing page.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { publishedServices } from '../lib/data';
@@ -71,10 +78,4 @@ import { paths } from '../lib/urls';
       </ul>
     </div>
   </section>
-
-  <script is:inline>
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'form_submit', { page_path: '/thank-you/' });
-    }
-  </script>
 </BaseLayout>

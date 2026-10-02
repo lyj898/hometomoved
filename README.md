@@ -6,7 +6,7 @@ Lead generation site for **HomeToMoved**, the trading name of **SKAP Waste Manag
 > vendors. Copy must never say "our movers", "our trucks" or "our team will arrive". This is a legal
 > accuracy requirement, not a style preference. Say "matched with vetted movers".
 
-Astro 5 · TypeScript strict · Tailwind CSS v4 · static output · Cloudflare Pages.
+Astro 5 · TypeScript strict · Tailwind CSS v4 · static output · GitHub Pages (see Deployment).
 Singapore only, English only. There is no i18n config and no `/en/` prefix, and there never will be.
 
 ---
@@ -44,7 +44,7 @@ npm run audit          # audit dist/ only (requires a prior build)
 /areas/                           town index
 /vendor-standards/                how we vet movers
 /pricing/                         pricing guide
-/about/                           entity, UEN, history
+/about/                           entity and history
 /contact/  /privacy/  /terms/
 ```
 
@@ -171,6 +171,9 @@ values reach the form backend. No `localStorage` or `sessionStorage` — progres
 Service and location CTAs link to `/contact/?service=…&town=…`, which preselects the move type and origin
 town. The move-type cards are generated from `services.json`, so those labels always match.
 
+Both ends of the move are in Singapore: the destination list is the 27 towns plus "Not decided yet", with
+no overseas option. `scripts/validate-data.mjs` rejects one in `form-options.json`.
+
 ### FormSubmit
 
 Submitted by `fetch` to FormSubmit's JSON endpoint (`/ajax/<target>`, derived from
@@ -184,25 +187,50 @@ preserved so the user can retry.
 The form keeps its `method` and `action`, so with JavaScript off it still posts natively and `_next`
 carries the user to `/thank-you/`, which is why that page still exists.
 
+The site follows the JTC family enquiry standard (`jtc-family/PORTFOLIO.md`, "Enquiries"):
+
+- **Subject:** `HomeToMoved enquiry: <move type> (<page>)`, where `<page>` is the same-origin page that sent
+  the visitor to `/contact/`, usually the service or location page whose CTA they clicked. The payload also
+  carries `Site` and `Page` fields.
+- **Disclosure:** a line under the consent box says the details go to the team behind Junk to Clear, who
+  pass them to the movers who will quote.
+- **Success** is FormSubmit answering HTTP 2xx with `success: true`. The status is checked before the
+  body, because FormSubmit returned HTTP 500 to every family site on 30 Sep 2026.
+- **Failure** shows "Sorry, your enquiry did not send. Your answers are still here, so please try again in
+  a few minutes." and keeps every answer in place. **No contact details are offered instead**: the user's
+  rule for this site, family-wide since 2 Oct 2026.
+
 **Activation is required once.** The first submission to a new address triggers a confirmation email from
 FormSubmit; click *Activate Form* in it and submissions start being delivered.
 
-**After activating, switch to the hashed endpoint.** The default puts the destination address in the page
-source where scrapers will find it. FormSubmit gives you a random token; set it and redeploy:
+**Post to the alias, not the raw address.** The default endpoint puts the inbox address in the page source,
+where scrapers will find it, and the family standard is FormSubmit's alias. The switch waits on the user
+confirming which inbox the alias delivers to; the build prints a warning until then. To switch, set the
+repo variable and redeploy:
 
 ```bash
-PUBLIC_FORM_ENDPOINT=https://formsubmit.co/your-token-here
+PUBLIC_FORM_ENDPOINT=https://formsubmit.co/<alias>
 ```
 
-Set this in the Cloudflare Pages dashboard, not in the repo. See `.env.example`.
+Set it under Settings → Secrets and variables → Actions → Variables, not in the repo. See `.env.example`.
 
 ### Analytics
 
-GA4 renders only when `PUBLIC_GA4_ID` is set, so local builds stay clean. Two events, both with a real data
-path behind them:
+GA4 renders only when `PUBLIC_GA4_ID` is set, so local builds stay clean. Enhanced measurement stays on.
+The site sends two events of its own, both from the lead form on `/contact/`:
 
-- `form_start` — first focus or option click on the lead form
-- `form_submit` — fired on `/thank-you/`, so it counts deliveries rather than clicks
+- `generate_lead` — once, only after FormSubmit confirms the enquiry was accepted, with `form_id`,
+  `service` and `page_path` (the page that sent the visitor). **The only key event.** Star it in GA4
+  (Admin → Data display → Key events → New key event) before it first fires: key events don't count
+  backwards.
+- `lead_form_start` — the first real focus or option click on the form. **Never starred.** Clicks made by
+  script, such as the `?service=` preselect, are ignored via `event.isTrusted`.
+
+Never `form_start` or `form_submit`: enhanced measurement sends both itself, and its `form_submit` fires on
+every attempt, including failed ones. `/thank-you/` sends nothing, because with JavaScript on nobody reaches
+it by completing the form. `scripts/audit-build.mjs` fails the build if any page sends `form_start` or
+`form_submit`, if any page but `/contact/` sends `generate_lead`, or if the form loses its AJAX endpoint
+(the native POST would send no `generate_lead` at all).
 
 There is no generic `button_click` event. `whatsapp_click` and `phone_click` were removed along with those
 CTAs.
@@ -212,8 +240,8 @@ CTAs.
 One JSON-LD `@graph` per page, built in `src/lib/schema.ts`.
 
 - A single `Organization` node at `@id: https://hometomoved.com/#org`, carrying the registered entity,
-  UEN, address, phone, `foundingDate` and `areaServed: Singapore`. Every other node references it by `@id`
-  rather than redeclaring the entity.
+  `foundingDate`, `sameAs` (junktoclear.com.sg) and `areaServed: Singapore`. Every other node references
+  it by `@id` rather than redeclaring the entity.
 - `Service` on service and location pages, with `areaServed` set to the town or to Singapore.
 - `BreadcrumbList` on nested pages.
 - `FAQPage` where FAQs exist. **Not a ranking lever** — Google deprecated FAQ rich results in May 2026.
@@ -249,10 +277,13 @@ privacy and terms pages route data-protection and legal questions through it.
 
 This is enforced: `scripts/validate-data.mjs` fails the build if `uen`, `phone`, `email`, `address` or
 `whatsappNumber` reappear in `company.json`. The Organization JSON-LD carries `name`, `legalName`, `url`,
-`foundingDate` and `areaServed` only — no `identifier`, `telephone`, `email` or `address`.
+`foundingDate`, `sameAs`, `areaServed` and `description` only — no `identifier`, `telephone`, `email` or
+`address`.
+
+The audit also fails the build on any `mailto:`, `tel:` or WhatsApp link.
 
 The one exception is the form action, which necessarily contains the FormSubmit destination. Setting
-`PUBLIC_FORM_ENDPOINT` to the hashed token endpoint removes the address from the page source.
+`PUBLIC_FORM_ENDPOINT` to the FormSubmit alias removes the address from the page source.
 
 **PDPA note:** section 11(5) of the PDPA requires an organisation to make available the business contact
 information of the individual responsible for data protection. Routing those requests through the enquiry
@@ -267,7 +298,6 @@ form may not satisfy that. Worth checking before relying on it.
   `width`/`height`. If an image is ever added, dimension it.
 - **No client-side JS** beyond the lead form, analytics and the mobile nav toggle. No React.
 - **No `localStorage` or `sessionStorage`.**
-- Sticky mobile CTA bar (WhatsApp + call). `body` has matching `padding-bottom` so it never covers the footer.
 
 ## Copy rules
 

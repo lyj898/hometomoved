@@ -137,6 +137,16 @@ for (const [k, v] of Object.entries(company)) {
   }
 }
 
+// ------------------------------------------------------------ form options --
+// Moves within Singapore only (jtc-family/PORTFOLIO.md: "No international
+// moves"), so the lead form's destination list may not offer an overseas one.
+const formOptions = read('../src/data/form-options.json');
+for (const d of formOptions.destinationExtra) {
+  if (/outside singapore|overseas|international|abroad/i.test(d.name)) {
+    errors.push(`form-options: destination "${d.name}" offers an overseas move — this site covers Singapore only`);
+  }
+}
+
 // ------------------------------------------------------------------ report --
 for (const w of warnings) console.warn(`  WARN  ${w}`);
 for (const e of errors) console.error(`  ERROR ${e}`);

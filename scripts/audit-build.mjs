@@ -219,12 +219,55 @@ for (const file of htmlFiles) {
     if (!action) errors.push('/contact/: lead form has no action — leads would post back to the page');
     else if (!action.startsWith('https://')) errors.push(`/contact/: lead form action is not https: ${action}`);
     if (!/method="POST"/i.test(form)) errors.push('/contact/: lead form is not method=POST');
+    // Without the AJAX endpoint the form falls back to a native POST, which
+    // sends no generate_lead at all: every lead would go uncounted.
+    if (!/data-ajax-endpoint="https:\/\/formsubmit\.co\/ajax\/[^"]+"/.test(form)) {
+      errors.push('/contact/: lead form has no FormSubmit AJAX endpoint, so generate_lead would never fire');
+    }
   }
   if (!/name="PDPA consent"/.test(html)) errors.push('/contact/: PDPA consent field missing');
   if (/name="PDPA consent"[^>]*\bchecked\b/.test(html)) {
     errors.push('/contact/: PDPA consent is pre-ticked — it must default to unticked');
   }
-  if (!/name="_next"/.test(html)) errors.push('/contact/: no _next redirect, so form_submit would never fire');
+  if (!/name="_next"/.test(html)) errors.push('/contact/: no _next redirect for the native-POST fallback');
+
+  // Family enquiry standard (jtc-family/PORTFOLIO.md, 30 Sep 2026).
+  if (!/'generate_lead'/.test(html)) {
+    errors.push('/contact/: lead form never sends generate_lead (family standard)');
+  }
+  if (!/HomeToMoved enquiry/.test(html)) {
+    errors.push('/contact/: subject does not name the site (family standard: site and page in the subject)');
+  }
+  if (/formsubmit\.co\/(ajax\/)?[^"'\s]+@[^"'\s]+/.test(html)) {
+    // A warning, not an error: moving to the alias waits on the user
+    // confirming which inbox it delivers to.
+    console.warn('  WARN  /contact/ posts to the raw inbox address, not a FormSubmit alias (family standard)');
+  }
+}
+
+// GA4 events and contact details, on every page.
+//   - No page sends form_start or form_submit. Enhanced measurement sends both
+//     itself (form_submit on every attempt, including failed ones), so a custom
+//     event under either name merges into its counts.
+//   - generate_lead is sent from the lead form on /contact/ and nowhere else.
+//     Anywhere else it would count page views as leads.
+//   - No mailto:, tel: or WhatsApp links. The form is the only channel, and a
+//     failed send shows no fallback contact (family rule since 2 Oct 2026).
+for (const file of htmlFiles) {
+  const html = readFileSync(file, 'utf8');
+  const path = urlPathOf(file);
+  const sent = new Set(
+    [...html.matchAll(/gtag\(\s*['"]event['"]\s*,\s*['"]([a-z_]+)['"]/g)].map((m) => m[1]),
+  );
+  for (const name of ['form_start', 'form_submit']) {
+    if (sent.has(name)) errors.push(`${path}: sends ${name} -- enhanced measurement owns that name (family standard)`);
+  }
+  if (sent.has('generate_lead') && path !== '/contact/') {
+    errors.push(`${path}: sends generate_lead -- only the lead form on /contact/ may`);
+  }
+  if (/href="(mailto:|tel:|https:\/\/(wa\.me|api\.whatsapp\.com)\/)/.test(html)) {
+    errors.push(`${path}: contains a mailto:, tel: or WhatsApp link -- the site publishes no contact details`);
+  }
 }
 
 // -- sitemap -------------------------------------------------------------------

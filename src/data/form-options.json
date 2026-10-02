@@ -115,10 +115,6 @@
     {
       "slug": "not-decided",
       "name": "Not decided yet"
-    },
-    {
-      "slug": "outside-singapore",
-      "name": "Outside Singapore"
     }
   ],
   "serviceHints": {

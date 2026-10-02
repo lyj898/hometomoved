@@ -6,12 +6,15 @@
  * Loaded with `defer` rather than in-head blocking: the location page has the
  * least performance headroom on the site and analytics should not spend it.
  *
- * Events fired anywhere on the site:
- *   form_start   — first interaction with the lead form (LeadForm.astro)
- *   form_submit  — on /thank-you/, i.e. only after FormSubmit accepted the lead
+ * Events the site sends itself, both from LeadForm.astro on /contact/:
+ *   lead_form_start — first real interaction with the lead form. Not a key event.
+ *   generate_lead   — once, only after FormSubmit confirms the enquiry was
+ *                     accepted. The only key event.
  *
- * There is deliberately no generic button_click event, and nothing here should
- * be marked a key event unless it has a real data path behind it.
+ * Never form_start or form_submit: enhanced measurement sends those itself,
+ * and form_submit fires on every attempt, including failed ones (family
+ * standard, jtc-family/PORTFOLIO.md). There is deliberately no generic
+ * button_click event.
  */
 // CI passes an unset repo variable as '' rather than undefined, so trim to a
 // single falsy value. A malformed ID throws instead of silently collecting

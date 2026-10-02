@@ -20,6 +20,33 @@
  * hidden input that FormSubmit actually receives.
  *
  * No localStorage or sessionStorage. Progress is held in memory only.
+ *
+ * Family enquiry standard (jtc-family/PORTFOLIO.md, "Enquiries", decided
+ * 30 Sep 2026), implemented to match Relocado's EnquiryForm.astro:
+ *   - subject is "HomeToMoved enquiry: <move type> (<page>)", where <page> is
+ *     the same-origin page that sent the visitor to /contact/;
+ *   - the payload carries Site and Page fields;
+ *   - GA4 `generate_lead` fires once, only after FormSubmit returns success,
+ *     with { form_id, service, page_path };
+ *   - the HTTP status is checked before the body, because FormSubmit returned
+ *     HTTP 500 to every family site on 30 Sep 2026;
+ *   - the visitor is told their details go to the team behind Junk to Clear;
+ *   - when sending fails, the message says so and the answers stay in place.
+ *     No contact details are offered instead: the user's rule for this site,
+ *     family-wide since 2 Oct 2026.
+ * The site never sends form_start or form_submit itself. GA4's enhanced
+ * measurement sends both (form_submit on every attempt, including failed
+ * ones), and a custom event under either name would merge into its counts.
+ * The wizard's own start count is lead_form_start, which is never starred as
+ * a key event.
+ * Still open, pending the user's confirmation: post to the FormSubmit alias
+ * rather than the raw inbox address.
+ *
+ * Moves within Singapore only, so the destination list offers no overseas
+ * option (PORTFOLIO: "No international moves").
+ *
+ * Everything that ships inside the inline <script> below is public page
+ * source, so internal notes like these belong here, not in there.
  */
 import { locations, publishedServices, company } from '../lib/data';
 import { paths } from '../lib/urls';
@@ -87,7 +114,7 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
   data-ajax-endpoint={ajaxEndpoint}
 >
   {/* ---- FormSubmit control fields ---- */}
-  <input type="hidden" name="_subject" value="New moving enquiry - hometomoved.com" />
+  <input type="hidden" name="_subject" value="HomeToMoved enquiry (/contact/)" />
   <input type="hidden" name="_template" value="table" />
   <input type="hidden" name="_captcha" value="false" />
   <input type="hidden" name="_next" value={`${siteUrl}/thank-you/`} />
@@ -100,7 +127,8 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
   <input type="hidden" name="Access notes" id="f-access" />
   <input type="hidden" name="Date flexibility" id="f-timing" />
   <input type="hidden" name="Extras needed" id="f-extras" />
-  <input type="hidden" name="Page enquired from" id="f-source" />
+  <input type="hidden" name="Site" value="hometomoved.com" />
+  <input type="hidden" name="Page" id="f-source" />
 
   {/* ------------------------------------------------------ progress rail -- */}
   <div class="mb-10">
@@ -170,7 +198,9 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
   {/* ================================================ 2 — from and to == */}
   <fieldset class="step hidden" data-step="2">
     <legend class="text-[length:var(--text-h2)] font-serif font-semibold">Where from, and where to?</legend>
-    <p class="mt-2 text-ink-soft">We match you with movers who work in your area regularly.</p>
+    <p class="mt-2 text-ink-soft">
+      We match you with movers who work in your area regularly. Both ends of the move need to be in Singapore.
+    </p>
 
     <div class="mt-6 grid gap-5 sm:grid-cols-2">
       <div>
@@ -292,8 +322,8 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
       <label class="flex cursor-pointer items-start gap-3">
         <input type="checkbox" id="consent" name="PDPA consent" value="Given" class="mt-1 h-5 w-5 shrink-0 accent-[#8a5a1f]" />
         <span class="text-[0.925rem] leading-relaxed">
-          I consent to <strong>{company.legalName}</strong> (trading as {company.tradingName}) collecting and
-          using my personal data to contact me about this enquiry, and to
+          I consent to the team behind {company.parentBrandName} (<strong>{company.legalName}</strong>, trading as
+          {' '}{company.tradingName}) collecting and using my personal data to contact me about this enquiry, and to
           <strong> disclosing my details to the moving vendors it matches me with</strong> so that they can
           quote for my job. I understand I can withdraw consent at any time, as set out in the{' '}
           <a href={paths.privacy} class="font-semibold text-brand-deep underline underline-offset-2">privacy policy</a>.
@@ -303,6 +333,11 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
         Please tick the consent box so we can pass your enquiry to movers.
       </p>
     </div>
+
+    <p class="mt-4 text-[0.875rem] leading-relaxed text-ink-soft">
+      Your details go to the team behind {company.parentBrandName}, who run {company.tradingName}. They pass them
+      to the vetted movers who will quote for your move, and use them only for this enquiry.
+    </p>
   </fieldset>
 
   {/* ======================================================== controls == */}
@@ -362,21 +397,37 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
     var current = 0;
     var started = false;
 
-    document.getElementById('f-source').value = location.pathname;
+    // The page that sent the visitor here. The form lives only on /contact/, so
+    // the useful context is the same-origin referrer: the service or location
+    // page whose CTA was clicked. That is what tells whoever passes the lead on
+    // what it is about. Falls back to /contact/ for direct visits.
+    var originPage = location.pathname;
+    try {
+      var ref = document.referrer ? new URL(document.referrer) : null;
+      if (ref && ref.origin === location.origin && ref.pathname !== location.pathname) {
+        originPage = ref.pathname;
+      }
+    } catch (err) {
+      /* keep the /contact/ fallback */
+    }
+    document.getElementById('f-source').value = location.origin + originPage;
 
-    /* ---- GA4: form_start on first interaction, once ---- */
+    /* ---- GA4: lead_form_start on first interaction, once ---- */
     function markStarted() {
       if (started) return;
       started = true;
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'form_start', { page_path: location.pathname });
+        window.gtag('event', 'lead_form_start', {
+          form_id: 'hometomoved_enquiry',
+          page_path: originPage,
+        });
       }
     }
     // Count only events a person actually caused. preselect() below calls
     // .click() on an option card when the page is opened with ?service=, and
     // every service and location CTA links here that way -- so without the
-    // isTrusted guard, form_start fired on page load for every CTA arrival and
-    // measured "landed from a CTA" rather than "started the form".
+    // isTrusted guard, the start event fired on page load for every CTA arrival
+    // and measured "landed from a CTA" rather than "started the form".
     // Script-dispatched events carry isTrusted === false.
     form.addEventListener('focusin', function (e) {
       if (e.isTrusted) markStarted();
@@ -570,6 +621,12 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
         return;
       }
 
+      // Site and page in the subject. Also written into the hidden _subject
+      // input, so the native-POST fallback sends the same subject.
+      var service = document.getElementById('f-service').value || 'General';
+      var subject = 'HomeToMoved enquiry: ' + service + ' (' + originPage + ')';
+      form.querySelector('input[name="_subject"]').value = subject;
+
       var ajax = form.getAttribute('data-ajax-endpoint');
       if (!ajax) return; // no AJAX endpoint: fall back to the native POST
 
@@ -582,7 +639,7 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
       new FormData(form).forEach(function (value, key) {
         if (key.charAt(0) !== '_') payload[key] = value;
       });
-      payload._subject = 'New moving enquiry - hometomoved.com';
+      payload._subject = subject;
       payload._template = 'table';
 
       fetch(ajax, {
@@ -591,31 +648,38 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
         body: JSON.stringify(payload),
       })
         .then(function (res) {
-          return res.json().catch(function () {
-            return { success: 'false', message: 'Unexpected response from the form service.' };
-          });
+          // Check the status before trusting the body.
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
         })
         .then(function (data) {
-          if (String(data.success) !== 'true') {
-            throw new Error(data.message || 'The form service rejected the submission.');
-          }
+          var sent = data && (data.success === true || data.success === 'true');
+          if (!sent) throw new Error((data && data.message) || 'rejected');
           form.classList.add('hidden');
           var ok = document.getElementById('form-success');
           ok.classList.remove('hidden');
           ok.setAttribute('tabindex', '-1');
           ok.focus();
           ok.scrollIntoView({ block: 'center' });
+          // generate_lead, not form_submit: GA4's enhanced measurement sends its
+          // own form_submit on every attempt, including failed ones. This fires
+          // once, only after FormSubmit has confirmed the enquiry was accepted.
           if (typeof window.gtag === 'function') {
-            window.gtag('event', 'form_submit', { page_path: location.pathname });
+            window.gtag('event', 'generate_lead', {
+              form_id: 'hometomoved_enquiry',
+              service: service,
+              page_path: originPage,
+            });
           }
         })
         .catch(function (err) {
           submit.disabled = false;
           submit.textContent = 'Send my enquiry';
+          if (window.console) console.warn('Enquiry did not send:', err && err.message);
+          // Generic on purpose: the form service's own messages are written for
+          // the site owner and confuse visitors.
           showError(
-            'Sorry — your enquiry did not go through. ' +
-              (err && err.message ? err.message + ' ' : '') +
-              'Nothing has been lost, so please try again.',
+            'Sorry, your enquiry did not send. Your answers are still here, so please try again in a few minutes.',
           );
         });
     });
