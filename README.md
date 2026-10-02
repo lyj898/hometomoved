@@ -269,7 +269,7 @@ Everywhere else the entity name is plain text.
 `company.vettedVendorCount` is `null`. The about page drops the number from the sentence rather than
 printing a guess. Set it to a real figure and the sentence picks it up.
 
-This overrides the original brief line about not linking sibling sites.
+Links to the other family sites follow the copy rules below.
 
 ---
 
@@ -306,7 +306,12 @@ form may not satisfy that. Worth checking before relying on it.
 
 Singapore English: HDB, condo, lorry, aircon. Never "apartment", "truck", "realtor", "zip code".
 Prices in `S$`, GST position stated. No superlatives we cannot evidence — no "Singapore's No.1".
-Do not link to hometoclean.com or any sibling site.
+
+Links to sibling sites follow the linking rules in `jtc-family/PORTFOLIO.md`. Each is one link, placed at the
+step that needs that service and pointing at the most specific page that fits. The same sentence says the
+same team runs it. No sitewide or footer links. The Junk to Clear link stays on `/about/` only (see Entity
+link). This replaces the original build prompt's "no sibling links" rule: the user has since asked for links
+between their sites.
 
 ---
 
