@@ -220,9 +220,12 @@ GA4 renders only when `PUBLIC_GA4_ID` is set, so local builds stay clean. Enhanc
 The site sends two events of its own, both from the lead form on `/contact/`:
 
 - `generate_lead` — once, only after FormSubmit confirms the enquiry was accepted, with `form_id`,
-  `service` and `page_path` (the page that sent the visitor). **The only key event.** Star it in GA4
-  (Admin → Data display → Key events → New key event) before it first fires: key events don't count
-  backwards.
+  `service` and `page_path` (the page that sent the visitor). **The only key event.** Mark it before it
+  first fires, because key events don't count backwards: Admin → Data display → Events → Create event →
+  **"Create with code"**, name `generate_lead`, turn on *Mark as key event*, no default value, counted once
+  per event. Not "Create without code": that builds a rule from an existing event, pre-filled with
+  `page_view`, and would log a fake `generate_lead` on every page view. Afterwards, Key events should list
+  only `generate_lead` as starred, and Custom configurations → Customised events should be empty.
 - `lead_form_start` — the first real focus or option click on the form. **Never starred.** Clicks made by
   script, such as the `?service=` preselect, are ignored via `event.isTrusted`.
 
