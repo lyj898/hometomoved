@@ -259,9 +259,7 @@ for (const file of htmlFiles) {
     errors.push('/contact/: subject does not name the site (family standard: site and page in the subject)');
   }
   if (/formsubmit\.co\/(ajax\/)?[^"'\s]+@[^"'\s]+/.test(html)) {
-    // A warning, not an error: moving to the alias waits on the user
-    // confirming which inbox it delivers to.
-    console.warn('  WARN  /contact/ posts to the raw inbox address, not a FormSubmit alias (family standard)');
+    errors.push('/contact/: posts to a raw inbox address, not the FormSubmit alias (family standard)');
   }
 }
 

@@ -12,9 +12,9 @@
  * The form keeps method and action, so with JavaScript off it still posts
  * natively and _next carries the user to /thank-you/.
  *
- * The endpoint is configurable: set PUBLIC_FORM_ENDPOINT to override. After
- * activating FormSubmit, switch it to the hashed token endpoint so the
- * destination address is not sitting in the page source for scrapers.
+ * The endpoint is FormSubmit's alias for the family inbox, so the inbox
+ * address is never in the page source. PUBLIC_FORM_ENDPOINT overrides it, in
+ * the plain https://formsubmit.co/<alias> form: /ajax/ is added below.
  *
  * Option cards are buttons, not inputs, so each selection is mirrored into a
  * hidden input that FormSubmit actually receives.
@@ -39,8 +39,8 @@
  * ones), and a custom event under either name would merge into its counts.
  * The wizard's own start count is lead_form_start, which is never starred as
  * a key event.
- * Still open, pending the user's confirmation: post to the FormSubmit alias
- * rather than the raw inbox address.
+ * It posts to the FormSubmit alias, never the raw inbox address. The user
+ * confirmed on 5 Oct 2026 that the alias reaches the inbox.
  *
  * Moves within Singapore only, so the destination list offers no overseas
  * option (PORTFOLIO: "No international moves").
@@ -78,10 +78,17 @@ const { serviceName, townName } = Astro.props;
 // undefined, which produced action="" on the live site and silently posted
 // every lead back to /contact/. Fall back on any blank value, then assert.
 const configured = import.meta.env.PUBLIC_FORM_ENDPOINT;
-const endpoint = (configured && configured.trim()) || 'https://formsubmit.co/lyj898@gmail.com';
+const endpoint =
+  (configured && configured.trim()) || 'https://formsubmit.co/1aacc4903352135bb0fa38c3987d3abd';
 if (!endpoint.startsWith('https://')) {
   throw new Error(
     `Lead form endpoint is not an https URL: "${endpoint}". Check PUBLIC_FORM_ENDPOINT.`,
+  );
+}
+// An /ajax/ value would come out as /ajax/ajax/ below, and every send would fail.
+if (endpoint.includes('/ajax/')) {
+  throw new Error(
+    `PUBLIC_FORM_ENDPOINT must be the plain https://formsubmit.co/<alias> form, not /ajax/: "${endpoint}".`,
   );
 }
 // FormSubmit exposes the same target at /ajax/<target>, which returns JSON and

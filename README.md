@@ -203,16 +203,17 @@ The site follows the JTC family enquiry standard (`jtc-family/PORTFOLIO.md`, "En
 **Activation is required once.** The first submission to a new address triggers a confirmation email from
 FormSubmit; click *Activate Form* in it and submissions start being delivered.
 
-**Post to the alias, not the raw address.** The default endpoint puts the inbox address in the page source,
-where scrapers will find it, and the family standard is FormSubmit's alias. The switch waits on the user
-confirming which inbox the alias delivers to; the build prints a warning until then. To switch, set the
-repo variable and redeploy:
+**Posts to the alias, not the raw address** (since 5 Oct 2026, after the user confirmed it reaches the
+inbox). The alias is FormSubmit's stand-in for the family inbox, shared by every family site, so the inbox
+address is never in the page source. It is the default in `LeadForm.astro`, and also the repo variable:
 
 ```bash
-PUBLIC_FORM_ENDPOINT=https://formsubmit.co/<alias>
+PUBLIC_FORM_ENDPOINT=https://formsubmit.co/1aacc4903352135bb0fa38c3987d3abd
 ```
 
-Set it under Settings → Secrets and variables → Actions → Variables, not in the repo. See `.env.example`.
+Use that plain form, not `/ajax/…`: the form adds `/ajax/` itself, and the build throws on an `/ajax/`
+value rather than doubling it. The variable lives under Settings → Secrets and variables → Actions →
+Variables. `scripts/audit-build.mjs` fails the build if `/contact/` ever posts to a raw address again.
 
 ### Analytics
 
@@ -285,8 +286,8 @@ This is enforced: `scripts/validate-data.mjs` fails the build if `uen`, `phone`,
 
 The audit also fails the build on any `mailto:`, `tel:` or WhatsApp link.
 
-The one exception is the form action, which necessarily contains the FormSubmit destination. Setting
-`PUBLIC_FORM_ENDPOINT` to the FormSubmit alias removes the address from the page source.
+The form action necessarily contains the FormSubmit destination. That is the alias, so no inbox address
+appears in the page source.
 
 **PDPA note:** section 11(5) of the PDPA requires an organisation to make available the business contact
 information of the individual responsible for data protection. Routing those requests through the enquiry
@@ -357,7 +358,7 @@ Then under Settings → Environment variables (Production):
 | Variable | Value |
 |---|---|
 | `NODE_VERSION` | `22` |
-| `PUBLIC_FORM_ENDPOINT` | your FormSubmit token endpoint (see Lead form above) |
+| `PUBLIC_FORM_ENDPOINT` | the FormSubmit alias endpoint (see Lead form above) |
 | `PUBLIC_GA4_ID` | your GA4 measurement ID, once you have one |
 
 Finally Settings → Custom domains → add `hometomoved.com` and `www.hometomoved.com`.
