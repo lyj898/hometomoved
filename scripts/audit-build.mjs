@@ -203,6 +203,26 @@ for (const file of htmlFiles) {
   }
 }
 
+// -- family links ----------------------------------------------------------------
+// Family revamp (5 Oct 2026, jtc-family/briefs/family-revamp.md): every footer
+// says "Part of OurKampung", linking the mother site with rel="nofollow". It is
+// the one exception to PORTFOLIO's "no sitewide or footer links", so it is for
+// readers, not rankings. No link anywhere may carry noreferrer, which hides the
+// visit's source from the other site's GA4.
+for (const file of htmlFiles) {
+  const html = readFileSync(file, 'utf8');
+  const path = urlPathOf(file);
+  const footerAt = html.search(/<footer\b/);
+  if (footerAt !== -1) {
+    const link = html.slice(footerAt).match(/<a\b[^>]*href="https:\/\/ourkampung\.com\/"[^>]*>/)?.[0] ?? '';
+    if (!link) errors.push(`${path}: footer lacks the "Part of OurKampung" link`);
+    else if (!/\brel="[^"]*\bnofollow\b/.test(link)) errors.push(`${path}: footer OurKampung link is not rel="nofollow"`);
+  }
+  if (/<a\b[^>]*\brel="[^"]*\bnoreferrer\b/.test(html)) {
+    errors.push(`${path}: a link carries rel="noreferrer", which hides the visit's source from the other site's GA4`);
+  }
+}
+
 // -- lead form -----------------------------------------------------------------
 // The whole site exists to produce leads, so the form is checked in the built
 // output rather than trusted. An empty action posts back to the page itself and

@@ -1,6 +1,8 @@
 ---
 /**
  * About. The only page on the site that links out to the operating entity.
+ * It also carries the one in-text link to OurKampung's /our-sites/, the
+ * family's mother site (family revamp, 5 Oct 2026).
  *
  * The origin story is the strongest trust asset here, because it explains
  * where the vendor list actually came from. Two figures in it are data-driven
@@ -60,6 +62,10 @@ const vendorCount = company.vettedVendorCount;
     company established in {company.yearEstablished}.
   </p>
   <p>We operate {company.operatingHours.map((h) => h.label).join(' and ')}.</p>
+  <p>
+    {company.tradingName} is one of a small family of service sites and guides run by the same team, all
+    listed on <a href="https://ourkampung.com/our-sites/">OurKampung's page about our sites</a>.
+  </p>
 
   <h2>What we do and do not do</h2>
   <p>

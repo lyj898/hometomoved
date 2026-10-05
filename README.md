@@ -313,6 +313,17 @@ same team runs it. No sitewide or footer links. The Junk to Clear link stays on 
 link). This replaces the original build prompt's "no sibling links" rule: the user has since asked for links
 between their sites.
 
+**The one exception: OurKampung, the family's mother site** (family revamp, 5 Oct 2026,
+`jtc-family/briefs/family-revamp.md`):
+
+- Every footer says "Part of OurKampung", linking `https://ourkampung.com/` with `rel="nofollow"`. The link is
+  for readers, not rankings: search engines discount sitewide links between one owner's sites.
+- `/about/` has one sentence linking `https://ourkampung.com/our-sites/`, which lists the family.
+- Never `rel="noreferrer"` on any link: it hides the visit's source from the other site's GA4.
+
+`scripts/audit-build.mjs` fails the build if a footer lacks the nofollow OurKampung link, or if any link
+carries `noreferrer`.
+
 ---
 
 ## Deployment
