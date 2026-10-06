@@ -1,6 +1,6 @@
 # hometomoved.com
 
-Shared rules for the whole JTC family of sites (lanes, link rules, brand facts, shared facts):
+Shared rules for the whole OurKampung family of sites (lanes, link rules, brand facts, shared facts):
 
 @../jtc-family/PORTFOLIO.md
 
