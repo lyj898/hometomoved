@@ -9,12 +9,14 @@ const crumbs: Crumb[] = [
   { name: 'Terms of service', path: paths.terms },
 ];
 
-const lastUpdated = '18 August 2026';
+// 6 Oct 2026: who runs the site, after the family's independence
+// (jtc-family/briefs/independence.md).
+const lastUpdated = '6 October 2026';
 ---
 
 <BaseLayout
   title="Terms of Service | HomeToMoved"
-  description="Terms governing use of HomeToMoved, a mover matching service operated by SKAP Waste Management Pte Ltd. We match, we do not move."
+  description="Terms for using HomeToMoved, a mover matching service run by the OurKampung team. We match you with movers; we do not carry out moves."
   path={paths.terms}
   crumbs={crumbs}
 >
@@ -22,9 +24,9 @@ const lastUpdated = '18 August 2026';
   <p><em>Last updated {lastUpdated}.</em></p>
 
   <p>
-    These terms govern your use of hometomoved.com and the matching service offered through it, operated by
-    <strong>{company.legalName}</strong>, trading as {company.tradingName}
-    (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By submitting an enquiry you accept these terms.
+    These terms govern your use of hometomoved.com and the matching service offered through it, run by the
+    {company.family.name} team (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By submitting an enquiry you accept these
+    terms.
   </p>
 
   <h2>1. We are a matching service, not the service provider</h2>
@@ -129,7 +131,7 @@ const lastUpdated = '18 August 2026';
 
   <h2>10. Contact</h2>
   <p>
-    {company.legalName}, trading as {company.tradingName}. Use the
+    {company.brandName} is run by the {company.family.name} team. Use the
     <a href={paths.contact}> enquiry form</a> for any question about these terms or about an enquiry you have
     submitted.
   </p>

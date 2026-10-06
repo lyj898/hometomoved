@@ -1,41 +1,29 @@
 /**
- * Operating entity. Rendered in the footer, the Organization JSON-LD node,
- * and the legal pages.
+ * The site's own identity. Rendered in the header, the footer, the
+ * Organization JSON-LD node and the legal pages.
  *
- * Deliberately carries no UEN, address, phone or email: the site publishes no
- * contact details at all, and the enquiry form is the only channel. If those
- * ever need to come back, add them here, to organizationNode() in
- * src/lib/schema.ts, and to the footer.
+ * HomeToMoved is part of the OurKampung family and is run by the OurKampung
+ * team. No company runs it, so none is named: no legal name, UEN, address,
+ * founding year or person (independence, 6 Oct 2026,
+ * jtc-family/briefs/independence.md).
+ *
+ * Nor does it carry a phone number or email: the site publishes no contact
+ * details at all, and the enquiry form is the only channel.
+ * scripts/validate-data.mjs fails the build if any of those keys come back.
  */
 
 export interface Company {
-  /** Registered entity. */
-  legalName: string;
-  /** Public-facing brand. */
-  tradingName: string;
-  /**
-   * Where the registered entity name links to. Every visible mention of the
-   * legal name is rendered through EntityLink.astro and points here.
-   */
-  entityUrl: string;
-  /**
-   * Other web presences of the SAME legal entity. Emitted as schema.org
-   * sameAs so search engines can connect this domain to the established
-   * Junk to Clear entity. Only add URLs genuinely operated by
-   * SKAP Waste Management Pte Ltd -- sameAs asserts identity, not partnership.
-   */
-  sameAs: string[];
-  /** The operating brand customers may already know, e.g. on the about page. */
-  parentBrandName: string;
-  parentBrandDescription: string;
-  /**
-   * How many vendors we have actually referred work to and seen perform.
-   * null until a real figure is supplied -- the about page drops the number
-   * from the sentence rather than printing a guess or a [PLACEHOLDER].
-   */
-  vettedVendorCount: number | null;
-  yearEstablished: number;
-  foundingDate: string;
+  /** The brand, as it appears in the header, footer and schema. */
+  brandName: string;
+  /** The family this site belongs to. Its team runs every family site. */
+  family: {
+    /** "OurKampung". Copy says the site is run by "the OurKampung team". */
+    name: string;
+    /** The mother site's home page: every footer's "Part of OurKampung" link. */
+    url: string;
+    /** The mother site's page listing the family, linked from /about/. */
+    sitesUrl: string;
+  };
   operatingHours: {
     /** schema.org openingHours day tokens. */
     days: string;

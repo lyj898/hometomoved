@@ -131,6 +131,26 @@ for (const banned of ['uen', 'phone', 'email', 'address', 'whatsappNumber']) {
     errors.push(`company.${banned} is present — this site publishes no contact details or UEN`);
   }
 }
+// No company runs the site, so none is named, and nothing borrowed from SKAP
+// or Junk to Clear comes back (independence, 6 Oct 2026,
+// jtc-family/briefs/independence.md).
+for (const banned of [
+  'legalName',
+  'tradingName',
+  'yearEstablished',
+  'foundingDate',
+  'entityUrl',
+  'sameAs',
+  'parentBrandName',
+  'parentBrandDescription',
+]) {
+  if (banned in company) {
+    errors.push(`company.${banned} is present — the site names no company and borrows no history`);
+  }
+}
+if (company.family?.name !== 'OurKampung') {
+  errors.push('company.family.name must be "OurKampung": the site is run by the OurKampung team');
+}
 for (const [k, v] of Object.entries(company)) {
   if (typeof v === 'string' && /\[[A-Z_ ]+\]/.test(v)) {
     warnings.push(`company.${k} is still a placeholder: ${v}`);

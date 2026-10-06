@@ -27,24 +27,25 @@ function compact(obj: Json): Json {
 /* --------------------------------------------------------- organization -- */
 
 /**
- * No identifier (UEN), telephone, email or address: the site publishes no
- * contact details, so asserting them in structured data would claim more than
- * the page shows. areaServed stays, since that is a genuine fact about the
- * service rather than a way to reach us.
+ * The brand's own name and URL, with the OurKampung family as its parent.
+ *
+ * No legalName, foundingDate or sameAs: no company runs the site, and Junk to
+ * Clear is a separate company the family refers disposal jobs to, not this
+ * site's identity (independence, 6 Oct 2026). No identifier (UEN), telephone,
+ * email or address either: the site publishes no contact details, so
+ * asserting them in structured data would claim more than the page shows.
+ * areaServed stays, since that is a genuine fact about the service rather
+ * than a way to reach us.
  */
 export function organizationNode(): Json {
   return compact({
     '@type': 'Organization',
     '@id': ORG_ID,
-    name: company.tradingName,
-    legalName: company.legalName,
+    name: company.brandName,
     url: SITE_ORIGIN,
-    foundingDate: company.foundingDate,
-    // Entity association with the established sibling brand. Passes no link
-    // equity -- it only helps search engines resolve this as the same company.
-    sameAs: company.sameAs.length > 0 ? company.sameAs : undefined,
     areaServed: { '@type': 'Country', name: 'Singapore' },
     description: company.businessModelStatement,
+    parentOrganization: { '@type': 'Organization', name: company.family.name, url: company.family.url },
   });
 }
 

@@ -1,15 +1,10 @@
 {
-  "legalName": "SKAP Waste Management Pte Ltd",
-  "tradingName": "HomeToMoved",
-  "entityUrl": "https://junktoclear.com.sg",
-  "sameAs": [
-    "https://junktoclear.com.sg"
-  ],
-  "parentBrandName": "Junk to Clear",
-  "parentBrandDescription": "a Singapore disposal company that has been clearing flats, offices and renovation sites",
-  "vettedVendorCount": null,
-  "yearEstablished": 2009,
-  "foundingDate": "2009",
+  "brandName": "HomeToMoved",
+  "family": {
+    "name": "OurKampung",
+    "url": "https://ourkampung.com/",
+    "sitesUrl": "https://ourkampung.com/our-sites/"
+  },
   "operatingHours": [
     {
       "days": "Mo,Tu,We,Th,Fr",

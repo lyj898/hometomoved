@@ -9,12 +9,14 @@ const crumbs: Crumb[] = [
   { name: 'Privacy policy', path: paths.privacy },
 ];
 
-const lastUpdated = '18 August 2026';
+// 6 Oct 2026: who we are and who receives enquiries, after the family's
+// independence (jtc-family/briefs/independence.md).
+const lastUpdated = '6 October 2026';
 ---
 
 <BaseLayout
   title="Privacy Policy | HomeToMoved"
-  description="How SKAP Waste Management Pte Ltd collects, uses and discloses your personal data under Singapore PDPA, including disclosure to matched moving vendors."
+  description="How the OurKampung team, who run HomeToMoved, collect, use and disclose your personal data under Singapore PDPA, including to matched moving vendors."
   path={paths.privacy}
   crumbs={crumbs}
 >
@@ -22,9 +24,15 @@ const lastUpdated = '18 August 2026';
   <p><em>Last updated {lastUpdated}.</em></p>
 
   <p>
-    This policy explains how <strong>{company.legalName}</strong>, trading as
-    {company.tradingName}, collects, uses, discloses and protects personal data. It is written to comply with
-    the Singapore Personal Data Protection Act 2012 (PDPA).
+    This policy explains how the {company.family.name} team, who run {company.brandName} (&ldquo;we&rdquo;,
+    &ldquo;us&rdquo;), collect, use, disclose and protect personal data. It is written to comply with the
+    Singapore Personal Data Protection Act 2012 (PDPA).
+  </p>
+
+  <h2>Who we are</h2>
+  <p>
+    {company.brandName} is part of {company.family.name}, a family of Singapore home sites run by the
+    {company.family.name} team. Enquiries sent through this site go to the {company.family.name} team.
   </p>
 
   <p>
@@ -64,10 +72,14 @@ const lastUpdated = '18 August 2026';
 
   <h2>Disclosure to moving vendors</h2>
   <p>
-    <strong>This is the most important part of this policy.</strong> When you submit an enquiry, we disclose
-    the details above to one or more moving vendors on our network so that they can prepare a quote and
-    contact you directly. This is the service, and we ask you to consent to it explicitly on the enquiry
-    form rather than burying it in this document.
+    <strong>This is the most important part of this policy.</strong> When you submit an enquiry, your details
+    go to the {company.family.name} team, who disclose them to one or more moving vendors matched to your job
+    so that they can prepare a quote and contact you directly. This is the service, and we ask you to consent
+    to it explicitly on the enquiry form rather than burying it in this document.
+  </p>
+  <p>
+    If your job includes disposal or clearance, the partner matched to that part of it can be Junk to Clear,
+    a disposal company we refer jobs to. It receives your details on the same terms as any other vendor.
   </p>
   <p>
     Vendors receive your details as independent organisations, not as our agents. Once your details are with
@@ -121,7 +133,8 @@ const lastUpdated = '18 August 2026';
   <p>
     We apply reasonable security arrangements to protect personal data against unauthorised access,
     collection, use, disclosure, copying, modification or disposal. The site is served over HTTPS and
-    enquiry data is limited to the staff and vendors who need it. No method of transmission over the internet
+    enquiry data is limited to the people in the {company.family.name} team and the vendors who need it. No
+    method of transmission over the internet
     is completely secure, and we cannot guarantee absolute security.
   </p>
 
@@ -155,8 +168,8 @@ const lastUpdated = '18 August 2026';
   <p>
     Use the <a href={paths.contact}>enquiry form</a> to make an access, correction or withdrawal request, and
     say clearly in the message that it is a data protection request rather than a moving enquiry. It reaches
-    the person responsible for data protection at {company.legalName}. We respond within 30 days, or tell you
-    when to expect a response if we need longer.
+    the person in the {company.family.name} team responsible for data protection. We respond within 30 days,
+    or tell you when to expect a response if we need longer.
   </p>
   <p>
     If you are not satisfied with our response, you may contact the Personal Data Protection Commission of

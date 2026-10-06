@@ -186,20 +186,44 @@ for (const field of ['title', 'description']) {
   }
 }
 
-// -- entity link -----------------------------------------------------------------
-// The outbound link to the operating entity belongs on /about/ and nowhere
-// else. One link from the page that explains the relationship, rather than the
-// same link repeated in every footer.
-const ENTITY_URL = 'https://junktoclear.com.sg';
+// -- independence ----------------------------------------------------------------
+// The OurKampung team runs the site and no company is named (independence,
+// 6 Oct 2026, jtc-family/briefs/independence.md):
+//   - nothing borrowed from SKAP or Junk to Clear: no SKAP, no "trading as",
+//     no founding year, no "team behind Junk to Clear";
+//   - the Organization node is the brand, with OurKampung as its parent, and
+//     no legalName, foundingDate or sameAs;
+//   - Junk to Clear is a separate company the family refers disposal jobs to.
+//     Link it only where disposal is the reader's next step, which here means
+//     the disposal-and-moving pages, and never rel="sponsored": it pays no fees.
+const BORROWED = /\bSKAP\b|Waste Management|trading (as|name)|\b2009\b|(team|people) behind Junk to Clear/i;
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf8');
   const path = urlPathOf(file);
-  const links = (html.match(new RegExp(`href="${ENTITY_URL}`, 'g')) ?? []).length;
-  if (path === '/about/' && links === 0) {
-    errors.push(`/about/: expected a link to ${ENTITY_URL}, found none`);
+  const borrowed = html.match(BORROWED);
+  if (borrowed) errors.push(`${path}: "${borrowed[0]}" belongs to SKAP or Junk to Clear, not this site`);
+
+  const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '';
+  try {
+    const org = (JSON.parse(jsonLd)['@graph'] ?? []).find((n) => n['@type'] === 'Organization');
+    if (org) {
+      for (const key of ['legalName', 'foundingDate', 'sameAs']) {
+        if (key in org) errors.push(`${path}: Organization has ${key} -- no company runs the site`);
+      }
+      if (org.parentOrganization?.name !== 'OurKampung') {
+        errors.push(`${path}: Organization lacks parentOrganization OurKampung`);
+      }
+    }
+  } catch {
+    /* reported by the JSON-LD check above */
   }
-  if (path !== '/about/' && links > 0) {
-    errors.push(`${path}: links to ${ENTITY_URL} — that link belongs on /about/ only`);
+
+  const partnerLinks = [...html.matchAll(/<a\b[^>]*href="https?:\/\/(www\.)?junktoclear\.com\.sg[^"]*"[^>]*>/g)];
+  if (partnerLinks.length && !path.startsWith('/moving/disposal-and-moving/')) {
+    errors.push(`${path}: links to Junk to Clear -- only where disposal is the next step`);
+  }
+  if (partnerLinks.some((m) => /\brel="[^"]*\bsponsored\b/.test(m[0]))) {
+    errors.push(`${path}: Junk to Clear link is rel="sponsored" -- it pays no fees`);
   }
 }
 
@@ -257,6 +281,9 @@ for (const file of htmlFiles) {
   }
   if (!/HomeToMoved enquiry/.test(html)) {
     errors.push('/contact/: subject does not name the site (family standard: site and page in the subject)');
+  }
+  if (!/Your details go to the OurKampung team/.test(html)) {
+    errors.push('/contact/: the notice must say the details go to the OurKampung team (family standard)');
   }
   if (/formsubmit\.co\/(ajax\/)?[^"'\s]+@[^"'\s]+/.test(html)) {
     errors.push('/contact/: posts to a raw inbox address, not the FormSubmit alias (family standard)');

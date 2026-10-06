@@ -30,7 +30,9 @@
  *     with { form_id, service, page_path };
  *   - the HTTP status is checked before the body, because FormSubmit returned
  *     HTTP 500 to every family site on 30 Sep 2026;
- *   - the visitor is told their details go to the team behind Junk to Clear;
+ *   - the visitor is told their details go to the OurKampung team, who pass
+ *     them to the movers who will quote (independence, 6 Oct 2026; plural and
+ *     without a contraction, to match this site's copy);
  *   - when sending fails, the message says so and the answers stay in place.
  *     No contact details are offered instead: the user's rule for this site,
  *     family-wide since 2 Oct 2026.
@@ -329,10 +331,10 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
       <label class="flex cursor-pointer items-start gap-3">
         <input type="checkbox" id="consent" name="PDPA consent" value="Given" class="mt-1 h-5 w-5 shrink-0 accent-[#8a5a1f]" />
         <span class="text-[0.925rem] leading-relaxed">
-          I consent to the team behind {company.parentBrandName} (<strong>{company.legalName}</strong>, trading as
-          {' '}{company.tradingName}) collecting and using my personal data to contact me about this enquiry, and to
-          <strong> disclosing my details to the moving vendors it matches me with</strong> so that they can
-          quote for my job. I understand I can withdraw consent at any time, as set out in the{' '}
+          I consent to the {company.family.name} team, who run {company.brandName}, collecting and using my
+          personal data to contact me about this enquiry, and to
+          <strong> disclosing my details to the moving vendors matched to my job</strong> so that they can
+          quote for it. I understand I can withdraw consent at any time, as set out in the{' '}
           <a href={paths.privacy} class="font-semibold text-brand-deep underline underline-offset-2">privacy policy</a>.
         </span>
       </label>
@@ -342,8 +344,7 @@ const steps = ['Move type', 'Property', 'From and to', 'Date', 'Extras', 'Your d
     </div>
 
     <p class="mt-4 text-[0.875rem] leading-relaxed text-ink-soft">
-      Your details go to the team behind {company.parentBrandName}, who run {company.tradingName}. They pass them
-      to the vetted movers who will quote for your move, and use them only for this enquiry.
+      Your details go to the {company.family.name} team, who pass them to the movers who will quote for the job.
     </p>
   </fieldset>
 

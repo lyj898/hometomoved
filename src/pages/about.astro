@@ -1,17 +1,14 @@
 ---
 /**
- * About. The only page on the site that links out to the operating entity.
+ * About. Says who runs the site: the OurKampung team. No company runs it, so
+ * none is named, and nothing here is borrowed from SKAP or Junk to Clear (no
+ * founding year, no years of experience, no trading name). Independence,
+ * 6 Oct 2026, jtc-family/briefs/independence.md.
+ *
  * It also carries the one in-text link to OurKampung's /our-sites/, the
  * family's mother site (family revamp, 5 Oct 2026).
- *
- * The origin story is the strongest trust asset here, because it explains
- * where the vendor list actually came from. Two figures in it are data-driven
- * rather than typed in: the number of years (derived from yearEstablished) and
- * the vendor count (company.vettedVendorCount, null until a real figure
- * exists -- the sentence drops the number rather than printing a guess).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EntityLink from '../components/EntityLink.astro';
 import { company } from '../lib/data';
 import { paths } from '../lib/urls';
 import type { Crumb } from '../lib/schema';
@@ -20,51 +17,47 @@ const crumbs: Crumb[] = [
   { name: 'Home', path: paths.home },
   { name: 'About', path: paths.about },
 ];
-
-const yearsReferring = 2026 - company.yearEstablished;
-const vendorCount = company.vettedVendorCount;
 ---
 
 <BaseLayout
   title="About HomeToMoved | Singapore Mover Matching"
-  description="HomeToMoved is run by the people behind Junk to Clear, clearing Singapore flats and offices since 2009. We match you with movers we have seen work."
+  description="HomeToMoved matches Singapore households and businesses with vetted, insured movers. It is part of OurKampung, run by the OurKampung team."
   path={paths.about}
   crumbs={crumbs}
 >
-  <h1>About {company.tradingName}</h1>
+  <h1>About {company.brandName}</h1>
   <p>{company.businessModelStatement}</p>
 
-  <h2>Where this came from</h2>
+  <h2>Who runs it</h2>
   <p>
-    {company.tradingName} is run by the people behind <EntityLink />, {company.parentBrandDescription} since
-    {' '}{company.yearEstablished}.
-  </p>
-  <p>
-    That work put us in people's homes at a particular moment. Customers clearing a flat were usually moving
-    out, moving in, or handing over to a landlord. They would ask whether we knew someone who could handle
-    the cleaning, or the move, or the bit we did not do. So we would recommend someone.
-  </p>
-  <p>
-    Over {yearsReferring} years of doing that, we learned things you only learn by referring real jobs and
-    hearing what happened afterwards. Which vendors turn up when they said they would. Which ones quote low
-    and find reasons to charge more once they are inside. Which ones you never hear a complaint about. Some
-    vendors we stopped referring after a single job.
-  </p>
-  <p>
-    That list &mdash; {vendorCount !== null ? `the ${vendorCount} vendors` : 'the vendors'} we have actually
-    seen work &mdash; is what this site is built on. We are not a directory anyone can pay to join, and we do
-    not carry out moves ourselves. We match you with people we would use, and you deal with them directly.
-  </p>
-
-  <h2>The entity behind the service</h2>
-  <p>
-    {company.tradingName} is the trading name of <strong>{company.legalName}</strong>, a Singapore-registered
-    company established in {company.yearEstablished}.
+    {company.brandName} is run by the {company.family.name} team. It is one of a small family of service sites
+    and guides run by the same team, all listed on
+    <a href={company.family.sitesUrl}>OurKampung's page about our sites</a>.
   </p>
   <p>We operate {company.operatingHours.map((h) => h.label).join(' and ')}.</p>
+
+  <h2>How a match works</h2>
+  <ol>
+    <li>
+      You tell us about the move on the <a href={paths.contact}>enquiry form</a>: what you are moving out of,
+      where from and where to, when, and anything awkward about the access.
+    </li>
+    <li>
+      We read it and pass it to vendors who handle that kind of move and have passed
+      <a href={paths.vendorStandards}>our checks</a>.
+    </li>
+    <li>They contact you directly with quotes.</li>
+    <li>You compare the quotes and choose. The contract for the move is between you and that vendor.</li>
+  </ol>
+  <p>Matching is free to use. You pay the mover you choose, not us.</p>
+
+  <h2>Why we check rather than move</h2>
   <p>
-    {company.tradingName} is one of a small family of service sites and guides run by the same team, all
-    listed on <a href="https://ourkampung.com/our-sites/">OurKampung's page about our sites</a>.
+    A quote tells you the price. It does not tell you whether the business is registered, whether its
+    insurance is in date, whether its crew can legally work in your home, or whether its surcharges are in
+    writing. Those are the things that decide what happens when a move goes wrong, and they are hard for a
+    household to check from a single phone call. So that is the part we take on, before any vendor can
+    receive an enquiry.
   </p>
 
   <h2>What we do and do not do</h2>

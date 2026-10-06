@@ -5,8 +5,9 @@
  * makes this the most important trust asset on the site.
  *
  * Nothing here may claim a rating, a review count or a vendor number we cannot
- * evidence. company.vettedVendorCount is null until a real figure exists, and
- * the copy reads correctly without it.
+ * evidence, and nothing may lean on years of experience: that history was
+ * Junk to Clear's, not this site's (independence, 6 Oct 2026). The checks are
+ * justified by what each one protects against, not by where they came from.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { company } from '../lib/data';
@@ -17,8 +18,6 @@ const crumbs: Crumb[] = [
   { name: 'Home', path: paths.home },
   { name: 'Vendor standards', path: paths.vendorStandards },
 ];
-
-const yearsReferring = 2026 - company.yearEstablished;
 
 const checks = [
   {
@@ -64,11 +63,12 @@ const checks = [
     where all of our effort goes.
   </p>
 
-  <h2>Where the standard came from</h2>
+  <h2>Why these checks</h2>
   <p>
-    We did not assemble this list from a template. It came out of {yearsReferring} years of referring real
-    jobs to real vendors and hearing what happened afterwards. Every check below exists because its absence
-    caused a problem for someone we sent. <a href={paths.about}>More about how this started</a>.
+    Each check covers something a quote does not show you. A price tells you what a vendor will charge. It
+    does not tell you whether the business is registered, whether its insurance is current, whether its crew
+    can legally work in your home, or whether its surcharges are in writing &mdash; and those are what decide
+    how a move goes when something goes wrong.
   </p>
 
   <h2>What every vendor has to pass</h2>

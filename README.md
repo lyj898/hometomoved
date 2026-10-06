@@ -1,6 +1,7 @@
 # hometomoved.com
 
-Lead generation site for **HomeToMoved**, the trading name of **SKAP Waste Management Pte Ltd** (est. 2009).
+Lead generation site for **HomeToMoved**, part of the **OurKampung** family of Singapore home sites and run by
+the OurKampung team. No company runs it, so none is named anywhere (see "Who runs the site" below).
 
 > **We are a matching service, not a moving company.** We connect customers with vetted, insured moving
 > vendors. Copy must never say "our movers", "our trucks" or "our team will arrive". This is a legal
@@ -44,7 +45,7 @@ npm run audit          # audit dist/ only (requires a prior build)
 /areas/                           town index
 /vendor-standards/                how we vet movers
 /pricing/                         pricing guide
-/about/                           entity and history
+/about/                           who runs it, how a match works
 /contact/  /privacy/  /terms/
 ```
 
@@ -68,7 +69,7 @@ Everything on this site is generated from four JSON files. **No template contain
 | `src/data/services.json` | The 7 service pages, pricing tables, FAQs |
 | `src/data/locations.json` | The 27 towns, adjacency graph, housing profiles |
 | `src/data/combos.json` | Which service × town location pages exist (generated) |
-| `src/data/company.json` | Entity name, hours, GST position. **No UEN, address, phone or email** |
+| `src/data/company.json` | Brand, family, hours, GST position. **No company name, UEN, address, phone or email** |
 | `src/data/site-faqs.json` | Homepage FAQs only |
 
 Types live in `src/types/`. Templates read data through `src/lib/data.ts` and never import the JSON directly.
@@ -187,13 +188,15 @@ preserved so the user can retry.
 The form keeps its `method` and `action`, so with JavaScript off it still posts natively and `_next`
 carries the user to `/thank-you/`, which is why that page still exists.
 
-The site follows the JTC family enquiry standard (`jtc-family/PORTFOLIO.md`, "Enquiries"):
+The site follows the OurKampung family enquiry standard (`jtc-family/PORTFOLIO.md`, "Enquiries"):
 
 - **Subject:** `HomeToMoved enquiry: <move type> (<page>)`, where `<page>` is the same-origin page that sent
   the visitor to `/contact/`, usually the service or location page whose CTA they clicked. The payload also
   carries `Site` and `Page` fields.
-- **Disclosure:** a line under the consent box says the details go to the team behind Junk to Clear, who
-  pass them to the movers who will quote.
+- **Disclosure:** a line under the consent box reads "Your details go to the OurKampung team, who pass them to
+  the movers who will quote for the job." That is the family line (6 Oct 2026) in this site's voice: plural,
+  because several movers quote, and without a contraction, like the rest of the site. The consent box names
+  the OurKampung team too, and the audit fails the build if the line disappears.
 - **Success** is FormSubmit answering HTTP 2xx with `success: true`. The status is checked before the
   body, because FormSubmit returned HTTP 500 to every family site on 30 Sep 2026.
 - **Failure** shows "Sorry, your enquiry did not send. Your answers are still here, so please try again in
@@ -243,9 +246,9 @@ CTAs.
 
 One JSON-LD `@graph` per page, built in `src/lib/schema.ts`.
 
-- A single `Organization` node at `@id: https://hometomoved.com/#org`, carrying the registered entity,
-  `foundingDate`, `sameAs` (junktoclear.com.sg) and `areaServed: Singapore`. Every other node references
-  it by `@id` rather than redeclaring the entity.
+- A single `Organization` node at `@id: https://hometomoved.com/#org`: the brand's own `name` and `url`,
+  `areaServed: Singapore`, and `parentOrganization` OurKampung (`https://ourkampung.com/`). No `legalName`,
+  `foundingDate` or `sameAs`. Every other node references it by `@id` rather than redeclaring it.
 - `Service` on service and location pages, with `areaServed` set to the town or to Singapore.
 - `BreadcrumbList` on nested pages.
 - `FAQPage` where FAQs exist. **Not a ranking lever** — Google deprecated FAQ rich results in May 2026.
@@ -259,16 +262,35 @@ Three hard rules, each enforced by `scripts/audit-build.mjs`:
 
 ---
 
-## Entity link
+## Who runs the site
 
-The outbound link to the operating entity appears on **/about/ only**, labelled with the brand
-(`company.parentBrandName`) rather than the registered name, inside the "Where this came from" section.
-Everywhere else the entity name is plain text.
+The user's decision, 6 Oct 2026 (`jtc-family/briefs/independence.md`): the family is independent. HomeToMoved
+is run by **the OurKampung team** and is part of OurKampung. No company runs it, so none is named: no company
+name, UEN, address or person.
 
-`scripts/audit-build.mjs` enforces both halves: /about/ must contain the link, and no other page may.
+Nothing borrowed from SKAP Waste Management or Junk to Clear stays on the site: no founding year, no years of
+experience, no "trading as", no reviews, logos or social profiles. The About page explains the matching model
+and the checks instead of an origin story, and the vendor standards are justified by what each check protects
+against.
 
-`company.vettedVendorCount` is `null`. The about page drops the number from the sentence rather than
-printing a guess. Set it to a real figure and the sentence picks it up.
+**Junk to Clear** is a separate company the family refers disposal, clearance and renovation jobs to. It pays
+no referral fees, isn't part of the family and doesn't run any of it.
+
+- The privacy policy names it as the partner that can receive a job's disposal or clearance part, introduced
+  as "a disposal company we refer jobs to". Never "our", "sister" or "same team" for it, and never anything
+  saying or implying we're unconnected to it.
+- Link it only where disposal or clearance is the reader's next step. On this site that means the
+  disposal-and-moving pages. There are no links to it today, and the brief adds none.
+- Use plain links: no `rel="sponsored"` (there are no fees), and never `rel="noreferrer"`.
+
+Enforcement:
+
+- `scripts/validate-data.mjs` fails the build if `legalName`, `tradingName`, `yearEstablished`,
+  `foundingDate`, `entityUrl`, `sameAs` or the old parent-brand keys come back into `company.json`.
+- `scripts/audit-build.mjs` fails it on "SKAP", "Waste Management", "trading as", "2009" or "team behind Junk
+  to Clear" in any built page. It also fails on an Organization node with `legalName`, `foundingDate` or
+  `sameAs`, or without its OurKampung parent, and on a Junk to Clear link outside the disposal-and-moving
+  pages or marked `sponsored`.
 
 Links to the other family sites follow the copy rules below.
 
@@ -280,9 +302,8 @@ The site publishes **no UEN, address, phone or email**. The enquiry form is the 
 privacy and terms pages route data-protection and legal questions through it.
 
 This is enforced: `scripts/validate-data.mjs` fails the build if `uen`, `phone`, `email`, `address` or
-`whatsappNumber` reappear in `company.json`. The Organization JSON-LD carries `name`, `legalName`, `url`,
-`foundingDate`, `sameAs`, `areaServed` and `description` only — no `identifier`, `telephone`, `email` or
-`address`.
+`whatsappNumber` reappear in `company.json`. The Organization JSON-LD carries `name`, `url`, `areaServed`,
+`description` and `parentOrganization` only — no `identifier`, `telephone`, `email` or `address`.
 
 The audit also fails the build on any `mailto:`, `tel:` or WhatsApp link.
 
@@ -291,7 +312,8 @@ appears in the page source.
 
 **PDPA note:** section 11(5) of the PDPA requires an organisation to make available the business contact
 information of the individual responsible for data protection. Routing those requests through the enquiry
-form may not satisfy that. Worth checking before relying on it.
+form may not satisfy that, and since 6 Oct 2026 the policy names no legal entity, only the OurKampung team.
+Worth checking before relying on it.
 
 ---
 
@@ -310,9 +332,9 @@ Prices in `S$`, GST position stated. No superlatives we cannot evidence — no "
 
 Links to sibling sites follow the linking rules in `jtc-family/PORTFOLIO.md`. Each is one link, placed at the
 step that needs that service and pointing at the most specific page that fits. The same sentence says the
-same team runs it. No sitewide or footer links. The Junk to Clear link stays on `/about/` only (see Entity
-link). This replaces the original build prompt's "no sibling links" rule: the user has since asked for links
-between their sites.
+same team runs it. No sitewide or footer links. Junk to Clear is not a family site: see "Who runs the site"
+for when it may be linked. This replaces the original build prompt's "no sibling links" rule: the user has
+since asked for links between their sites.
 
 **The one exception: OurKampung, the family's mother site** (family revamp, 5 Oct 2026,
 `jtc-family/briefs/family-revamp.md`):
